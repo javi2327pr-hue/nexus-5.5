@@ -1,0 +1,90 @@
+{
+  "_comment": "Configuraci\u00f3n de NEXUS v4.0 \u2014 copiar a .antigravity/ o .claude/ seg\u00fan plataforma",
+  "_version": "4.0",
+  "platform": "auto",
+  "n8n": {
+    "api_url": "",
+    "api_key": "",
+    "mode": "sin_api_key",
+    "_note": "Pon tus credenciales para activar deploy directo. mode: 'sin_api_key' | 'con_api_key'"
+  },
+  "parallelism": {
+    "default_mechanism": "auto",
+    "_note": "auto | P1 | P2 | P3 | P4",
+    "max_parallel_workers": 4,
+    "codex_server_url": "ws://localhost:9000",
+    "_codex_note": "Solo necesario si usas P3 con Antigravity + Codex MCP"
+  },
+  "checkpoints": {
+    "enabled": true,
+    "path_antigravity": ".antigravity/nexus-checkpoint.json",
+    "path_claude_code": ".claude/nexus-checkpoint.json"
+  },
+  "agents": {
+    "market_scout": true,
+    "arch": true,
+    "webdev": true,
+    "codex_bridge": true,
+    "autoflow": true,
+    "watchdog": true,
+    "_note": "Desactiva agentes que no uses para reducir costo de tokens",
+    "knowledge_base": true
+  },
+  "cost_thresholds": {
+    "warn_at_tokens": 40000,
+    "low_max": 10000,
+    "medium_max": 40000,
+    "_note": "NEXUS advertir\u00e1 antes de ejecutar si el pipeline supera warn_at_tokens"
+  },
+  "log": {
+    "enabled": true,
+    "path_antigravity": ".antigravity/nexus-log.md",
+    "path_claude_code": ".claude/nexus-log.md"
+  },
+  "fallback": {
+    "n8n_not_found": "suggest_make_zapier",
+    "_note": "Si un nodo n8n no existe, sugerir Make o Zapier autom\u00e1ticamente"
+  },
+  "knowledge_base": {
+    "enabled": true,
+    "auto_load": true,
+    "_note": "Si auto_load=true, NEXUS carga autom\u00e1ticamente cualquier *-knowledge.md al iniciar",
+    "scan_on_boot": true,
+    "_scan_note": "Busca *-knowledge.md en references/ al arrancar"
+  },
+  "projects": {
+    "_template": {
+      "knowledge_file": "references/[nombre]-knowledge.md",
+      "stack": {},
+      "creado": "[timestamp]",
+      "actualizado": "[timestamp]"
+    },
+    "_note": "KnowledgeBase registra aqu\u00ed cada proyecto destilado autom\u00e1ticamente"
+  },
+  "watchdog": {
+    "enabled": true,
+    "auto_deploy_on_workflow_deploy": true,
+    "intervalo_default_min": 30,
+    "canal_default": {
+      "tipo": "telegram",
+      "destino": "",
+      "_note": "Pon tu Telegram chat_id o email. tipo: telegram | email | webhook"
+    },
+    "monitored_workflows": {
+      "_note": "watchdog-autonomous registra aqu\u00ed cada workflow monitoreado"
+    },
+    "autofix": {
+      "enabled": true,
+      "intentos_maximos": 2,
+      "errores_autofix": [
+        "NodeOperationError",
+        "deprecated"
+      ],
+      "errores_escalada": [
+        "AuthenticationError",
+        "ParseError"
+      ]
+    },
+    "_note": "Requiere n8n.api_key configurada para operar"
+  }
+}
