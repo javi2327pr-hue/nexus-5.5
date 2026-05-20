@@ -1,0 +1,29 @@
+{
+  "_version": "1.0",
+  "_skill": "marketos",
+
+  "platform": "auto",
+
+  "defaults": {
+    "profundidad": "auto",
+    "idioma_reporte": "es",
+    "max_competidores": 5,
+    "intervalo_seguimiento_dias": 30
+  },
+
+  "knowledge": {
+    "auto_save_client": true,
+    "auto_load_on_boot": true,
+    "_note": "Guarda análisis de cada cliente en references/{cliente}-client-knowledge.md"
+  },
+
+  "checkpoint": {
+    "enabled": true,
+    "path_antigravity": ".antigravity/marketos-checkpoint.json",
+    "path_claude_code": ".claude/marketos-checkpoint.json"
+  },
+
+  "clients": {
+    "_note": "MarketOS registra aquí cada cliente analizado automáticamente"
+  }
+}
