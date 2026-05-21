@@ -1,7 +1,7 @@
-<!-- v1 | agente: claude-code | 2026-05-21 -->
+<!-- v2 | agente: claude-code | 2026-05-21 -->
 ---
 name: n8n-suite-router
-description: Dispatcher that selects which n8n skill to consult first based on user intent. Trigger on any n8n-related question (workflow, node, expression, validation, Code, MCP tool). This skill returns a routing decision in <5s and hands off — it does not solve the user's task itself.
+description: Dispatcher that selects which n8n skill (of 13) to consult first based on user intent. Trigger on any n8n-related question — workflow, node, expression, validation, Code, MCP tool, testing, monitoring, credentials, migration, cost. Returns routing in <5s and hands off — does not solve the task itself.
 ---
 
 # n8n Suite Router (orchestrator)
@@ -13,9 +13,10 @@ This skill is a **pure dispatcher**. It reads user intent and returns the next s
 On any user message that:
 - Mentions n8n, workflow, node, automation, webhook, n8n-mcp
 - References an n8n tool, expression, Code node, validation result
+- Mentions testing, monitoring, credentials, migration, or cost of an n8n workflow
 - Asks "how do I X in n8n"
 
-## Intent → Skill mapping
+## Intent → Skill mapping (13 skills)
 
 | User says / Context | Next skill |
 |---|---|
@@ -32,6 +33,16 @@ On any user message that:
 | "Validation failed / error / warning" | `n8n-validation-expert` |
 | "False positive in validation" | `n8n-validation-expert` |
 | "How does auto-sanitization work" | `n8n-mcp-tools-expert` |
+| "Test / verify / run fixtures against workflow" | `n8n-workflow-tester` |
+| "Workflow validates but fails at runtime" | `n8n-workflow-tester` |
+| "Monitor / health / SLO / incident" | `n8n-observability-monitor` |
+| "Auto-fix / babysit / watch workflow X" | `n8n-observability-monitor` |
+| "OAuth expired / token rotation / re-auth" | `n8n-credentials-architect` |
+| "Hardcoded secret / over-scoped credential" | `n8n-credentials-architect` |
+| "Migrate / promote / export / import workflow" | `n8n-workflow-migrator` |
+| "Dev → prod" workflow move | `n8n-workflow-migrator` |
+| "Cost / budget / rate limit / quota" | `n8n-cost-guardrails` |
+| "How much will this workflow cost?" | `n8n-cost-guardrails` |
 
 ## Multi-skill plans
 
@@ -39,11 +50,14 @@ For composite intents, output the **sequence**, not a single skill:
 
 | User intent | Routing sequence |
 |---|---|
-| "Build & validate a webhook → Slack workflow" | patterns → mcp-tools → node-config → code-js (if Code needed) → expressions → validation |
-| "Migrate this JSON to use Python instead of JS" | code-js (read existing) → code-python (rewrite) → validation |
-| "My workflow validates but fails at runtime" | validation (switch profile to `runtime`) → patterns (check error path) → node-config |
-| "Audit my n8n instance" | mcp-tools (`n8n_audit_instance`) → validation (interpret findings) |
-| "Create an AI Agent workflow" | patterns (AI Agent pattern) → mcp-tools (`ai_agents_guide()`) → node-config (8 connection types) → validation |
+| "Build & ship a webhook → Slack workflow" | patterns → cost-guardrails → mcp-tools → node-config → credentials-architect → expressions → validation → tester → activate → observability-monitor |
+| "Migrate this JSON to use Python instead of JS" | code-js (read existing) → code-python (rewrite) → validation → tester |
+| "My workflow validates but fails at runtime" | tester (run fixtures) → validation if FAIL → fix → tester |
+| "Audit my n8n instance" | mcp-tools (`n8n_audit_instance`) → credentials-architect (MIGRATE + RIGHT_SIZE + CLEANUP) → tester |
+| "Create an AI Agent workflow" | patterns (AI Agent) → cost-guardrails (token budget) → mcp-tools (`ai_agents_guide()`) → node-config (8 conn types) → code-js (cache + budget) → credentials-architect (API key + cap) → validation → tester → activate → observability-monitor |
+| "Promote workflow X from dev to prod" | workflow-migrator (6 phases: export → audit → re-map → version diff → import+validate → tester) → user activates |
+| "Monitor workflow X" | observability-monitor (register with watchdog-autonomous) |
+| "Why is workflow X failing in production" | observability-monitor (read incident) → triage recipe OR validation → tester |
 
 ## Output format (what this skill produces)
 
@@ -78,3 +92,8 @@ Do not solve, do not explain n8n concepts here. Hand off.
 - **Always** route through `n8n-mcp-tools-expert` BEFORE any `mcp__n8n__*` tool call
 - **Always** route through `n8n-workflow-patterns` BEFORE building a new workflow
 - **Always** route through `n8n-validation-expert` AFTER any validation tool returns
+- **Always** route through `n8n-cost-guardrails` BEFORE building any workflow with loops, LLM, or external API
+- **Always** route through `n8n-workflow-tester` BEFORE any `n8n_activate_workflow` call
+- **Always** route through `n8n-observability-monitor` AFTER any `n8n_activate_workflow` call
+- **Always** route through `n8n-credentials-architect` for any credential CRUD or OAuth issue
+- **Always** route through `n8n-workflow-migrator` for any cross-instance or cross-version workflow move

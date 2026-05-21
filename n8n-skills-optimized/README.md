@@ -1,49 +1,75 @@
-# n8n-skills-optimized v2
+# n8n-skills-optimized v2 — full suite
 
-Optimización completa de la suite [n8n-skills](https://github.com/czlonkowski/n8n-skills) (Czlonkowski) generada por `/coding-agent-skill-engineer`.
+Optimización completa de la suite [n8n-skills](https://github.com/czlonkowski/n8n-skills) (Czlonkowski) + 5 agentes adicionales para cerrar gaps (testing, observability, credentials, migration, cost), generada por `/coding-agent-skill-engineer`.
 
-## Qué contiene
+## Suite completa: 13 skills × 3 variantes = 39 archivos
 
 ```
 n8n-skills-optimized/
 ├── README.md                       ← este archivo
-├── ROUTING.md                      ← grafo Mermaid + tabla from→to entre skills
+├── ROUTING.md                      ← grafo Mermaid + tabla from→to entre las 13 skills
 ├── PATCH-NOTES.md                  ← v1 → v2 diff, scoring, breaking changes
-├── AGENT-RECOMMENDATIONS.md        ← 5 agentes adicionales propuestos + mapping a infra existente
-├── claude-code/                    ← versiones canónicas Claude Code (8 skills, ≤450 líneas c/u)
-│   ├── n8n-suite-router/SKILL.md   ← NUEVA — meta-orquestador
-│   ├── n8n-workflow-patterns/
-│   ├── n8n-mcp-tools-expert/       ← gate skill
-│   ├── n8n-expression-syntax/
-│   ├── n8n-validation-expert/
-│   ├── n8n-node-configuration/
-│   ├── n8n-code-javascript/
-│   └── n8n-code-python/
-├── codex/                          ← variantes Codex (atómico-secuencial)
-└── antigravity/                    ← variantes Antigravity (goals + acceptance criteria)
+├── AGENT-RECOMMENDATIONS.md        ← propuesta original + status de construcción
+├── WATCHDOG-INTEGRATION.md         ← contrato n8n-observability-monitor ↔ watchdog-autonomous
+├── claude-code/                    ← versión canónica (13 SKILL.md)
+│   ├── n8n-suite-router/           ← META — orquestador
+│   │
+│   ├── n8n-workflow-patterns/      ← Original v2
+│   ├── n8n-mcp-tools-expert/       ← Original v2 (gate skill)
+│   ├── n8n-expression-syntax/      ← Original v2
+│   ├── n8n-validation-expert/      ← Original v2
+│   ├── n8n-node-configuration/     ← Original v2
+│   ├── n8n-code-javascript/        ← Original v2
+│   ├── n8n-code-python/            ← Original v2
+│   │
+│   ├── n8n-workflow-tester/        ← NEW — runtime test harness
+│   ├── n8n-observability-monitor/  ← NEW — policy layer for watchdog-autonomous
+│   ├── n8n-credentials-architect/  ← NEW — least-privilege creds + rotation
+│   ├── n8n-workflow-migrator/      ← NEW — cross-instance / cross-version
+│   └── n8n-cost-guardrails/        ← NEW — pre-build cost + rate-limit
+├── codex/                          ← 13 variantes Codex (atómico-secuencial)
+└── antigravity/                    ← 13 variantes Antigravity (goal+criteria)
 ```
 
-## Cambios clave vs v1
+## Las 13 skills en una línea
 
-- **Reducción de tamaño**: -82% promedio (de 700+ a ~130 líneas por SKILL.md)
-- **Routing determinista**: bloque `## Routing` idéntico en las 8 skills (FROM → GO TO → STAY UNTIL)
-- **Meta-router nuevo**: `n8n-suite-router` resuelve la competencia por auto-activación
-- **Gate único**: `n8n-mcp-tools-expert` es el único gate "always consult before"
-- **Variantes multi-agente**: misma capacidad en formato Codex (atómico) y Antigravity (goal-based)
-- **Inconsistencias resueltas**: 5 vs 6 patrones, duplicación checklist↔summary, descriptions bloat
+| # | Skill | Rol |
+|---|---|---|
+| 0 | `n8n-suite-router` | Dispatcher meta (entry point) |
+| 1 | `n8n-workflow-patterns` | Seleccionar arquitectura antes de construir |
+| 2 | `n8n-mcp-tools-expert` | Gate para todo `mcp__n8n__*` |
+| 3 | `n8n-node-configuration` | Configurar nodos operation-aware |
+| 4 | `n8n-expression-syntax` | Escribir `{{ }}` correctas |
+| 5 | `n8n-code-javascript` | JS en Code nodes |
+| 6 | `n8n-code-python` | Python (beta) — JS-first por default |
+| 7 | `n8n-validation-expert` | Loop validate→fix→validate |
+| 8 | `n8n-workflow-tester` ★ | Ejecutar fixtures, diff outputs, rollback |
+| 9 | `n8n-observability-monitor` ★ | Triage + auto-fix post-ship (delega polling a watchdog) |
+| 10 | `n8n-credentials-architect` ★ | Least-privilege + rotation + cleanup |
+| 11 | `n8n-workflow-migrator` ★ | dev→prod en 6 fases (export → audit → re-map → version-diff → import → test) |
+| 12 | `n8n-cost-guardrails` ★ | Estimar costo + detectar loop-over-API + proponer mitigaciones |
 
-Score esperado: **83% → 94%** (+11pp).
+★ = nuevas en v2.
+
+## Cambios clave vs v1 original
+
+- **Reducción de tamaño**: -82% promedio en las 7 skills originales
+- **Routing determinista**: bloque `## Routing` idéntico en las 13 skills
+- **Meta-router**: `n8n-suite-router` resuelve competencia por auto-activación
+- **Gate único declarado**: `n8n-mcp-tools-expert` (las otras 12 dicen "use AFTER")
+- **5 nuevos agentes** que cierran los gaps de testing, observability, credentials, migration, cost
+- **Variantes multi-agente**: Claude Code (canónica) + Codex (atómico) + Antigravity (goal-based)
+- **Inconsistencias resueltas**: 5 vs 6 patrones, dedup checklist↔summary, descriptions bloat
+- **Integración con infra existente**: `n8n-observability-monitor` delega polling a `watchdog-autonomous`
+
+Score esperado: original **83%** → v2 **94%** (+11pp).
 
 ## Instalación
 
 ### Como Claude Code skills (versión canónica)
 
 ```bash
-# Copiar las 8 skills al directorio de Claude Code
-cp -r claude-code/* ~/.claude/skills/
-
-# O por proyecto
-cp -r claude-code/* /path/to/project/.claude/skills/
+cp -r n8n-skills-optimized/claude-code/* ~/.claude/skills/
 ```
 
 Las skills se auto-activan por sus `description` triggers. Para forzar el router:
@@ -53,21 +79,35 @@ Las skills se auto-activan por sus `description` triggers. Para forzar el router
 
 ### Como Codex prompts
 
-Cada `codex/<skill>/PROMPT.md` es self-contained — pegalo en Codex como system instruction o úsalo via API.
+Cada `codex/<skill>/PROMPT.md` es self-contained — pegar en Codex como system instruction.
 
 ### Como Antigravity goals
 
-Cada `antigravity/<skill>/SPEC.md` define un goal + acceptance criteria. Pegalo como objetivo de la sesión Antigravity.
+Cada `antigravity/<skill>/SPEC.md` define goal + acceptance criteria — pegar como objetivo de sesión.
 
 ## Compatibilidad con archivos satélite originales
 
-Los archivos `.md` complementarios del repo original (`DATA_ACCESS.md`, `COMMON_PATTERNS.md`, `ERROR_PATTERNS.md`, `SEARCH_GUIDE.md`, `VALIDATION_GUIDE.md`, `WORKFLOW_GUIDE.md`, `COMMON_MISTAKES.md`, `EXAMPLES.md`, `DEPENDENCIES.md`, `OPERATION_PATTERNS.md`, `ERROR_CATALOG.md`, `FALSE_POSITIVES.md`, `BUILTIN_FUNCTIONS.md`, `STANDARD_LIBRARY.md`, `webhook_processing.md`, `http_api_integration.md`, `database_operations.md`, `ai_agent_workflow.md`, `scheduled_tasks.md`) **siguen siendo válidos y referenciados** desde los SKILL.md v2. No es necesario reescribirlos.
+Los `.md` complementarios del repo original (`DATA_ACCESS.md`, `COMMON_PATTERNS.md`, `ERROR_PATTERNS.md`, `SEARCH_GUIDE.md`, etc.) **siguen siendo válidos y referenciados** desde los SKILL.md v2. No es necesario reescribirlos.
 
-Para una instalación completa, copia el `claude-code/<skill>/SKILL.md` v2 + los `.md` satélite del repo original.
+Para una instalación completa: copia el `claude-code/<skill>/SKILL.md` v2 + los `.md` satélite originales (solo aplica a las 7 skills originales — las 5 nuevas son self-contained).
+
+## Composite flows (qué hace la suite end-to-end)
+
+Ver `ROUTING.md` para los 6 composite flows documentados:
+
+- **A** — Build + ship new webhook workflow
+- **B** — Debug a failing production workflow
+- **C** — Build AI Agent workflow with cost controls
+- **D** — Migrate Python Code → JavaScript
+- **E** — Promote workflow dev → prod (6-phase migration)
+- **F** — Quarterly credential audit
 
 ## Próximos pasos sugeridos
 
-Ver `AGENT-RECOMMENDATIONS.md` — 5 agentes propuestos para cerrar gaps (testing, credentials, observability, migration, cost).
+1. **Validar v2** con 2-3 workflows reales antes de reemplazar v1
+2. **Configurar watchdog-autonomous** para los workflows que quieras monitorear (ver `WATCHDOG-INTEGRATION.md`)
+3. **Ejecutar audit inicial** con la nueva suite: `n8n_audit_instance` → `n8n-credentials-architect` (MIGRATE + RIGHT_SIZE + CLEANUP)
+4. **Setear budgets** por workflow con `n8n-cost-guardrails` antes del próximo build
 
 ## Licencia
 

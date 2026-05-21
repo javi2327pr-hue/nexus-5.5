@@ -1,5 +1,9 @@
 # Agentes adicionales recomendados para hacer la suite más eficiente y precisa
 
+> **Status update (2026-05-21):** Los 5 agentes propuestos a continuación están **construidos** en `claude-code/`, `codex/`, y `antigravity/`. La integración con `watchdog-autonomous` está documentada en `WATCHDOG-INTEGRATION.md`.
+>
+> Suite total: **13 skills** (8 originales + 5 nuevos), 3 variantes cada uno = **39 archivos de skill**.
+
 Análisis: la suite actual (7+1 skills) cubre el ciclo `intent → pattern → discover → configure → code → expression → validate → ship`. Cinco gaps quedan abiertos donde agentes especializados subirían precisión y throughput sin inflar el contexto principal.
 
 ## Gap-análisis
@@ -14,7 +18,7 @@ Análisis: la suite actual (7+1 skills) cubre el ciclo `intent → pattern → d
 
 ## Agentes propuestos (5 nuevos)
 
-### 1. `n8n-workflow-tester` — Runtime test harness ⭐⭐⭐ (mayor ROI)
+### 1. `n8n-workflow-tester` — Runtime test harness ⭐⭐⭐ (mayor ROI) ✅ CONSTRUIDO
 
 **Rol**: ejecuta el workflow recién creado contra inputs sintéticos y compara outputs esperados. Cierra el gap entre "validation passes" y "runtime works".
 
@@ -30,7 +34,7 @@ Análisis: la suite actual (7+1 skills) cubre el ciclo `intent → pattern → d
 
 **Impacto esperado**: +15% precisión end-to-end (atrapa el 80% de los runtime errors que validation no ve).
 
-### 2. `n8n-credentials-architect` — Credential lifecycle ⭐⭐
+### 2. `n8n-credentials-architect` — Credential lifecycle ⭐⭐ ✅ CONSTRUIDO
 
 **Rol**: gestiona credenciales con principio de menor privilegio, rotación, y scoping por workflow.
 
@@ -45,7 +49,7 @@ Análisis: la suite actual (7+1 skills) cubre el ciclo `intent → pattern → d
 
 **Impacto esperado**: Elimina el #1 hallazgo de `n8n_audit_instance` (hardcoded secrets + over-scoped creds) sin escalación al usuario.
 
-### 3. `n8n-observability-monitor` — Post-ship watcher ⭐⭐⭐
+### 3. `n8n-observability-monitor` — Post-ship watcher ⭐⭐⭐ ✅ CONSTRUIDO + integración con watchdog-autonomous documentada en `WATCHDOG-INTEGRATION.md`
 
 **Rol**: tras activar un workflow, lo monitorea, detecta fallos en runs, intenta auto-fix, y solo escala al humano lo no resoluble.
 
@@ -61,7 +65,7 @@ Análisis: la suite actual (7+1 skills) cubre el ciclo `intent → pattern → d
 
 **Impacto esperado**: cierra el ciclo dev → ship → monitor → fix sin intervención.
 
-### 4. `n8n-workflow-migrator` — Cross-instance / version mover ⭐
+### 4. `n8n-workflow-migrator` — Cross-instance / version mover ⭐ ✅ CONSTRUIDO
 
 **Rol**: exporta workflow de instancia A, transforma para instancia B (diferentes credentials, diferentes node versions, diferentes webhooks URLs), valida, importa.
 
@@ -76,7 +80,7 @@ Análisis: la suite actual (7+1 skills) cubre el ciclo `intent → pattern → d
 
 **Impacto esperado**: convierte una tarea de 30+ min manual en <2 min auto.
 
-### 5. `n8n-cost-guardrails` — Budget & rate-limit advisor ⭐
+### 5. `n8n-cost-guardrails` — Budget & rate-limit advisor ⭐ ✅ CONSTRUIDO
 
 **Rol**: pre-build analiza el workflow propuesto contra presupuestos (LLM tokens, HTTP calls/min, DB writes) y propone batching/caching/circuit breakers.
 
