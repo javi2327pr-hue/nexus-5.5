@@ -1,0 +1,14 @@
+# Build artifacts / archives — generated from tracked sources, not source of truth
+*.zip
+*.tar.gz
+*.tgz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
