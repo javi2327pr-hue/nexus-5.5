@@ -25,8 +25,14 @@ INSTRUCCIONES DE DEPLOY:
 <!-- ═══════════════════ SECCIÓN 1: HERO NUEVO ═══════════════════ -->
 <section class="hero">
   <div class="container">
-    <div class="hero-tagline">ARHINFO desde 2005</div>
-    <h1>El POS colombiano con 20 años de experiencia, no 20 meses.</h1>
+    <div class="animate-fade-up">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      🇨🇴 Colombia · 20 años · Bootstrapped
+    </div>
+    <h1 style="margin-top: 1.5rem;">El POS colombiano con
+      <span class="rotating-word" data-rotating data-words='["20 años de experiencia","raíces en Mariquita","cero inversión externa","clientes que llevan 15 años"]' data-interval="3500">20 años de experiencia</span>,
+      no 20 meses.</h1>
     <p class="lead">Hecho en Mariquita, Tolima, para los comerciantes colombianos que <strong>no deben emitir factura electrónica</strong>. Ferreterías, droguerías, mini-markets y tiendas que necesitan un sistema diseñado para su régimen tributario real, no adaptado de software para empresas grandes.</p>
 
     <div class="cta-row">
@@ -39,6 +45,7 @@ INSTRUCCIONES DE DEPLOY:
       <span>Primer mes gratis</span>
       <span>Sin contrato de permanencia</span>
       <span>Funciona sin internet</span>
+    </div>
     </div>
   </div>
 </section>
@@ -73,7 +80,31 @@ INSTRUCCIONES DE DEPLOY:
   </div>
 </section>
 
-<!-- ═══════════════════ SECCIÓN 3: TRUST BLOCK 20 AÑOS ═══════════════════ -->
+<!-- ═══════════════════ SECCIÓN 3a: TRUST COUNTER BAR (stats animados) ═══════════════════ -->
+<section class="trust-counter-bar">
+  <div class="container">
+    <div class="trust-counter-grid">
+      <div>
+        <div class="trust-counter-value"><span data-count="20" data-suffix="+">20</span></div>
+        <p class="trust-counter-label">años acompañando microempresarios</p>
+      </div>
+      <div>
+        <div class="trust-counter-value"><span data-count="600000" data-suffix="+">600.000</span></div>
+        <p class="trust-counter-label">microempresas NR-IVA en Colombia</p>
+      </div>
+      <div>
+        <div class="trust-counter-value"><span data-count="100" data-suffix="%">100</span></div>
+        <p class="trust-counter-label">soporte humano por WhatsApp</p>
+      </div>
+      <div>
+        <div class="trust-counter-value"><span data-count="0" data-prefix="$">0</span></div>
+        <p class="trust-counter-label">de inversión externa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SECCIÓN 3b: TRUST BLOCK 20 AÑOS ═══════════════════ -->
 <section class="trust-banner">
   <div class="container">
     <h2>20 años, no 20 meses.</h2>
@@ -252,3 +283,23 @@ INSTRUCCIONES DE DEPLOY:
     @media (max-width: 768px) { section { padding: 3rem 0; } .hero { padding: 4rem 0 3rem; } .container { padding: 0 1rem; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   </style>
+
+
+<!-- ═══════════════════ WHATSAPP FAB + BACK-TO-TOP + SCRIPT ═══════════════════ -->
+<!-- Pegá esto antes del </body> de tu home, junto con animations.js -->
+<a href="https://wa.me/573217041698?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ARHINFO"
+   class="whatsapp-fab with-pulse"
+   aria-label="Hablar por WhatsApp"
+   target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.272-.1-.471-.15-.67.15-.197.295-.767.964-.94 1.162-.173.2-.347.222-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.463 3.488z"/>
+  </svg>
+</a>
+
+<button class="back-to-top" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+<script src="animations.js" defer></script>
