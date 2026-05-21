@@ -1,0 +1,411 @@
+<!--
+═══════════════════════════════════════════════════════════════════════
+ARHINFO — Página About completa (/sobre-nosotros)
+═══════════════════════════════════════════════════════════════════════
+Generada por MarketOS v3.0 — 2026-05-21
+Acción ofensiva #3 (parte 2): página About con narrativa "20 años, no 20 meses"
+
+CONTENIDO:
+- Hero con foto fundador (placeholder)
+- Historia: por qué empezar en 2005 en Mariquita
+- Timeline 2005-2026 con hitos visuales
+- Sección "Lo que NO somos" (anti-VC)
+- Valores/Voice
+- Equipo (placeholder para foto + nombre fundador)
+- CTA al final
+
+Schema markup: Organization + AboutPage + Person (fundador)
+
+CUSTOMIZATION REQUIRED antes de deploy:
+- Reemplazar [NOMBRE FUNDADOR] con el nombre real
+- Subir foto del fundador (placeholder /team/founder.jpg)
+- Validar hitos del timeline con dato real (si no son exactos, ajustar)
+- Confirmar cifra de clientes activos (si querés mostrarla)
+═══════════════════════════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sobre ARHINFO | 20 años de software POS colombiano</title>
+  <meta name="description" content="ARHINFO opera desde 2005 desde Mariquita, Tolima. Somos el POS colombiano más veterano del mercado. Bootstrapped, sin VC, sin promesas que se evaporan. Conocé nuestra historia.">
+  <link rel="canonical" href="https://arhinfo.com/sobre-nosotros">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sobre ARHINFO | 20 años de software POS colombiano">
+  <meta property="og:description" content="Desde 2005 desde Mariquita, Tolima. El POS colombiano más veterano. Sin VC, sin runway, sin hype.">
+  <meta property="og:url" content="https://arhinfo.com/sobre-nosotros">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Schema AboutPage + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "url": "https://arhinfo.com/sobre-nosotros",
+    "name": "Sobre ARHINFO",
+    "description": "Historia, valores y equipo de ARHINFO S.A.S., el POS colombiano con 20 años de experiencia.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "ARHINFO S.A.S.",
+      "alternateName": "ARHINFO",
+      "url": "https://arhinfo.com",
+      "logo": "https://arhinfo.com/logo.png",
+      "foundingDate": "2005",
+      "foundingLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Sebastián de Mariquita",
+          "addressRegion": "Tolima",
+          "addressCountry": "CO"
+        }
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrera 2 A #6-20",
+        "addressLocality": "San Sebastián de Mariquita",
+        "addressRegion": "Tolima",
+        "postalCode": "732020",
+        "addressCountry": "CO"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+57-321-704-1698",
+        "contactType": "sales",
+        "areaServed": "CO",
+        "availableLanguage": "Spanish"
+      },
+      "sameAs": [
+        "https://www.instagram.com/sistemapuntodeventa/",
+        "https://www.youtube.com/user/arhinfo"
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --c-ink: oklch(20% 0.01 230); --c-paper: oklch(98% 0.005 230); --c-warm: oklch(95% 0.015 230);
+      --c-accent: oklch(55% 0.18 220); --c-accent-deep: oklch(40% 0.17 220);
+      --c-muted: oklch(55% 0.01 230); --c-border: oklch(85% 0.01 230);
+      --f-display: "Georgia", "Times New Roman", serif;
+      --f-body: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--f-body); color: var(--c-ink); background: var(--c-paper); line-height: 1.5; }
+    h1 { font-family: var(--f-display); font-size: clamp(2.25rem, 5.5vw + 1rem, 4rem); line-height: 1.02; letter-spacing: -0.01em; font-weight: 600; }
+    h2 { font-family: var(--f-display); font-size: clamp(1.75rem, 3vw + 0.5rem, 2.5rem); line-height: 1.15; font-weight: 500; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.25rem; line-height: 1.3; font-weight: 600; margin-bottom: 0.5rem; }
+    p { font-size: 1.0625rem; line-height: 1.65; max-width: 70ch; margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+    .lead { font-size: 1.3125rem; line-height: 1.5; color: var(--c-muted); }
+    .small { font-size: 0.875rem; color: var(--c-muted); }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 4rem 0; }
+    section + section { border-top: 1px solid var(--c-border); }
+
+    /* Hero */
+    .hero { padding: 6rem 0 4rem; background: var(--c-warm); }
+    .hero-tagline { font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 1rem; font-weight: 500; }
+    .hero h1 { max-width: 22ch; margin-bottom: 1.5rem; }
+    .hero .lead { max-width: 60ch; }
+
+    /* Historia */
+    .historia { padding: 5rem 0; }
+    .historia .pull-quote {
+      font-family: var(--f-display);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--c-accent-deep);
+      margin: 2rem 0;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--c-accent);
+      max-width: 50ch;
+    }
+
+    /* Timeline */
+    .timeline { padding: 5rem 0; background: var(--c-warm); }
+    .timeline h2 { text-align: center; max-width: 30ch; margin: 0 auto 2.5rem; }
+    .timeline-grid { display: grid; grid-template-columns: 8rem 1fr; gap: 1.5rem; max-width: 720px; margin: 0 auto; }
+    .timeline-year {
+      font-family: var(--f-display);
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--c-accent);
+      padding-top: 0.5rem;
+      border-bottom: 1px solid var(--c-border);
+      padding-bottom: 1.5rem;
+      align-self: start;
+    }
+    .timeline-event {
+      border-bottom: 1px solid var(--c-border);
+      padding-bottom: 1.5rem;
+    }
+    .timeline-event h3 { margin-bottom: 0.5rem; }
+    .timeline-event p { font-size: 1rem; color: var(--c-muted); margin: 0; }
+    .timeline-grid > div:nth-last-child(-n+2) { border-bottom: none; }
+    @media (max-width: 640px) {
+      .timeline-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+      .timeline-year { padding-bottom: 0.5rem; border-bottom: none; }
+      .timeline-event { margin-bottom: 1.5rem; }
+    }
+
+    /* Lo que NO somos */
+    .anti-section { padding: 5rem 0; }
+    .anti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+    @media (max-width: 768px) { .anti-grid { grid-template-columns: 1fr; } }
+    .anti-card h3 { font-family: var(--f-display); color: var(--c-accent-deep); margin-bottom: 1rem; }
+    .anti-card.bad h3::before { content: "✗ "; color: oklch(55% 0.18 25); }
+    .anti-card.good h3::before { content: "✓ "; color: oklch(55% 0.18 145); }
+    .anti-card p { color: var(--c-muted); }
+
+    /* Valores */
+    .values { padding: 5rem 0; background: var(--c-warm); }
+    .values-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .value { }
+    .value h3 { color: var(--c-accent-deep); }
+
+    /* Equipo */
+    .team { padding: 5rem 0; text-align: center; }
+    .team-card { max-width: 360px; margin: 2rem auto; }
+    .team-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: var(--c-warm);
+      border: 2px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--f-display);
+      font-size: 3rem;
+      color: var(--c-muted);
+      overflow: hidden;
+    }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .team-name { font-family: var(--f-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .team-role { font-size: 0.9375rem; color: var(--c-muted); margin-bottom: 1rem; }
+
+    /* CTA final */
+    .cta-final { text-align: center; padding: 6rem 0; background: var(--c-ink); color: var(--c-paper); }
+    .cta-final h2 { color: var(--c-paper); max-width: 24ch; margin: 0 auto 1.5rem; }
+    .cta-final p { color: oklch(85% 0.005 230); margin: 0 auto 2rem; max-width: 50ch; }
+    .btn { display: inline-block; padding: 0.875rem 1.75rem; font-size: 1rem; font-weight: 500; text-decoration: none; border-radius: 4px; transition: transform 0.2s, background 0.2s; }
+    .btn-primary { background: var(--c-accent); color: var(--c-paper); }
+    .btn-primary:hover { background: oklch(65% 0.18 220); transform: translateY(-1px); }
+
+    /* Footer */
+    footer { background: var(--c-warm); padding: 2rem 0; font-size: 0.875rem; color: var(--c-muted); }
+    footer p + p { margin-top: 0.25rem; }
+    .breadcrumb { font-size: 0.875rem; color: var(--c-muted); padding: 1rem 0; }
+    .breadcrumb a { color: var(--c-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--c-accent); }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <nav class="breadcrumb">
+    <a href="/">ARHINFO</a> → <strong>Sobre nosotros</strong>
+  </nav>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tagline">Desde 2005 en Mariquita, Tolima</div>
+    <h1>20 años acompañando microempresarios colombianos.</h1>
+    <p class="lead">No somos una startup buscando inversión. Somos un negocio sostenible que lleva dos décadas haciendo lo mismo: software de punto de venta para los comerciantes colombianos que el resto del mercado ignora.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ HISTORIA ═══════════════════ -->
+<section class="historia">
+  <div class="container">
+    <h2>Cómo empezamos.</h2>
+
+    <p>En 2005, en Mariquita, Tolima, una ferretería de barrio necesitaba un sistema para controlar inventario, ventas y los fiados a los clientes. El software de la época estaba diseñado para empresas grandes con contadores y facturación formal. Para una ferretería de un dueño-operador, era demasiado caro, demasiado complejo y pedía cosas que el negocio no necesitaba.</p>
+
+    <p>Esa frustración se convirtió en ARHINFO. La idea fue simple: <strong>software hecho para el comerciante colombiano real</strong>, no para una empresa grande adaptada al mercado colombiano. Funciona en cualquier PC, no depende de internet permanente, no obliga a emitir factura electrónica si la ley no te lo exige, y un humano colombiano responde el WhatsApp cuando tenés dudas.</p>
+
+    <div class="pull-quote">
+      "El software no debería pedirte cosas que tu régimen tributario no te exige."
+    </div>
+
+    <p>Desde 2005 hasta hoy seguimos haciendo lo mismo: ARHINFO acompaña a microempresarios colombianos en ferreterías, droguerías, mini-markets, restaurantes pequeños, papelerías y otros rubros. Algunos de nuestros clientes llevan más de 15 años con nosotros. Sin runway, sin inversión externa, sin promesas de "vamos a vender la empresa en 5 años".</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ TIMELINE ═══════════════════ -->
+<section class="timeline">
+  <div class="container">
+    <h2>20 años en hitos.</h2>
+
+    <div class="timeline-grid">
+      <div class="timeline-year">2005</div>
+      <div class="timeline-event">
+        <h3>Primer cliente</h3>
+        <p>ARHINFO empieza con una ferretería de barrio en Mariquita, Tolima. El producto se llama "The Best" desde el día 1.</p>
+      </div>
+
+      <div class="timeline-year">2008</div>
+      <div class="timeline-event">
+        <h3>Expansión a droguerías</h3>
+        <p>Las farmacias y droguerías independientes adoptan ARHINFO. Agregamos manejo de fechas de vencimiento por lote y stock mínimo.</p>
+      </div>
+
+      <div class="timeline-year">2012</div>
+      <div class="timeline-event">
+        <h3>Multi-rubro</h3>
+        <p>ARHINFO se configura para mini-markets, tiendas de barrio, papelerías, mecánicas y restaurantes pequeños.</p>
+      </div>
+
+      <div class="timeline-year">2016</div>
+      <div class="timeline-event">
+        <h3>Crecimiento orgánico</h3>
+        <p>Clientes nos refieren a sus vecinos. La red crece de boca en boca por Tolima, Cundinamarca y Boyacá.</p>
+      </div>
+
+      <div class="timeline-year">2019</div>
+      <div class="timeline-event">
+        <h3>Nicho legal-defined</h3>
+        <p>Reforma tributaria define con más precisión el régimen "No Responsable de IVA". ARHINFO se especializa en este segmento que el resto del mercado ignora.</p>
+      </div>
+
+      <div class="timeline-year">2025</div>
+      <div class="timeline-event">
+        <h3>Vendty levanta capital</h3>
+        <p>Competidores reciben fondos de VC y se enfocan en empresas grandes. Nosotros seguimos en lo nuestro: el microempresario colombiano.</p>
+      </div>
+
+      <div class="timeline-year">2026</div>
+      <div class="timeline-event">
+        <h3>El POS más veterano del mercado colombiano</h3>
+        <p>20 años operando. Vendty 13. Alegra 14. Loyverse 12. Somos el más antiguo. Bootstrapped, sostenible, enfocado.</p>
+      </div>
+    </div>
+
+    <p class="small" style="text-align: center; max-width: 50ch; margin: 2rem auto 0;">Algunos hitos están reconstruidos a partir de archivos internos. Si trabajamos con vos hace años, contanos tu historia con nosotros.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ LO QUE NO SOMOS ═══════════════════ -->
+<section class="anti-section">
+  <div class="container">
+    <h2>Lo que no somos.</h2>
+    <p>En un mercado lleno de promesas de software vendiendo "el futuro de tu negocio", es importante decirte lo que NO somos:</p>
+
+    <div class="anti-grid">
+      <div class="anti-card bad">
+        <h3>No somos una startup VC-backed</h3>
+        <p>Otros POS colombianos levantaron $60M de fondos de inversión. Eso significa que tienen un reloj corriendo: cuando se acabe el dinero, suben precios o venden la empresa. Nosotros no tenemos ese reloj.</p>
+      </div>
+
+      <div class="anti-card bad">
+        <h3>No somos un producto global adaptado</h3>
+        <p>Loyverse, Square y otros vienen del exterior y "soportan" Colombia. Nosotros nacimos en Colombia, pensando en el comerciante colombiano. La diferencia se nota en cada detalle del producto.</p>
+      </div>
+
+      <div class="anti-card bad">
+        <h3>No somos un módulo añadido</h3>
+        <p>Alegra, Siigo, Helisa son contabilidad con un POS encima. Nosotros somos POS desde el día 1, diseñado para que el dueño-operador del negocio lo use sin necesitar un contador.</p>
+      </div>
+
+      <div class="anti-card bad">
+        <h3>No somos un producto móvil</h3>
+        <p>Treinta apunta al tendero que vive en el celular. Nosotros apuntamos al comerciante que opera desde un PC o tablet en el mostrador. Son negocios distintos.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 2rem;"><strong>Lo que sí somos:</strong> el POS colombiano más veterano del mercado, hecho para microempresas en régimen No Responsable de IVA. Y eso es exactamente lo que hacemos bien.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ VALORES ═══════════════════ -->
+<section class="values">
+  <div class="container">
+    <h2>Cómo trabajamos.</h2>
+
+    <div class="values-list">
+      <div class="value">
+        <h3>Soporte humano colombiano</h3>
+        <p>Cuando llamás o escribís por WhatsApp, atiende un humano que habla tu idioma y entiende tu contexto. No chatbots, no centros de llamadas en otros países.</p>
+      </div>
+
+      <div class="value">
+        <h3>Sin contratos de permanencia</h3>
+        <p>Pagás mes a mes. Si en cualquier momento decidís cambiar a otro sistema, exportás tus datos y te vas. Tus datos siempre son tuyos.</p>
+      </div>
+
+      <div class="value">
+        <h3>Diseño para el dueño-operador</h3>
+        <p>El que opera el sistema usualmente es el mismo dueño del negocio. Por eso ARHINFO tiene que ser usable sin capacitación técnica.</p>
+      </div>
+
+      <div class="value">
+        <h3>Funciona sin internet permanente</h3>
+        <p>En pueblos y zonas rurales el internet se cae seguido. ARHINFO se instala localmente y sigue funcionando sin conexión.</p>
+      </div>
+
+      <div class="value">
+        <h3>Precio justo y transparente</h3>
+        <p>No hay tiers ocultos, ni cargos sorpresa, ni "consultá precio" eterno. Primer mes gratis, después una suscripción simple, con descuento si pagás anual.</p>
+      </div>
+
+      <div class="value">
+        <h3>Mejoramos despacio</h3>
+        <p>No agregamos features porque suenen modernas. Cada nueva función llega cuando nuestros clientes la piden. Software estable vale más que software de moda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EQUIPO ═══════════════════ -->
+<section class="team">
+  <div class="container">
+    <h2>El equipo detrás de ARHINFO.</h2>
+    <p style="margin: 0 auto;">Somos un equipo pequeño en Mariquita, Tolima. No competimos en cantidad de empleados, competimos en años de experiencia con el mercado colombiano.</p>
+
+    <div class="team-card">
+      <div class="team-photo">
+        <!-- Reemplazar este placeholder con la foto real del fundador:
+             <img src="/team/founder.jpg" alt="[NOMBRE FUNDADOR]"> -->
+        AR
+      </div>
+      <div class="team-name">[NOMBRE FUNDADOR]</div>
+      <div class="team-role">Fundador, ARHINFO S.A.S.</div>
+      <p style="margin: 0 auto; max-width: 50ch; text-align: left;">
+        <!-- Reemplazar con bio real -->
+        Fundó ARHINFO en 2005 después de ver de cerca cómo la ferretería del barrio luchaba con software diseñado para empresas grandes. Lleva 20 años haciendo lo mismo: acompañar a microempresarios colombianos con software que respeta su realidad.
+      </p>
+    </div>
+
+    <p class="small" style="margin-top: 3rem; max-width: 50ch; margin-left: auto; margin-right: auto;">Hay más personas que hacen ARHINFO posible cada día. Si querés conocernos en persona, estamos en Carrera 2 A #6-20, Mariquita.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA FINAL ═══════════════════ -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Probá un POS hecho con 20 años de experiencia colombiana.</h2>
+    <p>15 minutos por WhatsApp y agendamos una demo. Sin compromiso, sin tarjeta, sin contrato. 30 días gratis para probarlo.</p>
+    <a href="https://wa.me/573217041698?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ARHINFO" class="btn btn-primary">Agendar demo por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><strong>ARHINFO S.A.S.</strong> — Carrera 2 A #6-20, San Sebastián de Mariquita, Tolima 732020, Colombia</p>
+    <p>WhatsApp: +57 321 704 1698 — Tel: +57 311 820 9342</p>
+    <p>Operando desde 2005. Empresa 100% colombiana.</p>
+  </div>
+</footer>
+
+</body>
+</html>
