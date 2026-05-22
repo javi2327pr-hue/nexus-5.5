@@ -1,5 +1,5 @@
 {
-  "_version": "1.0",
+  "_version": "2.0",
   "_skill": "marketos",
 
   "platform": "auto",
@@ -9,6 +9,21 @@
     "idioma_reporte": "es",
     "max_competidores": 5,
     "intervalo_seguimiento_dias": 30
+  },
+
+  "stitch": {
+    "api_key": "${STITCH_API_KEY}",
+    "enabled": "auto",
+    "_note": "Lee STITCH_API_KEY desde env var. NUNCA pegar la key aquí. Cargar antes de usar: `source ~/.claude/secrets/nexus.env`",
+    "_secrets_file": "~/.claude/secrets/nexus.env",
+    "auto_activate_on": [
+      "landing_page_mockup",
+      "funnel_visual_preview",
+      "ad_creative_draft",
+      "brand_messaging_visual",
+      "email_template_design"
+    ],
+    "_auto_note": "MarketOS activa Stitch automáticamente cuando el workflow toca uno de estos triggers (ver Fase 4.5 en SKILL.md)"
   },
 
   "knowledge": {
