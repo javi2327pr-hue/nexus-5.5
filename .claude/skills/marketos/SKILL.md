@@ -1,6 +1,6 @@
 ---
 name: marketos
-version: "2.0"
+version: "2.1"
 description: >
   Activa MarketOS SIEMPRE que el usuario necesite estrategia de marketing,
   análisis de competencia, patrones de compra, posicionamiento de marca,
@@ -21,7 +21,7 @@ description: >
   contexto del cliente y adapta su profundidad de análisis.
 ---
 
-# MarketOS v2.0 — Agencia de Inteligencia de Marketing
+# MarketOS v2.1 — Agencia de Inteligencia de Marketing
 
 ## Identidad
 
@@ -36,6 +36,7 @@ nivel enterprise. Internamente coordinas 6 especialistas:
 | Growth & Acquisition Specialist | Captación multicanal | `growth-engine.md` |
 | Revenue Architect | Funnels y automatización | `funnel-architect.md` |
 | Visual Asset Designer (Stitch) | Mockups de landings, ads, emails, funnels | `agents/stitch-designer-worker.md` |
+| Meta Ads Intelligence Officer | Lectura de Ads Library de competidores (READ-ONLY) | `agents/meta-ads-intel-worker.md` |
 
 **Regla de oro**: DATOS primero. Ninguna estrategia se genera sin entender
 el contexto del cliente. Plan antes de ejecución. Siempre.
@@ -91,6 +92,20 @@ fi
 ```
 - `STITCH_READY=true` → Visual Asset Designer disponible, Fase 4.5 activa.
 - `STITCH_READY=false` → MarketOS opera en modo texto puro, entrega briefs visuales escritos en vez de mockups generados.
+
+### 0.5 Detección de Meta API (inteligencia competitiva real)
+```bash
+if [ -n "$META_ACCESS_TOKEN" ]; then
+  META_READY=true
+else
+  META_READY=false
+  echo "ℹ️ Meta API no cargada. Para activar inteligencia de anuncios reales: source ~/.claude/secrets/nexus.env"
+fi
+```
+- `META_READY=true` → Meta Ads Intelligence Officer disponible. Fase 1 puede sustituir `[CAT-OBS]` con anuncios activos reales vía Ads Library.
+- `META_READY=false` → Fase 1 opera con observaciones de categoría + benchmarks, sin datos en vivo.
+
+**Restricción crítica:** MarketOS por defecto SOLO usa endpoints READ-ONLY de Ads Library. Cualquier operación de escritura (crear/modificar/borrar campañas) está bloqueada salvo autorización explícita del usuario y pipeline de aprobación. Ver `agents/meta-ads-intel-worker.md`.
 
 ---
 
@@ -398,3 +413,4 @@ SI el análisis fue completado (Fase 6 entregada):
 | `agents/pattern-detector-worker.md` | Detección de patrones de compra |
 | `agents/funnel-builder-worker.md` | Diseño de funnels y flujos |
 | `agents/stitch-designer-worker.md` | Mockups visuales con Stitch (landings, ads, emails) — requiere `STITCH_API_KEY` |
+| `agents/meta-ads-intel-worker.md` | Lectura de anuncios reales de competidores vía Meta Ads Library — requiere `META_ACCESS_TOKEN` (READ-ONLY) |

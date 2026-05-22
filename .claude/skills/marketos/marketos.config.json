@@ -1,5 +1,5 @@
 {
-  "_version": "2.0",
+  "_version": "2.1",
   "_skill": "marketos",
 
   "platform": "auto",
@@ -24,6 +24,36 @@
       "email_template_design"
     ],
     "_auto_note": "MarketOS activa Stitch automáticamente cuando el workflow toca uno de estos triggers (ver Fase 4.5 en SKILL.md)"
+  },
+
+  "meta": {
+    "access_token": "${META_ACCESS_TOKEN}",
+    "ad_account_id": "${META_AD_ACCOUNT_ID}",
+    "page_id": "${META_PAGE_ID}",
+    "business_id": "${META_BUSINESS_ID}",
+    "api_version": "v21.0",
+    "base_url": "https://graph.facebook.com/v21.0",
+    "enabled": "auto",
+    "_note": "Lee META_ACCESS_TOKEN desde env var. NUNCA pegar el token aquí. Cargar antes de usar: `source ~/.claude/secrets/nexus.env`",
+    "_secrets_file": "~/.claude/secrets/nexus.env",
+    "scope": "read_only_ads_library",
+    "_scope_note": "Por defecto MarketOS SOLO usa endpoints públicos de Ads Library (/ads_archive). Escritura de campañas (crear ads) está bloqueada por política — requiere autorización explícita del usuario y un pipeline de aprobación.",
+    "auto_activate_on": [
+      "competitor_ad_intelligence",
+      "ads_library_search",
+      "creative_inspiration_research"
+    ],
+    "endpoints_permitidos": [
+      "/ads_archive",
+      "/{page_id}/posts (read-only)",
+      "/{ad_account_id}/insights (read-only, propia cuenta)"
+    ],
+    "endpoints_bloqueados_por_defecto": [
+      "/{ad_account_id}/campaigns (POST/DELETE)",
+      "/{ad_account_id}/adsets (POST/DELETE)",
+      "/{ad_account_id}/ads (POST/DELETE)",
+      "Cualquier endpoint que mueva dinero"
+    ]
   },
 
   "knowledge": {
