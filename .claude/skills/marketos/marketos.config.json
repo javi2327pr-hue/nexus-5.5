@@ -39,6 +39,21 @@
   },
 
   "clients": {
-    "_note": "MarketOS registra aquí cada cliente analizado automáticamente"
+    "_note": "MarketOS registra aquí cada cliente analizado automáticamente",
+    "arhinfo": {
+      "razon_social": "ARHInfo S.A.S.",
+      "producto": "The Best — POS + control de inventarios SaaS",
+      "mercados": ["CO", "ES"],
+      "modelo": "B2B SaaS PYME",
+      "knowledge_file": "references/arhinfo-client-knowledge.md",
+      "ultima_sesion": "2026-05-22",
+      "fase_completada": 7,
+      "entregables": [
+        "Auditoría SEO arhinfo.com (2.6/10)",
+        "Análisis competitivo 6 competidores (CO+ES)",
+        "PRD completo nuevo sitio web (9 secciones)"
+      ],
+      "siguiente_checkpoint": "Mes 1 — review de keywords iniciales y testimonios capturados"
+    }
   }
 }
