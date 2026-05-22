@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Punto de Venta Colombia | Para Pequeños Negocios Sin IVA</title>
+  <meta name="description" content="Software POS para pequeños negocios en Colombia. Sin factura electrónica. Ideal para Responsables del Régimen Simplificado. 20 años de experiencia.">
+  <meta name="theme-color" content="#0C1F5C">
+  <link rel="canonical" href="https://thebest.ar/software-punto-venta-colombia">
+  <link rel="alternate" hreflang="es-CO" href="https://thebest.ar/software-punto-venta-colombia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: 222 78% 22%;
+      --primary-glow: 222 70% 38%;
+      --primary-foreground: 0 0% 100%;
+      --accent: 28 96% 54%;
+      --accent-deep: 23 92% 49%;
+      --accent-soft: 36 100% 96%;
+      --accent-foreground: 222 47% 11%;
+      --background: 0 0% 100%;
+      --foreground: 222 47% 11%;
+      --muted: 215 25% 95%;
+      --muted-foreground: 215 16% 42%;
+      --border: 215 25% 90%;
+      --font-display: "Sora", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --radius: 0.875rem;
+      --radius-xl: 1.5rem;
+      --shadow-soft: 0 8px 24px -10px hsl(var(--foreground) / 0.12);
+      --shadow-elegant: 0 30px 80px -30px hsl(var(--primary) / 0.35);
+      --gradient-primary: linear-gradient(135deg, #0C1F5C 0%, #1F4BA8 100%);
+      --gradient-accent: linear-gradient(135deg, #F88B16 0%, #EE6B0A 100%);
+      --gradient-hero: radial-gradient(at 30% 20%, hsl(28 96% 54% / .10) 0%, transparent 50%), radial-gradient(at 70% 80%, hsl(222 78% 22% / .08) 0%, transparent 50%), linear-gradient(180deg, #FFF 0%, hsl(36 100% 96%) 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: hsl(var(--foreground));
+      background: hsl(var(--background));
+      line-height: 1.6;
+    }
+
+    a {
+      color: hsl(var(--primary));
+      text-decoration: none;
+      transition: color 150ms ease-out;
+    }
+
+    a:hover {
+      color: hsl(var(--primary-glow));
+    }
+
+    button, .btn {
+      font-family: var(--font-display);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: all 150ms ease-out;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: hsl(var(--primary-foreground));
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-elegant);
+    }
+
+    .btn-secondary {
+      background: hsl(var(--muted));
+      color: hsl(var(--foreground));
+    }
+
+    .btn-secondary:hover {
+      background: hsl(var(--border));
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: hsl(var(--foreground));
+    }
+
+    .section-title span {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--gradient-hero);
+      padding: 6rem 0;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-left h1 {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: hsl(var(--foreground));
+    }
+
+    .hero-left h1 span {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-left p {
+      font-size: 1.15rem;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .niche-callout {
+      background: hsl(var(--accent-soft));
+      border-left: 4px solid hsl(var(--accent));
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+    }
+
+    .niche-callout strong {
+      color: hsl(var(--accent-deep));
+    }
+
+    .hero-right {
+      background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+      border-radius: var(--radius-xl);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: hsl(var(--primary-foreground));
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: var(--shadow-elegant);
+    }
+
+    /* Sectors Grid */
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .sector-card {
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid hsl(var(--border));
+      background: hsl(0 0% 100%);
+      transition: all 200ms ease-out;
+    }
+
+    .sector-card:hover {
+      border-color: hsl(var(--accent));
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-4px);
+    }
+
+    .sector-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .sector-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: hsl(var(--foreground));
+    }
+
+    .sector-card p {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .sector-link {
+      display: inline-block;
+      color: hsl(var(--primary));
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* Benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .benefit-card {
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid hsl(var(--border));
+      background: hsl(0 0% 100%);
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: hsl(var(--foreground));
+    }
+
+    .benefit-card p {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.95rem;
+    }
+
+    /* Pricing */
+    .pricing-section {
+      background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+      color: hsl(var(--primary-foreground));
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .pricing-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-period {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    /* Testimonial */
+    .testimonial {
+      background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-deep)) 100%);
+      color: white;
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .testimonial-text {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: hsl(0 0% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: hsl(var(--accent));
+    }
+
+    .testimonial-info {
+      text-align: left;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+    }
+
+    .testimonial-role {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 700px;
+      margin: 3rem auto 0;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item details {
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 150ms ease-out;
+    }
+
+    .faq-item details:hover {
+      border-color: hsl(var(--accent));
+      background: hsl(var(--accent-soft));
+    }
+
+    .faq-item summary {
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item details[open] summary {
+      color: hsl(var(--accent));
+      margin-bottom: 1rem;
+    }
+
+    .faq-item p {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      background: var(--gradient-primary);
+      color: hsl(var(--primary-foreground));
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .final-cta p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .final-cta .btn-primary {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    .final-cta .btn-primary:hover {
+      background: hsl(var(--accent-deep));
+    }
+
+    /* WhatsApp FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+      animation: wa-pulse 2.5s infinite;
+      transition: transform 200ms ease-out;
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      50% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section {
+        padding: 3rem 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 3rem 0;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-left h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-right {
+        height: 250px;
+      }
+
+      .sectors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-left">
+          <h1>Software <span>punto de venta</span> Colombia para pequeños negocios</h1>
+          <p>Control de inventario, ventas y caja sin factura electrónica. Ideal para negocios en régimen simplificado.</p>
+          <div class="niche-callout">
+            <strong>✓ Para negocios No Responsables del IVA:</strong> Sin obligación de factura electrónica. Control simple y rápido.
+          </div>
+          <div class="hero-ctas">
+            <button class="btn btn-primary">Solicitar Demo</button>
+            <button class="btn btn-secondary">Ver Precios</button>
+          </div>
+        </div>
+        <div class="hero-right">🇨🇴 The Best</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sectors by Industry -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Diseñado para tu Sector</h2>
+      <div class="sectors-grid">
+        <div class="sector-card">
+          <div class="sector-icon">🔧</div>
+          <h3>Ferreterías</h3>
+          <p>Control de categorías amplias, stock por referencia, búsqueda rápida. Consulta a ferreterías de Bogotá y Medellín.</p>
+          <a href="/software-pos-ferreteria" class="sector-link">Ver especialización →</a>
+        </div>
+        <div class="sector-card">
+          <div class="sector-icon">💊</div>
+          <h3>Farmacias</h3>
+          <p>Vencimiento de productos, control de lotes, recetas y remisiones. Sin regulación INVIMA complicada.</p>
+          <a href="#" class="sector-link">Ver especialización →</a>
+        </div>
+        <div class="sector-card">
+          <div class="sector-icon">🛍️</div>
+          <h3>Tiendas de barrio</h3>
+          <p>Cuentas a crédito, fiado sin papeles. Cliente ve su saldo. Cierre de turno en segundos.</p>
+          <a href="#" class="sector-link">Ver especialización →</a>
+        </div>
+        <div class="sector-card">
+          <div class="sector-icon">🍽️</div>
+          <h3>Restaurantes</h3>
+          <p>Mesas, domicilios, menú dinámico. Control de cocina integrado. Simplificado para comedores.</p>
+          <a href="/landing-restaurante" class="sector-link">Ver especialización →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Por Qué Elegir The Best</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📡</div>
+          <h3>Funciona sin internet estable</h3>
+          <p>Datos móviles o WiFi débil. The Best sigue grabando. Sincroniza cuando vuelve la conexión.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📄</div>
+          <h3>Sin factura electrónica</h3>
+          <p>No necesitas DIAN o plataformas externas. Recibos simples, limpios, legales.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Precios en COP</h3>
+          <p>Sin sorpresas de conversión. Pago mensual directo desde tu cuenta banco colombiano.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🇨🇴</div>
+          <h3>Soporte Colombia</h3>
+          <p>Equipo en Colombia. Respuesta rápida por WhatsApp. Sin esperas ni rutas de soporte internacionales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="container">
+      <div class="pricing-section">
+        <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem;">Planes The Best</h2>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center;">
+          <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: var(--radius-xl);">
+            <div class="price-label">Plan Estándar</div>
+            <div class="price">$69.900</div>
+            <div class="price-period">COP/mes • 2 usuarios</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: var(--radius-xl); border: 2px solid hsl(var(--accent));">
+            <div style="background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); padding: 0.5rem 1rem; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.85rem; font-weight: 600; display: inline-block;">⭐ Más popular</div>
+            <div class="price-label">Plan Intermedio</div>
+            <div class="price">$99.900</div>
+            <div class="price-period">COP/mes • 4 usuarios</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: var(--radius-xl);">
+            <div class="price-label">Plan Premium</div>
+            <div class="price">$139.900</div>
+            <div class="price-period">COP/mes • 6 usuarios</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section">
+    <div class="container">
+      <div class="testimonial">
+        <p class="testimonial-text">"Con The Best cerro la caja en 5 minutos. Mis clientes ven su deuda en el sistema. No tengo que volver a preguntar 'me debes cuánto'."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DC</div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Don Carlos</div>
+            <div class="testimonial-role">Ferretería El Progreso, Honda Tolima</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Preguntas Frecuentes Colombia</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <details>
+            <summary>¿Necesito ser Responsable del IVA para usar The Best?</summary>
+            <p>No. The Best es ideal para No Responsables del IVA (régimen simplificado). Si eres Responsable, también funciona, pero sin módulo de facturación electrónica nativa.</p>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>¿The Best cumple con DIAN?</summary>
+            <p>Generamos recibos legales sin factura electrónica. Si necesitas facturación DIAN formal, debes integrar un tercero. En 2026 no incluimos módulo VeriFactu/E-invoice nativo.</p>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>¿Puedo pagar con tarjeta del exterior?</summary>
+            <p>La suscripción se cobra en COP directo a tu cuenta bancaria colombiana. Sin plataformas internacionales de pago.</p>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>¿Qué pasa si se cae mi internet?</summary>
+            <p>The Best funciona offline. Todas las ventas se guardan localmente y sincronizan cuando vuelve la conexión. Sin pérdida de datos.</p>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>¿Cuánto cuesta el soporte?</summary>
+            <p>Incluido en la suscripción. Respuesta por WhatsApp en horas. Sin costos adicionales por consultas o ajustes normales.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="final-cta">
+        <h2>Simplifica tu Negocio Hoy</h2>
+        <p>Sin factura electrónica, sin complicaciones DIAN. Solo control, velocidad y claridad en tus ventas.</p>
+        <a href="https://wa.me/573217041698?text=Hola%2C%20quiero%20conocer%20The%20Best%20para%20mi%20negocio%20en%20Colombia" class="btn btn-primary">Contactar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/573217041698?text=Hola%2C%20quiero%20conocer%20el%20software%20POS%20The%20Best" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a8.06 8.06 0 00-8.052 8.057c0 1.57.365 3.117 1.05 4.561l-1.12 4.092c-.196.715.522 1.333 1.157.997l4.041-1.91a8.03 8.03 0 003.924.997h.004c4.44 0 8.052-3.6 8.052-8.057s-3.612-8.057-8.052-8.057"/>
+    </svg>
+  </a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.faq-item details').forEach(function(detail) {
+        detail.addEventListener('click', function(e) {
+          if (this.hasAttribute('open')) {
+            e.preventDefault();
+            this.removeAttribute('open');
+          } else {
+            document.querySelectorAll('.faq-item details').forEach(function(other) {
+              if (other !== detail) other.removeAttribute('open');
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
