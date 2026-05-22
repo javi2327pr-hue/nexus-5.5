@@ -151,6 +151,49 @@ Nadie comunica con claridad el value-prop "sin facturación electrónica obligat
 - [ ] Confirmar pasarela EUR + dominio ES
 - [ ] Iteración mes 1 — qué keywords ya rankean
 - [ ] Iteración mes 3 — qué landings convierten mejor
+- [ ] **Sesión publicidad/video/viralidad (2026-05-22):** definir stack ads y arrancar producción
+- [ ] Confirmar handle de TikTok/IG (verificar disponibilidad de @thebest, @arhinfo, @thebestpos)
+- [ ] Decidir si fundador asume voz/cara del contenido o contratar colaborador externo
+- [ ] Definir si entidad legal ES está lista para activar Verifactu en producto
+
+---
+
+## 9. Sesión 2 (2026-05-22) — Publicidad, Video y Viralidad
+
+### Entregables generados
+1. Inteligencia publicitaria de 13 marcas × 9 redes
+2. Mapa de viralidad del sector + 15 hooks de alto rendimiento
+3. Taxonomía completa formatos × funnel × red social
+4. 16 campañas listas para activar (presupuesto $1.000 USD/mes)
+5. 6 guiones de video producibles solo con smartphone
+6. Ad Copy Bank: Meta + Google + TikTok + LinkedIn + Orgánico
+7. Plan editorial 30 días en 9 redes (con justificación de descartar X y Pinterest)
+8. Calendario semanal unificado sostenible para 1-2 personas
+9. Estrategia UGC con script + 5 incentivos + 5 formatos de repurposing
+10. Roadmap 90 días publicidad + KPIs + stack $70/mes + flujo de producción
+
+### Decisiones de canal por mercado
+
+**LATAM:** Meta Reels + Click-to-WhatsApp Ads + TikTok orgánico + Google Search cola larga.
+
+**España:** Meta Reels + Google Search + LinkedIn fundador (orgánico) + Sponsored mes 3+.
+
+**Descartados con justificación:** Twitter/X (audiencia no presente), Pinterest (B2B SaaS no funciona aquí).
+
+### Insight central de la sesión
+
+[PATRÓN DETECTADO 🧠] En este nicho el contenido viral NO vende producto en los primeros 6 segundos. Vende dolor identificable + humor seco + transformación visible. Software aparece en los últimos 5 segundos. ARHInfo debe operar con tono "fundador-cercano-honesto", no "marca-corporativa-aspiracional".
+
+### Presupuesto recomendado mes de escala
+- Meta CO 30% ($300) + Meta ES 25% ($250) + Google Search 20% ($200) + TikTok 15% ($150) + CTWA 10% ($100)
+- Stack tooling $70/mes
+- Producción ocasional ~$100/mes (consumibles, no recurrente)
+
+### Próximo checkpoint (mes 1 publicidad)
+- Validar CPL real por canal vs benchmark
+- Identificar canal ganador para escalar mes 2
+- Capturar 3-5 testimonios para repurposing
+- Confirmar que el fundador puede sostener 4-5 horas/semana en grabación
 
 ---
 
