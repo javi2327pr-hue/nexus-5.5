@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan de Arquitectura y Construcción | ARHinfo POS SaaS</title>
+  <meta name="description" content="Plan completo de arquitectura y construcción de ARHinfo: investigación de 8 sistemas POS líderes, mapa de funcionalidades, interrelaciones entre módulos y plan de construcción en 7 etapas.">
+  <meta name="theme-color" content="#0C1F5C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: 222 78% 22%;
+      --primary-glow: 222 70% 38%;
+      --primary-deep: 222 80% 14%;
+      --primary-foreground: 0 0% 100%;
+      --accent: 28 96% 54%;
+      --accent-deep: 23 92% 49%;
+      --accent-soft: 36 100% 96%;
+      --accent-foreground: 222 47% 11%;
+      --success: 142 70% 42%;
+      --warning: 38 92% 50%;
+      --danger: 0 84% 60%;
+      --info: 199 89% 48%;
+      --background: 0 0% 100%;
+      --foreground: 222 47% 11%;
+      --muted: 215 25% 96%;
+      --muted-foreground: 215 16% 42%;
+      --border: 215 20% 88%;
+      --border-strong: 215 16% 75%;
+      --font-display: "Sora", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --radius: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --shadow-sm: 0 2px 8px -2px hsl(var(--foreground) / 0.08);
+      --shadow-md: 0 8px 24px -8px hsl(var(--foreground) / 0.12);
+      --shadow-lg: 0 24px 60px -20px hsl(var(--primary) / 0.25);
+      --gradient-primary: linear-gradient(135deg, #0C1F5C 0%, #1F4BA8 100%);
+      --gradient-accent: linear-gradient(135deg, #F88B16 0%, #EE6B0A 100%);
+      --gradient-hero: radial-gradient(at 20% 10%, hsl(28 96% 54% / .12) 0%, transparent 50%), radial-gradient(at 80% 70%, hsl(222 78% 22% / .10) 0%, transparent 55%), linear-gradient(180deg, #FFF 0%, hsl(36 100% 97%) 100%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+    body {
+      font-family: var(--font-body);
+      color: hsl(var(--foreground));
+      background: hsl(var(--background));
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: hsl(var(--primary-glow)); text-decoration: none; transition: color 150ms ease-out; }
+    a:hover { color: hsl(var(--accent)); }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-narrow { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Sticky Nav */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: hsl(var(--background) / 0.85);
+      backdrop-filter: saturate(140%) blur(12px);
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .topnav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: hsl(var(--primary));
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: hsl(var(--muted-foreground));
+    }
+    .nav-links a:hover {
+      color: hsl(var(--primary));
+    }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* Hero */
+    .hero {
+      background: var(--gradient-hero);
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      background: hsl(var(--accent-soft));
+      border: 1px solid hsl(var(--accent) / 0.25);
+      border-radius: 999px;
+      color: hsl(var(--accent-deep));
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: hsl(var(--foreground));
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 span {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 720px;
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 720px;
+    }
+    .hero-meta-item {
+      padding: 1rem;
+      background: white;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-meta-label {
+      font-size: 0.7rem;
+      color: hsl(var(--muted-foreground));
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .hero-meta-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: hsl(var(--primary));
+      font-size: 1.05rem;
+    }
+    @media (max-width: 768px) {
+      .hero-meta { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Section */
+    section { padding: 5rem 0; border-bottom: 1px solid hsl(var(--border) / 0.6); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: hsl(var(--accent-deep));
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 1rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 760px;
+      margin-bottom: 3rem;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      background: white;
+    }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    table.data thead {
+      background: hsl(var(--muted));
+    }
+    table.data th {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: hsl(var(--primary-deep));
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid hsl(var(--border-strong));
+      vertical-align: top;
+    }
+    table.data td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid hsl(var(--border));
+      color: hsl(var(--foreground));
+      vertical-align: top;
+    }
+    table.data tr:hover td {
+      background: hsl(var(--accent-soft) / 0.5);
+    }
+    table.data tr:last-child td {
+      border-bottom: none;
+    }
+    table.data td strong {
+      color: hsl(var(--primary));
+      font-weight: 600;
+    }
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 700;
+      font-size: 0.75rem;
+      font-family: var(--font-display);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
+    .cards-4 { grid-template-columns: repeat(4, 1fr); }
+    .cards-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 900px) {
+      .cards-3, .cards-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      padding: 1.75rem;
+      background: white;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius-lg);
+      transition: all 200ms ease-out;
+    }
+    .card:hover {
+      border-color: hsl(var(--accent));
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      background: hsl(var(--accent-soft));
+      color: hsl(var(--accent-deep));
+    }
+    .card h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: hsl(var(--primary));
+      line-height: 1.3;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card ul li {
+      padding: 0.4rem 0 0.4rem 1.25rem;
+      position: relative;
+      font-size: 0.92rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+    }
+    .card ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: hsl(var(--accent));
+      font-weight: 700;
+    }
+    .card.featured {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+    }
+    .card.featured h3 { color: white; }
+    .card.featured .card-icon { background: hsl(var(--accent)); color: white; }
+    .card.featured ul li { color: hsl(0 0% 100% / 0.85); }
+    .card.featured ul li::before { color: hsl(var(--accent)); }
+
+    /* Module categories */
+    .module-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 900px) { .module-grid { grid-template-columns: 1fr; } }
+
+    .module-card {
+      padding: 1.75rem;
+      border-radius: var(--radius-lg);
+      border: 2px solid;
+      background: white;
+    }
+    .module-card.core {
+      border-color: hsl(var(--success) / 0.4);
+      background: linear-gradient(180deg, hsl(var(--success) / 0.06), white);
+    }
+    .module-card.adv {
+      border-color: hsl(var(--info) / 0.4);
+      background: linear-gradient(180deg, hsl(var(--info) / 0.06), white);
+    }
+    .module-card.diff {
+      border-color: hsl(var(--accent) / 0.4);
+      background: linear-gradient(180deg, hsl(var(--accent) / 0.06), white);
+    }
+    .module-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .module-card-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: hsl(var(--primary-deep));
+      letter-spacing: 0.02em;
+    }
+    .module-percent {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+    .module-card.core .module-percent { background: hsl(var(--success) / 0.15); color: hsl(var(--success)); }
+    .module-card.adv .module-percent { background: hsl(var(--info) / 0.15); color: hsl(var(--info)); }
+    .module-card.diff .module-percent { background: hsl(var(--accent) / 0.15); color: hsl(var(--accent-deep)); }
+
+    .module-section {
+      margin-top: 0.85rem;
+    }
+    .module-section-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: hsl(var(--primary));
+      margin-bottom: 0.4rem;
+    }
+    .module-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .module-section ul li {
+      padding: 0.2rem 0 0.2rem 1.1rem;
+      position: relative;
+      font-size: 0.85rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.45;
+    }
+    .module-section ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      color: hsl(var(--accent));
+      font-weight: 700;
+    }
+
+    /* ASCII diagram */
+    .ascii-block {
+      background: hsl(var(--primary-deep));
+      color: hsl(36 100% 92%);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      white-space: pre;
+      box-shadow: var(--shadow-md);
+      border: 1px solid hsl(var(--primary-glow) / 0.3);
+    }
+
+    /* Insight Callouts */
+    .insight {
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      border-left: 4px solid;
+    }
+    .insight-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .insight-body {
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .insight-body strong {
+      font-family: var(--font-display);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .insight.decision {
+      background: hsl(var(--accent-soft));
+      border-color: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+    .insight.decision strong { color: hsl(var(--accent-deep)); }
+    .insight.warning {
+      background: hsl(var(--warning) / 0.1);
+      border-color: hsl(var(--warning));
+      color: hsl(var(--foreground));
+    }
+    .insight.warning strong { color: hsl(38 80% 35%); }
+    .insight.info {
+      background: hsl(var(--info) / 0.08);
+      border-color: hsl(var(--info));
+      color: hsl(var(--foreground));
+    }
+    .insight.info strong { color: hsl(var(--info)); }
+
+    /* Timeline (7 etapas) */
+    .timeline {
+      position: relative;
+      padding-left: 0;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(180deg, hsl(var(--accent)), hsl(var(--primary-glow)));
+    }
+    @media (max-width: 768px) {
+      .timeline::before { left: 18px; }
+    }
+
+    .stage {
+      position: relative;
+      padding-left: 70px;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 768px) { .stage { padding-left: 56px; } }
+
+    .stage-marker {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 0 0 4px white, var(--shadow-md);
+      z-index: 2;
+    }
+    @media (max-width: 768px) {
+      .stage-marker { width: 38px; height: 38px; font-size: 1rem; }
+    }
+
+    .stage-card {
+      background: white;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 200ms ease-out;
+    }
+    .stage-card:hover {
+      border-color: hsl(var(--accent) / 0.6);
+      box-shadow: var(--shadow-md);
+    }
+    .stage-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .stage-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: hsl(var(--primary));
+      line-height: 1.25;
+    }
+    .stage-duration {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      background: hsl(var(--accent-soft));
+      color: hsl(var(--accent-deep));
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .stage-objective {
+      font-size: 0.98rem;
+      color: hsl(var(--foreground));
+      margin-bottom: 1.25rem;
+      padding: 0.85rem 1rem;
+      background: hsl(var(--muted));
+      border-radius: var(--radius);
+      border-left: 3px solid hsl(var(--accent));
+    }
+    .stage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 700px) { .stage-grid { grid-template-columns: 1fr; } }
+
+    .stage-block {
+      background: hsl(var(--muted) / 0.5);
+      padding: 1rem;
+      border-radius: var(--radius);
+    }
+    .stage-block-title {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: hsl(var(--primary-deep));
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .stage-block ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .stage-block ul li {
+      padding: 0.25rem 0 0.25rem 1.1rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+    }
+    .stage-block ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: hsl(var(--accent));
+    }
+    .stage-deliverable {
+      margin-top: 1.25rem;
+      padding: 0.95rem 1.1rem;
+      background: linear-gradient(135deg, hsl(var(--success) / 0.08), hsl(var(--success) / 0.04));
+      border: 1px solid hsl(var(--success) / 0.25);
+      border-radius: var(--radius);
+      font-size: 0.92rem;
+      display: flex;
+      gap: 0.65rem;
+      align-items: center;
+    }
+    .stage-deliverable strong {
+      font-family: var(--font-display);
+      color: hsl(var(--success));
+    }
+
+    /* Dependencies list */
+    .deps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 700px) { .deps-grid { grid-template-columns: 1fr; } }
+
+    .dep-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem;
+      background: white;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      transition: all 200ms ease-out;
+    }
+    .dep-item:hover {
+      border-color: hsl(var(--accent));
+      box-shadow: var(--shadow-sm);
+    }
+    .dep-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: white;
+      background: var(--gradient-accent);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+    .dep-text {
+      font-size: 0.92rem;
+      color: hsl(var(--foreground));
+      line-height: 1.5;
+    }
+
+    /* Start tomorrow */
+    .start-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 900px) { .start-grid { grid-template-columns: 1fr; } }
+
+    .start-card {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .start-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, hsl(var(--accent) / 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .start-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .start-text {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: hsl(0 0% 100% / 0.92);
+      position: relative;
+    }
+
+    /* Footer */
+    footer {
+      background: hsl(var(--primary-deep));
+      color: hsl(0 0% 100% / 0.85);
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+    footer h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+    footer p {
+      max-width: 620px;
+      margin: 0 auto 1.5rem;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: hsl(0 0% 100% / 0.6);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid hsl(0 0% 100% / 0.1);
+    }
+
+    /* TOC sidebar (desktop only) */
+    @media (min-width: 1320px) {
+      .toc {
+        position: fixed;
+        left: max(1rem, calc(50vw - 720px));
+        top: 50%;
+        transform: translateY(-50%);
+        width: 180px;
+        font-size: 0.78rem;
+        z-index: 10;
+      }
+      .toc-title {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: hsl(var(--muted-foreground));
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid hsl(var(--border));
+      }
+      .toc ul { list-style: none; }
+      .toc li {
+        padding: 0.4rem 0;
+      }
+      .toc a {
+        color: hsl(var(--muted-foreground));
+        font-weight: 500;
+      }
+      .toc a:hover {
+        color: hsl(var(--accent));
+      }
+    }
+    @media (max-width: 1319px) {
+      .toc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Nav -->
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <span>ARHinfo · Plan Arquitectónico</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#investigacion">Investigación</a></li>
+        <li><a href="#modulos">Módulos</a></li>
+        <li><a href="#interrelaciones">Interrelaciones</a></li>
+        <li><a href="#arquitectura">Arquitectura</a></li>
+        <li><a href="#etapas">7 Etapas</a></li>
+        <li><a href="#empezar">Empezar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- TOC sidebar -->
+  <aside class="toc" aria-label="Tabla de contenidos">
+    <div class="toc-title">Contenidos</div>
+    <ul>
+      <li><a href="#investigacion">1.1 Ranking POS</a></li>
+      <li><a href="#modulos">1.2 Funcionalidades</a></li>
+      <li><a href="#interrelaciones">1.3 Interrelaciones</a></li>
+      <li><a href="#arquitectura">1.4 Arquitectura</a></li>
+      <li><a href="#etapas">Parte 2 · 7 Etapas</a></li>
+      <li><a href="#resumen">Tabla resumen</a></li>
+      <li><a href="#dependencias">Dependencias</a></li>
+      <li><a href="#empezar">Por dónde empezar</a></li>
+    </ul>
+  </aside>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-badge">📐 Plan Estratégico · Arquitectura · POS SaaS</div>
+      <h1>Plan de Arquitectura y Construcción de <span>ARHinfo</span></h1>
+      <p class="hero-lead">
+        Investigación competitiva de los 8 sistemas POS líderes del mundo, mapa de funcionalidades por categoría,
+        interrelaciones entre módulos y un plan ejecutable en <strong>7 etapas incrementales</strong> para construir
+        un POS e inventarios SaaS de nivel competitivo internacional.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Competidores</div>
+          <div class="hero-meta-value">8 Globales</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Etapas</div>
+          <div class="hero-meta-value">7 Fases</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Duración total</div>
+          <div class="hero-meta-value">~32–42 sem</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Stack base</div>
+          <div class="hero-meta-value">Node + PG + React</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1.1 Ranking competidores -->
+  <section id="investigacion">
+    <div class="container">
+      <div class="section-eyebrow">Parte 1 · Investigación</div>
+      <h2 class="section-title">Ranking de referencia — 8 sistemas POS clave</h2>
+      <p class="section-lead">
+        Análisis comparativo de los líderes globales. Ratings basados en valores recientes representativos de
+        Capterra, G2 y reseñas especializadas. Los números cambian, lo que importa es el orden de magnitud y el contexto.
+      </p>
+
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th style="width:50px">#</th>
+              <th>Producto</th>
+              <th>Rating</th>
+              <th>Segmento objetivo</th>
+              <th>Fortaleza clave</th>
+              <th>Debilidad clave</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rank-badge">1</span></td>
+              <td><strong>Square POS</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">Block — cloud + iOS/Android</span></td>
+              <td>~4.6–4.7/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">3.000+ reviews</span></td>
+              <td>Micro y pequeñas empresas (retail, food trucks, servicios)</td>
+              <td>Muy fácil de usar, empezar gratis, ecosistema fuerte de pagos e integraciones</td>
+              <td>Funciones avanzadas requieren planes pagos; algunos glitches de performance</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">2</span></td>
+              <td><strong>Shopify POS</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">SaaS Shopify (Ruby/Go/React)</span></td>
+              <td>~4.4/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">360+ reviews G2</span></td>
+              <td>Retail físico con canal online (omnichannel)</td>
+              <td>Integración omnicanal fuerte: unifica inventario, pedidos y clientes</td>
+              <td>Coste percibido alto, limitaciones de personalización y offline</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">3</span></td>
+              <td><strong>Toast POS</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">SaaS + hardware Android</span></td>
+              <td>~4.2/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">Top restaurantes</span></td>
+              <td>Restaurantes y hospitality</td>
+              <td>Especializado en restaurantes, excelente UX, suite robusta</td>
+              <td>Bloqueo a su procesador de pagos, contratos largos, costes altos</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">4</span></td>
+              <td><strong>Lightspeed Retail</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">ex Vend — cloud + iPad</span></td>
+              <td>~4.0–4.3/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">400+ reviews G2</span></td>
+              <td>Retail con inventario complejo, multi‑sucursal</td>
+              <td>Inventario muy profundo y multi‑sucursal para retailers con muchos SKUs</td>
+              <td>Precio más alto; curva de aprendizaje mayor para micro‑negocios</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">5</span></td>
+              <td><strong>Clover POS</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">Fiserv — Android propietario</span></td>
+              <td>~3.8/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">570 reviews</span></td>
+              <td>PYMEs con foco en pagos</td>
+              <td>Integración sólida pagos + hardware + marketplace, setup rápido</td>
+              <td>Costes de apps adicionales, limitaciones reporting, fees elevados</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">6</span></td>
+              <td><strong>Loyverse POS</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">Apps móviles + backoffice web</span></td>
+              <td>4.8/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">~457 reviews</span></td>
+              <td>Micro y pequeñas empresas (retail y horeca)</td>
+              <td>Muy buena relación calidad/precio, plan gratuito, fácil de usar</td>
+              <td>Integraciones menos profundas y funciones avanzadas inferiores</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">7</span></td>
+              <td><strong>Odoo POS</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">Python/PostgreSQL · open source</span></td>
+              <td>~4.2/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">G2</span></td>
+              <td>PYMEs que necesitan ERP modular</td>
+              <td>Integración nativa con ERP completo (contabilidad, compras, CRM), extensible</td>
+              <td>Complejidad alta para micro‑negocios, configuración pesada</td>
+            </tr>
+            <tr>
+              <td><span class="rank-badge">8</span></td>
+              <td><strong>Poster POS</strong><br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">SaaS cloud multi‑dispositivo</span></td>
+              <td>4.9/5<br><span style="font-size:0.78rem;color:hsl(var(--muted-foreground))">~60 reviews</span></td>
+              <td>Restaurantes y cafeterías pequeñas/medianas</td>
+              <td>Balance precio/funciones, facilidad de uso y amplitud incluso en plan básico</td>
+              <td>Problemas de inventario con muchos proveedores y detalles UI molestos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="insight decision">
+        <div class="insight-icon">💡</div>
+        <div class="insight-body">
+          <strong>Decisión Clave</strong>
+          ARHinfo debería inspirarse sobre todo en la combinación <strong>Square + Shopify POS + Lightspeed + Loyverse</strong>:
+          simplicidad y gratuidad inicial, inventario robusto a medio plazo, y camino claro hacia multi‑sucursal y omnicanal
+          sin caer en la complejidad de un ERP completo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.2 Mapa de funcionalidades -->
+  <section id="modulos">
+    <div class="container">
+      <div class="section-eyebrow">1.2 · Funcionalidades</div>
+      <h2 class="section-title">Mapa de funcionalidades por categoría</h2>
+      <p class="section-lead">
+        Agrupación de funcionalidades en tres niveles según su frecuencia en los productos líderes.
+        Una guía para decidir qué construir primero y qué dejar para después.
+      </p>
+
+      <div class="module-grid">
+        <!-- CORE -->
+        <div class="module-card core">
+          <div class="module-card-header">
+            <div class="module-card-title">⚙️ MÓDULO CORE</div>
+            <div class="module-percent">~90%+</div>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">POS / Caja</div>
+            <ul>
+              <li>Registro de ventas (líneas, cantidad, descuentos)</li>
+              <li>Múltiples métodos de pago (efectivo, tarjeta, otros)</li>
+              <li>Impuestos por producto o ticket</li>
+              <li>Emisión de tickets/recibos físicos o digitales</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Inventario básico</div>
+            <ul>
+              <li>Alta/edición de productos con precio y stock</li>
+              <li>Descuento automático de stock al vender</li>
+              <li>Unidades de medida simples</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Catálogo / Productos</div>
+            <ul>
+              <li>Categorías</li>
+              <li>Variantes básicas (talla, color, sabor)</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Reportes básicos</div>
+            <ul>
+              <li>Ventas por día/semana/mes</li>
+              <li>Productos más vendidos</li>
+              <li>Ventas por empleado/terminal</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Clientes y usuarios</div>
+            <ul>
+              <li>Registro mínimo de cliente</li>
+              <li>Asociación venta–cliente</li>
+              <li>Roles simples, control de acceso</li>
+              <li>Multi‑dispositivo (móvil/tablet/web)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AVANZADO -->
+        <div class="module-card adv">
+          <div class="module-card-header">
+            <div class="module-card-title">🚀 MÓDULO AVANZADO</div>
+            <div class="module-percent">50–89%</div>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Inventario avanzado</div>
+            <ul>
+              <li>Multi‑almacén / multi‑sucursal (stock por local)</li>
+              <li>Reorden automático o sugerido por stock mínimo</li>
+              <li>Costos promedio, lotes, caducidades</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Compras y proveedores</div>
+            <ul>
+              <li>Órdenes de compra y recepción de mercancía</li>
+              <li>Catálogo de proveedores</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">CRM / Loyalty</div>
+            <ul>
+              <li>Programas de puntos / descuentos / gift cards</li>
+              <li>Historial de compras por cliente</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Reportes avanzados</div>
+            <ul>
+              <li>Reportes por sucursal, canal, categoría, hora</li>
+              <li>Dashboards con KPIs y gráficos</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Multi‑sucursal + Omnicanal</div>
+            <ul>
+              <li>Varias tiendas por negocio, cajas por tienda</li>
+              <li>Transferencias de stock entre sucursales</li>
+              <li>Integración con tienda online propia o externa</li>
+              <li>Procesadores de pago integrados, contactless</li>
+              <li>Mesas, KDS, recetas (restaurantes)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DIFERENCIADOR -->
+        <div class="module-card diff">
+          <div class="module-card-header">
+            <div class="module-card-title">⭐ DIFERENCIADOR</div>
+            <div class="module-percent">&lt;50%</div>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">ERP completo</div>
+            <ul>
+              <li>Contabilidad, nómina, fabricación (Odoo)</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Marketplace y extensibilidad</div>
+            <ul>
+              <li>Marketplace de apps (Shopify, Clover)</li>
+              <li>API pública y webhooks</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Automatizaciones avanzadas</div>
+            <ul>
+              <li>Campañas de marketing por comportamiento</li>
+              <li>Workflows multi‑empresa y reglas complejas</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Analítica / BI</div>
+            <ul>
+              <li>Integración con herramientas BI para reportes complejos</li>
+            </ul>
+          </div>
+
+          <div class="module-section">
+            <div class="module-section-name">Hospitalidad + Offline</div>
+            <ul>
+              <li>Integración con delivery/aggregators (Toast, Poster)</li>
+              <li>Operación completa sin conexión + replicación posterior</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight warning">
+        <div class="insight-icon">⚠️</div>
+        <div class="insight-body">
+          <strong>Error Común</strong>
+          Intentar meter capacidades tipo ERP/marketplace/BI en el MVP para pequeños negocios. Suele matar la simplicidad del producto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.3 Interrelaciones -->
+  <section id="interrelaciones">
+    <div class="container">
+      <div class="section-eyebrow">1.3 · Interrelaciones</div>
+      <h2 class="section-title">Mapa de interrelaciones entre módulos</h2>
+      <p class="section-lead">
+        Cómo los módulos se conectan entre sí mediante datos y eventos. Modelarlas con eventos de dominio
+        (no llamadas rígidas) permite añadir reportes, automatizaciones o integraciones después sin re‑arquitecturar.
+      </p>
+
+      <div class="ascii-block">     [Canal Online]
+           │
+           ▼
+[POS / Ventas] ──► [Inventario] ──► [Reportes & Analítica]
+      │                │
+      │                └──► [Compras & Proveedores]
+      │
+      ├──► [Clientes / Loyalty] ──► [Marketing Ligero]
+      │
+      └──► [Pagos / Procesador] ──► [Contabilidad Externa]
+
+[Multi-sucursal] conecta con:
+  - POS         (cajas por sucursal)
+  - Inventario  (stock por sucursal)
+  - Reportes    (filtros por tienda)</div>
+
+      <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;margin:3rem 0 1.25rem;color:hsl(var(--primary))">Tabla de interrelaciones</h3>
+
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Módulo Origen</th>
+              <th>Módulo Destino</th>
+              <th>Dato que fluye</th>
+              <th>Trigger / Evento</th>
+              <th style="width:90px">Dirección</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>POS / Ventas</strong></td><td>Inventario</td><td>Productos vendidos, cantidades, sucursal</td><td>Confirmar venta / checkout</td><td>Uni</td></tr>
+            <tr><td><strong>Inventario</strong></td><td>Reportes</td><td>Stock actual, movimientos</td><td>Movimiento de stock (venta, compra, ajuste)</td><td>Uni</td></tr>
+            <tr><td><strong>POS / Ventas</strong></td><td>Reportes</td><td>Totales, impuestos, métodos de pago</td><td>Confirmar venta</td><td>Uni</td></tr>
+            <tr><td><strong>POS / Ventas</strong></td><td>Clientes / Loyalty</td><td>Cliente asignado, puntos generados, historial</td><td>Asociar cliente a la venta</td><td>Uni</td></tr>
+            <tr><td><strong>Clientes / Loyalty</strong></td><td>POS / Ventas</td><td>Saldos, puntos, descuentos aplicables</td><td>Seleccionar cliente al iniciar venta</td><td>Uni</td></tr>
+            <tr><td><strong>Inventario</strong></td><td>Compras / Proveedores</td><td>Productos con stock bajo mínimo</td><td>Stock &lt; umbral definido</td><td>Uni</td></tr>
+            <tr><td><strong>Compras</strong></td><td>Inventario</td><td>Entradas de stock y costos de compra</td><td>Recepción parcial/total de orden</td><td>Uni</td></tr>
+            <tr><td><strong>Inventario</strong></td><td>Multi‑sucursal</td><td>Stock por ubicación</td><td>Alta/modificación de stock en sucursal</td><td>Bi</td></tr>
+            <tr><td><strong>Multi‑sucursal</strong></td><td>POS / Ventas</td><td>Sucursal activa, caja asignada</td><td>Abrir caja / iniciar turno</td><td>Uni</td></tr>
+            <tr><td><strong>E‑commerce</strong></td><td>Inventario</td><td>Órdenes online (productos, cantidades, sucursal)</td><td>Confirmación de pedido online</td><td>Uni</td></tr>
+            <tr><td><strong>Inventario</strong></td><td>E‑commerce</td><td>Disponibilidad / cambio de stock</td><td>Actualización de stock</td><td>Uni</td></tr>
+            <tr><td><strong>POS / Ventas</strong></td><td>Pasarela de pagos</td><td>Importe y detalle de transacción</td><td>Elegir método de pago</td><td>Uni</td></tr>
+            <tr><td><strong>Pasarela de pagos</strong></td><td>POS / Ventas</td><td>Resultado del pago (aprobado/denegado)</td><td>Respuesta de la pasarela</td><td>Uni</td></tr>
+            <tr><td><strong>POS / Ventas</strong></td><td>Contabilidad externa</td><td>Resúmenes (ingresos, impuestos, caja)</td><td>Cierre de caja / fin de día</td><td>Uni</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="insight decision">
+        <div class="insight-icon">💡</div>
+        <div class="insight-body">
+          <strong>Decisión Clave</strong>
+          Modelar estas relaciones con <strong>eventos de dominio</strong> (<code style="font-family:var(--font-mono);background:hsl(var(--muted));padding:1px 6px;border-radius:4px;font-size:0.85em">VentaConfirmada</code>,
+          <code style="font-family:var(--font-mono);background:hsl(var(--muted));padding:1px 6px;border-radius:4px;font-size:0.85em">StockActualizado</code>,
+          <code style="font-family:var(--font-mono);background:hsl(var(--muted));padding:1px 6px;border-radius:4px;font-size:0.85em">CompraRecibida</code>)
+          en lugar de llamados rígidos entre servicios. Esto facilita enormemente añadir reportes, automatizaciones o integraciones después.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.4 Arquitectura recomendada -->
+  <section id="arquitectura">
+    <div class="container">
+      <div class="section-eyebrow">1.4 · Arquitectura</div>
+      <h2 class="section-title">Arquitectura funcional recomendada</h2>
+      <p class="section-lead">
+        Distribución de módulos por prioridad de construcción. Una hoja de ruta para evitar la trampa del "todo desde el día 1".
+      </p>
+
+      <div class="cards-grid cards-4">
+        <div class="card featured">
+          <div class="card-head">
+            <div class="card-icon">🎯</div>
+            <h3>MVP — Obligatorios</h3>
+          </div>
+          <ul>
+            <li>POS / Ventas (una sucursal)</li>
+            <li>Inventario básico (productos, stock por sucursal)</li>
+            <li>Reportes básicos (ventas diarias, top productos)</li>
+            <li>Usuarios y permisos básicos</li>
+            <li>Configuración del negocio (datos, impuestos, moneda)</li>
+            <li>Clientes básicos (para crecer hacia fiado/loyalty)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-icon">🚀</div>
+            <h3>V2 — Recomendados</h3>
+          </div>
+          <ul>
+            <li>Inventario avanzado (multi‑ubicación, stock mínimo)</li>
+            <li>Compras y proveedores</li>
+            <li>Fiado y CRM simple (historial, puntos básicos)</li>
+            <li>Reportes avanzados (sucursal, categoría, cliente)</li>
+            <li>Multi‑sucursal operativo inicial</li>
+            <li>Integración mínima con canal online (API)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-icon">⭐</div>
+            <h3>V3+ — Opcionales</h3>
+          </div>
+          <ul>
+            <li>Omnicanal robusto (integración bidireccional)</li>
+            <li>Pagos avanzados y facturación electrónica</li>
+            <li>Automatizaciones (reorden, alertas inteligentes)</li>
+            <li>API pública y webhooks</li>
+            <li>Analítica avanzada / BI</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-icon">🚫</div>
+            <h3>NO prioritarios</h3>
+          </div>
+          <ul>
+            <li>Contabilidad completa y nómina (integrar mejor)</li>
+            <li>Fabricación avanzada (MRP), planta</li>
+            <li>Proyectos complejos (propio de ERP)</li>
+            <li>BI corporativo con cubos complejos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="insight warning" style="margin-top:2rem">
+        <div class="insight-icon">⚠️</div>
+        <div class="insight-body">
+          <strong>Error Común</strong>
+          Sobredimensionar el producto hacia ERP antes de tener un POS/inventario impecables.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTE 2 — 7 ETAPAS -->
+  <section id="etapas" style="background: linear-gradient(180deg, hsl(var(--muted)/0.5), white);">
+    <div class="container">
+      <div class="section-eyebrow">Parte 2 · Plan de construcción</div>
+      <h2 class="section-title">Las 7 etapas — del prototipo al líder global</h2>
+      <p class="section-lead">
+        Cada etapa entrega valor real. Complejidad incremental. Desde la Etapa 3 el sistema ya es usable en producción.
+        En la Etapa 7 ARHinfo es competitivo con los mejores del segmento.
+      </p>
+
+      <div class="timeline">
+
+        <!-- ETAPA 1 -->
+        <div class="stage">
+          <div class="stage-marker">1</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div class="stage-title">Fundaciones de dominio y arquitectura</div>
+              <div class="stage-duration">3–4 semanas</div>
+            </div>
+            <div class="stage-objective">
+              <strong style="font-family:var(--font-display);color:hsl(var(--accent-deep))">Objetivo: </strong>
+              Backend y modelo de datos multi‑tenant y multi‑sucursal preparados desde el inicio, con separación clara de dominios.
+            </div>
+            <div class="stage-grid">
+              <div class="stage-block">
+                <div class="stage-block-title">🏗️ Construir</div>
+                <ul>
+                  <li>Modelo de datos: Negocio, Sucursal, Usuario, Rol, Producto, Categoría, Variación, StockItem, Venta, MovimientoInventario</li>
+                  <li>Autenticación + autorización básica</li>
+                  <li>API REST/GraphQL para CRUD principal</li>
+                  <li>Infraestructura de eventos internos (bus simple)</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚙️ Stack</div>
+                <ul>
+                  <li>Backend: Node.js (NestJS) o Python (FastAPI/Django)</li>
+                  <li>BD: PostgreSQL</li>
+                  <li>Front: React/Next.js + TypeScript</li>
+                  <li>Infra: PaaS (Railway/Render/Fly.io/AWS ECS) + CI/CD</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">✅ Criterios de aceptación</div>
+                <ul>
+                  <li>Diagrama ER documentado</li>
+                  <li>Migraciones de BD funcionando</li>
+                  <li>CRUD principal con auth y tests básicos</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚠️ Riesgos</div>
+                <ul>
+                  <li>Modelo de datos pobre → multi‑tenant + sucursal desde día 1</li>
+                  <li>Acoplamiento excesivo → módulos separados + eventos internos</li>
+                </ul>
+              </div>
+            </div>
+            <div class="stage-deliverable">
+              📦 <span><strong>Entregable: </strong>Panel interno simple para crear negocios, sucursales y productos.</span>
+            </div>
+            <div class="insight decision" style="margin-top:1.25rem;margin-bottom:0">
+              <div class="insight-icon">💡</div>
+              <div class="insight-body">
+                <strong>Decisión Clave</strong>
+                Elegir <strong>monolito modular</strong> bien organizado como arquitectura base; microservicios solo cuando el volumen lo justifique.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 2 -->
+        <div class="stage">
+          <div class="stage-marker">2</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div class="stage-title">MVP POS + Inventario mínimo (single‑sucursal)</div>
+              <div class="stage-duration">4–6 semanas</div>
+            </div>
+            <div class="stage-objective">
+              <strong style="font-family:var(--font-display);color:hsl(var(--accent-deep))">Objetivo: </strong>
+              Una tienda con un solo local puede usar ARHinfo para vender y controlar stock — nivel inicial Square/Loyverse.
+            </div>
+            <div class="stage-grid">
+              <div class="stage-block">
+                <div class="stage-block-title">🏗️ Construir</div>
+                <ul>
+                  <li>POS básico: búsqueda, carrito, descuentos, pago efectivo/otros, ticket imprimible</li>
+                  <li>Inventario básico: alta de productos con stock inicial, descuento automático en venta</li>
+                  <li>Dashboard mínimo: ventas del día, top productos</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">🔄 Interrelaciones</div>
+                <ul>
+                  <li>POS → Inventario (SALIDA)</li>
+                  <li>POS → Reportes diarios/semanales</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">✅ Criterios</div>
+                <ul>
+                  <li>Una tienda opera un día completo sin inconsistencias obvias</li>
+                  <li>UI usable en desktop y móvil</li>
+                  <li>Sin caídas críticas en flujos principales</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚠️ Riesgos</div>
+                <ul>
+                  <li>Condiciones de carrera en stock → transacciones DB y locks</li>
+                  <li>Performance pobre → minimizar JS, optimizar consultas</li>
+                </ul>
+              </div>
+            </div>
+            <div class="stage-deliverable">
+              📦 <span><strong>Entregable: </strong>Primera versión pública de ARHinfo para un negocio con un local.</span>
+            </div>
+            <div class="insight warning" style="margin-top:1.25rem;margin-bottom:0">
+              <div class="insight-icon">⚠️</div>
+              <div class="insight-body">
+                <strong>Error Común</strong>
+                Querer soportar multi‑sucursal o integraciones deep en esta fase, retrasando el lanzamiento.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 3 -->
+        <div class="stage">
+          <div class="stage-marker">3</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div class="stage-title">Endurecimiento para producción + primeras funcionalidades de valor</div>
+              <div class="stage-duration">4–6 semanas</div>
+            </div>
+            <div class="stage-objective">
+              <strong style="font-family:var(--font-display);color:hsl(var(--accent-deep))">Objetivo: </strong>
+              Pasar de MVP a producto estable para varios pequeños negocios; añadir fiado y reportes reforzados.
+            </div>
+            <div class="stage-grid">
+              <div class="stage-block">
+                <div class="stage-block-title">🏗️ Construir</div>
+                <ul>
+                  <li>Reportes: ventas por día/semana/mes con filtros, exportación CSV</li>
+                  <li>Clientes y fiado: alta, ventas fiadas, saldo por cliente</li>
+                  <li>Estabilidad: errores UX claros, logging, health checks, alertas</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚙️ Stack añadido</div>
+                <ul>
+                  <li>Cola ligera (Redis/RabbitMQ) para tareas asíncronas</li>
+                  <li>Monitorización (Sentry/Datadog básico)</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">✅ Criterios</div>
+                <ul>
+                  <li>10–20 tiendas operan a la vez sin problemas serios</li>
+                  <li>Saldos de fiado consistentes en casos reales</li>
+                  <li>Reportes coinciden con suma de ventas</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚠️ Riesgos</div>
+                <ul>
+                  <li>Falta visibilidad de errores → logging + alertas mínimas</li>
+                  <li>Fiado mal diseñado → movimientos de deuda/crédito, no campo editable</li>
+                </ul>
+              </div>
+            </div>
+            <div class="stage-deliverable">
+              📦 <span><strong>Entregable: </strong>ARHinfo estable para varios clientes reales con POS + inventario + fiado + reportes.</span>
+            </div>
+            <div class="insight decision" style="margin-top:1.25rem;margin-bottom:0">
+              <div class="insight-icon">💡</div>
+              <div class="insight-body">
+                <strong>Decisión Clave</strong>
+                Considerar esta etapa como el <strong>"go live serio"</strong>; a partir de aquí los cambios deben ser compatibles con producción.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 4 -->
+        <div class="stage">
+          <div class="stage-marker">4</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div class="stage-title">Inventario avanzado y módulo de compras</div>
+              <div class="stage-duration">5–7 semanas</div>
+            </div>
+            <div class="stage-objective">
+              <strong style="font-family:var(--font-display);color:hsl(var(--accent-deep))">Objetivo: </strong>
+              Acercarse al nivel de inventario que ofrece Lightspeed/Vend para comercio con más complejidad.
+            </div>
+            <div class="stage-grid">
+              <div class="stage-block">
+                <div class="stage-block-title">🏗️ Construir</div>
+                <ul>
+                  <li>Movimientos tipificados (ENTRADA, SALIDA, AJUSTE, TRASLADO)</li>
+                  <li>Compras y proveedores: alta, órdenes, recepción parcial/completa</li>
+                  <li>Stock mínimo y alertas visuales</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">🔄 Interrelaciones</div>
+                <ul>
+                  <li>Inventario → Compras (sugerencias por stock bajo)</li>
+                  <li>Compras → Inventario (entradas de stock)</li>
+                  <li>Inventario ↔ Reportes (márgenes estimados)</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">✅ Criterios</div>
+                <ul>
+                  <li>Ciclo compra → recepción → venta → stock & margen sin inconsistencias</li>
+                  <li>Ajustes afectan reportes de forma trazable</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚠️ Riesgos</div>
+                <ul>
+                  <li>No trazar origen → cada movimiento con referencia (venta, compra, ajuste)</li>
+                  <li>Complejidad devoluciones → testear casos borde</li>
+                </ul>
+              </div>
+            </div>
+            <div class="stage-deliverable">
+              📦 <span><strong>Entregable: </strong>Módulo de inventario avanzado y compras operativo, con alertas de stock bajo.</span>
+            </div>
+            <div class="insight warning" style="margin-top:1.25rem;margin-bottom:0">
+              <div class="insight-icon">⚠️</div>
+              <div class="insight-body">
+                <strong>Error Común</strong>
+                Permitir cambios directos de stock sin registrar movimientos. Rompe la trazabilidad.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 5 -->
+        <div class="stage">
+          <div class="stage-marker">5</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div class="stage-title">Multi‑sucursal operativo y reportes avanzados</div>
+              <div class="stage-duration">4–6 semanas</div>
+            </div>
+            <div class="stage-objective">
+              <strong style="font-family:var(--font-display);color:hsl(var(--accent-deep))">Objetivo: </strong>
+              Un dueño opera varias tiendas con stock y ventas separados, como Lightspeed o Shopify POS.
+            </div>
+            <div class="stage-grid">
+              <div class="stage-block">
+                <div class="stage-block-title">🏗️ Construir</div>
+                <ul>
+                  <li>Configuración de múltiples sucursales</li>
+                  <li>UI de stock por sucursal</li>
+                  <li>Transferencias de stock entre sucursales (con registro)</li>
+                  <li>Reportes por sucursal y consolidados</li>
+                  <li>Cajas asociadas a sucursal</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">🔄 Interrelaciones</div>
+                <ul>
+                  <li>POS ↔ Multi‑sucursal (sucursal activa al abrir caja)</li>
+                  <li>Inventario ↔ Multi‑sucursal (transferencias)</li>
+                  <li>Reportes ↔ Multi‑sucursal (filtros)</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">✅ Criterios</div>
+                <ul>
+                  <li>Un negocio con 2–5 tiendas ve stock y ventas por tienda y total</li>
+                  <li>Transferencias controladas y auditables</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚠️ Riesgos</div>
+                <ul>
+                  <li>Consultas lentas → optimizar, limitar rangos, caching</li>
+                  <li>UX confusa → sucursal siempre visible y cambio explícito</li>
+                </ul>
+              </div>
+            </div>
+            <div class="stage-deliverable">
+              📦 <span><strong>Entregable: </strong>Control multi‑tienda real desde un solo ARHinfo.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 6 -->
+        <div class="stage">
+          <div class="stage-marker">6</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div class="stage-title">Integraciones esenciales y omnicanal ligero</div>
+              <div class="stage-duration">6–8 semanas</div>
+            </div>
+            <div class="stage-objective">
+              <strong style="font-family:var(--font-display);color:hsl(var(--accent-deep))">Objetivo: </strong>
+              Conectar ARHinfo con pagos, contabilidad ligera y un canal online propio (modelo Shopify/Square).
+            </div>
+            <div class="stage-grid">
+              <div class="stage-block">
+                <div class="stage-block-title">🏗️ Construir</div>
+                <ul>
+                  <li>Integración con al menos una pasarela de pago (Stripe/local)</li>
+                  <li>Exportes contables resumidos (CSV/JSON)</li>
+                  <li>API externa para registrar pedidos online</li>
+                  <li>Webhooks básicos (venta confirmada, stock bajo, cliente creado)</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">🔄 Interrelaciones</div>
+                <ul>
+                  <li>POS ↔ pasarela de pagos</li>
+                  <li>Ventas ↔ contabilidad externa</li>
+                  <li>Canal online ↔ inventario y ventas</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">✅ Criterios</div>
+                <ul>
+                  <li>Cobro con tarjeta funcional en casos típicos</li>
+                  <li>Exportes aceptados por herramienta externa</li>
+                  <li>Pedidos online impactan stock y ventas</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚠️ Riesgos</div>
+                <ul>
+                  <li>Ventas "zombie" → estados claros y stock solo tras pago aprobado</li>
+                  <li>API insegura → autorización por negocio, rate limiting, logs</li>
+                </ul>
+              </div>
+            </div>
+            <div class="stage-deliverable">
+              📦 <span><strong>Entregable: </strong>ARHinfo acepta tarjetas, se conecta a un canal online y exporta a contabilidad.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 7 -->
+        <div class="stage">
+          <div class="stage-marker">7</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div class="stage-title">Optimización, automatización y extensibilidad</div>
+              <div class="stage-duration">6–10 semanas</div>
+            </div>
+            <div class="stage-objective">
+              <strong style="font-family:var(--font-display);color:hsl(var(--accent-deep))">Objetivo: </strong>
+              Alcanzar un nivel competitivo con los mejores: recomendaciones, automatizaciones y ecosistema.
+            </div>
+            <div class="stage-grid">
+              <div class="stage-block">
+                <div class="stage-block-title">🏗️ Construir</div>
+                <ul>
+                  <li>Automatizaciones: reorden sugerido, alertas de stock bajo y anomalías</li>
+                  <li>Analítica: reportes por hora, comparativas de periodos</li>
+                  <li>Extensibilidad: documentación pública de API, webhooks, base para plugins</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">🔄 Interrelaciones</div>
+                <ul>
+                  <li>Inventario ↔ Compras ↔ Automatización</li>
+                  <li>Reportes ↔ Alertas</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">✅ Criterios</div>
+                <ul>
+                  <li>Los usuarios perciben que ARHinfo les avisa qué hacer</li>
+                  <li>API y webhooks usados por al menos un partner</li>
+                </ul>
+              </div>
+              <div class="stage-block">
+                <div class="stage-block-title">⚠️ Riesgos</div>
+                <ul>
+                  <li>Automatizaciones agresivas → empezar con sugerencias, no acciones duras</li>
+                  <li>Romper integraciones → versionado de API (v1, v2…)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="stage-deliverable">
+              📦 <span><strong>Entregable: </strong>ARHinfo que ayuda a gestionar el negocio, no solo a registrar ventas.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLA RESUMEN -->
+  <section id="resumen">
+    <div class="container">
+      <div class="section-eyebrow">2.3 · Resumen</div>
+      <h2 class="section-title">Tabla resumen del plan</h2>
+      <p class="section-lead">Vista comprimida de las 7 etapas con su entregable y estado final del producto.</p>
+
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th style="width:50px">Etapa</th>
+              <th>Nombre</th>
+              <th>Módulos clave</th>
+              <th style="width:110px">Duración</th>
+              <th>Entregable</th>
+              <th>Estado del producto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="rank-badge">1</span></td><td><strong>Fundaciones</strong></td><td>Modelo de datos, auth, API base</td><td>3–4 sem</td><td>Panel interno simple</td><td>Prototipo técnico estable</td></tr>
+            <tr><td><span class="rank-badge">2</span></td><td><strong>MVP POS+Inv</strong></td><td>POS básico, inventario básico, dashboard</td><td>4–6 sem</td><td>POS usable en un local</td><td>Producto usable para una tienda</td></tr>
+            <tr><td><span class="rank-badge">3</span></td><td><strong>Endurecimiento</strong></td><td>Reportes, clientes, fiado, estabilidad</td><td>4–6 sem</td><td>Solución estable multi‑cliente</td><td>Producto estable</td></tr>
+            <tr><td><span class="rank-badge">4</span></td><td><strong>Inventario avanzado</strong></td><td>Movimientos, compras, alertas</td><td>5–7 sem</td><td>Gestión de inventario robusta</td><td>Fuerte en inventario</td></tr>
+            <tr><td><span class="rank-badge">5</span></td><td><strong>Multi‑sucursal</strong></td><td>Multi‑tienda, transferencias, reportes</td><td>4–6 sem</td><td>Control centralizado multi‑sucursal</td><td>Multi‑tienda completo</td></tr>
+            <tr><td><span class="rank-badge">6</span></td><td><strong>Integraciones</strong></td><td>Pagos, API, exportes contables</td><td>6–8 sem</td><td>Cobros tarjeta + online + contabilidad</td><td>Conectado al ecosistema</td></tr>
+            <tr><td><span class="rank-badge">7</span></td><td><strong>Optimización</strong></td><td>Automatizaciones, analítica, API/webhooks</td><td>6–10 sem</td><td>Alertas inteligentes + plataforma extendible</td><td>Competitivo con líderes globales</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPENDENCIAS -->
+  <section id="dependencias" style="background: hsl(var(--muted)/0.4);">
+    <div class="container">
+      <div class="section-eyebrow">2.4 · Pre‑requisitos</div>
+      <h2 class="section-title">Dependencias críticas antes de la Etapa 1</h2>
+      <p class="section-lead">
+        Decisiones técnicas que deben tomarse antes de escribir la primera línea de código de producción.
+        Cambiarlas después es caro.
+      </p>
+
+      <div class="deps-grid">
+        <div class="dep-item"><div class="dep-num">1</div><div class="dep-text"><strong>Arquitectura principal:</strong> monolito modular vs microservicios (recomendado monolito modular al inicio)</div></div>
+        <div class="dep-item"><div class="dep-num">2</div><div class="dep-text"><strong>Base de datos:</strong> PostgreSQL multi‑tenant vs otras opciones</div></div>
+        <div class="dep-item"><div class="dep-num">3</div><div class="dep-text"><strong>Inventario:</strong> modelo basado en movimientos (no stock "mágico")</div></div>
+        <div class="dep-item"><div class="dep-num">4</div><div class="dep-text"><strong>Multi‑sucursal:</strong> siempre modelar sucursal desde el principio</div></div>
+        <div class="dep-item"><div class="dep-num">5</div><div class="dep-text"><strong>Offline/online:</strong> qué nivel de offline quieres soportar</div></div>
+        <div class="dep-item"><div class="dep-num">6</div><div class="dep-text"><strong>Autenticación:</strong> propio vs IdP externo, diseño multi‑tenant</div></div>
+        <div class="dep-item"><div class="dep-num">7</div><div class="dep-text"><strong>Separación de dominios:</strong> POS, Inventario, Compras, Clientes, Reportes</div></div>
+        <div class="dep-item"><div class="dep-num">8</div><div class="dep-text"><strong>Contratos de eventos:</strong> qué eventos principales tendrá el dominio</div></div>
+        <div class="dep-item"><div class="dep-num">9</div><div class="dep-text"><strong>Versionado de API:</strong> estrategia v1, v2, etc.</div></div>
+        <div class="dep-item"><div class="dep-num">10</div><div class="dep-text"><strong>Política operativa:</strong> logs, métricas, backups, seguridad básica</div></div>
+      </div>
+
+      <div class="insight decision" style="margin-top:2.5rem">
+        <div class="insight-icon">💡</div>
+        <div class="insight-body">
+          <strong>Decisión Clave</strong>
+          Tratar ARHinfo desde el inicio como una <strong>plataforma basada en dominios y eventos</strong>, no solo como "una web de facturación".
+        </div>
+      </div>
+
+      <div class="insight warning">
+        <div class="insight-icon">⚠️</div>
+        <div class="insight-body">
+          <strong>Error Común</strong>
+          Elegir stacks raros o de nicho. Dificultan contratar y mantener el sistema a largo plazo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR DÓNDE EMPEZAR -->
+  <section id="empezar">
+    <div class="container">
+      <div class="section-eyebrow">Próximos pasos</div>
+      <h2 class="section-title">Por dónde empezar mañana</h2>
+      <p class="section-lead">Tres pasos concretos para arrancar la construcción de ARHinfo desde cero.</p>
+
+      <div class="start-grid">
+        <div class="start-card">
+          <div class="start-num">01</div>
+          <div class="start-text">
+            <strong style="display:block;font-family:var(--font-display);font-size:1rem;margin-bottom:0.5rem;color:white">Modelar dominio</strong>
+            Dibujar el modelo de datos y eventos clave en un ER + documento de dominio (con sucursales, movimientos de inventario y ventas).
+          </div>
+        </div>
+        <div class="start-card">
+          <div class="start-num">02</div>
+          <div class="start-text">
+            <strong style="display:block;font-family:var(--font-display);font-size:1rem;margin-bottom:0.5rem;color:white">Fijar el stack</strong>
+            Node/Python + PostgreSQL + React. Levantar un repo con arquitectura modular mínima y migraciones funcionando.
+          </div>
+        </div>
+        <div class="start-card">
+          <div class="start-num">03</div>
+          <div class="start-text">
+            <strong style="display:block;font-family:var(--font-display);font-size:1rem;margin-bottom:0.5rem;color:white">POS ultra simple</strong>
+            Implementar POS (aunque sea feo) que permita crear productos, hacer una venta y ver el stock bajar. Si esto funciona sólido, todo lo demás se apoya en una base fiable.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h3>ARHinfo · Plan de Arquitectura</h3>
+      <p>
+        Documento estratégico para la construcción y evolución de ARHinfo POS e Inventarios SaaS.
+        De prototipo a plataforma competitiva en 7 etapas incrementales.
+      </p>
+      <div class="footer-meta">
+        Plan de Arquitectura v1.0 · Basado en investigación de 8 sistemas POS líderes globales
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
