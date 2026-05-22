@@ -8,6 +8,11 @@
     "mode": "sin_api_key",
     "_note": "Pon tus credenciales para activar deploy directo. mode: 'sin_api_key' | 'con_api_key'"
   },
+  "stitch": {
+    "api_key": "${STITCH_API_KEY}",
+    "_note": "Lee STITCH_API_KEY desde env var. NUNCA pegar la key aquí. Cargar antes de usar: `source ~/.claude/secrets/nexus.env`",
+    "_secrets_file": "~/.claude/secrets/nexus.env"
+  },
   "parallelism": {
     "default_mechanism": "auto",
     "_note": "auto | P1 | P2 | P3 | P4",
