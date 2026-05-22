@@ -12,3 +12,16 @@ Thumbs.db
 .idea/
 *.swp
 *~
+
+# Secrets — NUNCA commitear
+.env
+.env.*
+*.env
+*.local.json
+*.local.yaml
+*.local.yml
+secrets/
+**/secrets/
+*.key
+*.pem
+nexus.config.local.json
