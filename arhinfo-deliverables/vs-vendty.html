@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARHinfo vs Vendty: ¿Cuál POS sirve si NO emites factura electrónica? | The Best</title>
+  <meta name="description" content="Comparativa honesta ARHinfo vs Vendty para microempresarios colombianos No Responsables de IVA. Pricing, funcionalidades, offline y soporte. Decide informado.">
+  <meta name="theme-color" content="#0C1F5C">
+  <link rel="canonical" href="https://arhinfo.com/vs-vendty">
+  <link rel="alternate" hreflang="es-CO" href="https://arhinfo.com/vs-vendty">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Schema markup: FAQPage + Product comparison -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuál es mejor para mí: ARHinfo o Vendty?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del tamaño y tipo de tu negocio. Si eres microempresario No Responsable de IVA, no necesitas factura electrónica y prefieres instalación desktop con soporte local, ARHinfo es para ti. Si eres una PyME formal con factura electrónica obligatoria, multi-sucursal y necesidad de cloud puro, Vendty es la mejor opción."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿ARHinfo es más barato que Vendty?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. ARHinfo desde $30.000 COP/mes vs Vendty desde ~$180.000 COP/mes en su plan PyME. Para microempresarios el ahorro mensual es significativo (~$150.000 COP/mes), pero la comparación no es 1:1 porque Vendty incluye factura electrónica y multi-sucursal nativos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿ARHinfo funciona sin internet como Vendty?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ARHinfo es desktop nativo: funciona sin internet permanente, ideal para zonas con conexión inestable. Vendty es 100% cloud y requiere internet estable para operar. Si tu local tiene conexión intermitente, ARHinfo es la elección lógica."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si crezco y necesito factura electrónica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El día que pases al régimen Responsable de IVA y necesites factura electrónica DIAN, puedes migrar a un proveedor especializado o integrar ARHinfo con un servicio de FE externo. Vendty te cobra desde el día 1 por algo que quizás no necesitas hoy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Quién tiene mejor soporte: ARHinfo o Vendty?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ARHinfo: soporte humano por WhatsApp directo, equipo en Colombia, respuesta en horas. Vendty: soporte tradicional con tickets, criticado en reviews por lentitud. Para microempresarios que necesitan respuestas rápidas, ARHinfo es más práctico."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: 222 78% 22%;
+      --primary-glow: 222 70% 38%;
+      --primary-deep: 222 80% 14%;
+      --primary-foreground: 0 0% 100%;
+      --accent: 28 96% 54%;
+      --accent-deep: 23 92% 49%;
+      --accent-soft: 36 100% 96%;
+      --accent-foreground: 222 47% 11%;
+      --success: 142 70% 42%;
+      --success-soft: 142 70% 95%;
+      --warning: 38 92% 50%;
+      --danger: 0 84% 60%;
+      --background: 0 0% 100%;
+      --foreground: 222 47% 11%;
+      --muted: 215 25% 96%;
+      --muted-foreground: 215 16% 42%;
+      --border: 215 20% 88%;
+      --font-display: "Sora", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --radius: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --shadow-sm: 0 2px 8px -2px hsl(var(--foreground) / 0.08);
+      --shadow-md: 0 8px 24px -8px hsl(var(--foreground) / 0.12);
+      --shadow-lg: 0 24px 60px -20px hsl(var(--primary) / 0.25);
+      --gradient-primary: linear-gradient(135deg, #0C1F5C 0%, #1F4BA8 100%);
+      --gradient-accent: linear-gradient(135deg, #F88B16 0%, #EE6B0A 100%);
+      --gradient-hero: radial-gradient(at 20% 10%, hsl(28 96% 54% / .12) 0%, transparent 50%), radial-gradient(at 80% 70%, hsl(222 78% 22% / .10) 0%, transparent 55%), linear-gradient(180deg, #FFF 0%, hsl(36 100% 97%) 100%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: hsl(var(--foreground));
+      background: hsl(var(--background));
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: hsl(var(--primary-glow)); text-decoration: none; transition: color 150ms ease-out; }
+    a:hover { color: hsl(var(--accent)); }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-narrow { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .btn {
+      font-family: var(--font-display);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: all 150ms ease-out;
+      padding: 0.85rem 1.65rem;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--gradient-accent);
+      color: white;
+      box-shadow: 0 8px 20px -8px hsl(var(--accent) / 0.6);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -10px hsl(var(--accent) / 0.7);
+      color: white;
+    }
+    .btn-secondary {
+      background: white;
+      color: hsl(var(--primary));
+      border: 1px solid hsl(var(--border));
+    }
+    .btn-secondary:hover {
+      border-color: hsl(var(--primary));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 1rem 0 0;
+      font-size: 0.85rem;
+      color: hsl(var(--muted-foreground));
+    }
+    .breadcrumb a { color: hsl(var(--muted-foreground)); }
+    .breadcrumb a:hover { color: hsl(var(--primary)); }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.6; }
+
+    /* HERO */
+    .hero {
+      background: var(--gradient-hero);
+      padding: 3rem 0 5rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: hsl(var(--accent-soft));
+      border: 1px solid hsl(var(--accent) / 0.3);
+      border-radius: 999px;
+      color: hsl(var(--accent-deep));
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: hsl(var(--foreground));
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+      max-width: 900px;
+    }
+    .hero h1 span {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 720px;
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* TLDR Card */
+    .tldr {
+      background: white;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin: -3rem auto 0;
+      max-width: 1000px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 5;
+    }
+    .tldr-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px dashed hsl(var(--border));
+    }
+    .tldr-tag {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 0.6rem;
+      background: hsl(var(--accent));
+      color: white;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .tldr h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: hsl(var(--primary));
+    }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 720px) { .tldr-grid { grid-template-columns: 1fr; } }
+    .tldr-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tldr-col p {
+      font-size: 0.95rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+    .tldr-col.arhinfo h3 { color: hsl(var(--accent-deep)); }
+    .tldr-col.vendty h3 { color: hsl(var(--primary-glow)); }
+
+    /* Section */
+    section { padding: 5rem 0; }
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: hsl(var(--accent-deep));
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 1rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 760px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Comparison table */
+    .compare-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid hsl(var(--border));
+      box-shadow: var(--shadow-sm);
+      background: white;
+    }
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+    table.compare thead th {
+      padding: 1.25rem 1rem;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+    table.compare thead th:first-child {
+      background: hsl(var(--muted));
+      color: hsl(var(--primary-deep));
+      text-align: left;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    table.compare thead th.col-arhinfo {
+      background: var(--gradient-accent);
+      color: white;
+      position: relative;
+    }
+    table.compare thead th.col-arhinfo::after {
+      content: "★ Recomendado NR-IVA";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: hsl(var(--primary-deep));
+      color: white;
+      font-size: 0.65rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+    table.compare thead th.col-vendty {
+      background: hsl(var(--muted));
+      color: hsl(var(--primary));
+    }
+    table.compare tbody tr {
+      border-top: 1px solid hsl(var(--border));
+    }
+    table.compare tbody tr:hover {
+      background: hsl(var(--accent-soft) / 0.4);
+    }
+    table.compare td {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.92rem;
+      vertical-align: middle;
+    }
+    table.compare td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: hsl(var(--primary-deep));
+      background: hsl(var(--muted) / 0.5);
+    }
+    .check { color: hsl(var(--success)); font-size: 1.1rem; font-weight: 700; }
+    .cross { color: hsl(var(--danger) / 0.5); font-size: 1.1rem; }
+    .partial { color: hsl(var(--warning)); font-size: 1.1rem; }
+    .cell-note {
+      display: block;
+      font-size: 0.78rem;
+      color: hsl(var(--muted-foreground));
+      margin-top: 0.25rem;
+      font-weight: 400;
+    }
+
+    /* Decision blocks */
+    .decisions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 700px) { .decisions-grid { grid-template-columns: 1fr; } }
+
+    .decision-card {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      border: 2px solid;
+      background: white;
+      transition: all 200ms ease-out;
+    }
+    .decision-card.arhinfo {
+      border-color: hsl(var(--accent));
+      background: linear-gradient(160deg, hsl(var(--accent-soft)), white);
+    }
+    .decision-card.vendty {
+      border-color: hsl(var(--primary-glow));
+      background: linear-gradient(160deg, hsl(var(--primary) / 0.05), white);
+    }
+    .decision-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .decision-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .decision-card.arhinfo h3 { color: hsl(var(--accent-deep)); }
+    .decision-card.vendty h3 { color: hsl(var(--primary)); }
+    .decision-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .decision-card ul li {
+      padding: 0.5rem 0 0.5rem 1.75rem;
+      position: relative;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: hsl(var(--foreground));
+    }
+    .decision-card.arhinfo ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      background: hsl(var(--accent));
+      color: white;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0.55rem;
+    }
+    .decision-card.vendty ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      background: hsl(var(--primary));
+      color: white;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0.55rem;
+    }
+
+    /* Pricing comparison */
+    .pricing-compare {
+      background: linear-gradient(180deg, hsl(var(--muted) / 0.4), white);
+      padding: 5rem 0;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 700px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .price-card {
+      padding: 2.5rem;
+      border-radius: var(--radius-xl);
+      border: 2px solid;
+      background: white;
+      position: relative;
+    }
+    .price-card.arhinfo {
+      border-color: hsl(var(--accent));
+      box-shadow: var(--shadow-md);
+    }
+    .price-card.vendty {
+      border-color: hsl(var(--border));
+    }
+    .price-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient-accent);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .price-header {
+      text-align: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid hsl(var(--border));
+      margin-bottom: 1.5rem;
+    }
+    .price-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: hsl(var(--primary));
+      margin-bottom: 0.5rem;
+    }
+    .price-tier {
+      font-size: 0.85rem;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 1.25rem;
+    }
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: hsl(var(--foreground));
+      line-height: 1;
+    }
+    .price-currency {
+      font-size: 1.1rem;
+      vertical-align: top;
+      color: hsl(var(--muted-foreground));
+      font-weight: 600;
+    }
+    .price-period {
+      display: block;
+      font-size: 0.85rem;
+      color: hsl(var(--muted-foreground));
+      margin-top: 0.4rem;
+      font-weight: 400;
+    }
+    .price-features {
+      list-style: none;
+      padding: 0;
+    }
+    .price-features li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      font-size: 0.92rem;
+      color: hsl(var(--foreground));
+    }
+    .price-features li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: hsl(var(--accent));
+      font-weight: 700;
+    }
+    .price-savings {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: hsl(var(--success-soft));
+      border: 1px solid hsl(var(--success) / 0.3);
+      border-radius: var(--radius);
+      text-align: center;
+      font-size: 0.92rem;
+      color: hsl(var(--success));
+      font-weight: 600;
+    }
+
+    /* Honesty block */
+    .honesty-block {
+      background: hsl(var(--primary-deep));
+      color: white;
+      padding: 4rem 0;
+    }
+    .honesty-block .container { max-width: 900px; }
+    .honesty-block .section-eyebrow { color: hsl(var(--accent)); }
+    .honesty-block .section-title { color: white; }
+    .honesty-block p {
+      font-size: 1.05rem;
+      color: hsl(0 0% 100% / 0.85);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .honesty-block strong { color: white; }
+
+    /* FAQ */
+    .faq-grid {
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 200ms ease-out;
+      background: white;
+    }
+    .faq-item:hover {
+      border-color: hsl(var(--accent) / 0.5);
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-item details {
+      padding: 1.5rem;
+    }
+    .faq-item summary {
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: hsl(var(--primary));
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.02rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: hsl(var(--accent));
+      transition: transform 200ms ease-out;
+      font-weight: 300;
+    }
+    .faq-item details[open] summary::after { transform: rotate(45deg); }
+    .faq-item details[open] summary { margin-bottom: 1rem; }
+    .faq-item p {
+      color: hsl(var(--muted-foreground));
+      line-height: 1.65;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .final-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .final-cta p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      color: hsl(0 0% 100% / 0.92);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta .btn-primary {
+      background: var(--gradient-accent);
+    }
+
+    /* WhatsApp FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+      animation: wa-pulse 2.5s infinite;
+      transition: transform 200ms ease-out;
+    }
+    .whatsapp-fab:hover { transform: scale(1.1); }
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      50% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">ARHinfo</a><span>›</span>
+      <a href="/comparativas">Comparativas</a><span>›</span>
+      ARHinfo vs Vendty
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-badge">⚖️ Comparativa honesta · Mayo 2026</div>
+      <h1>
+        ARHinfo vs Vendty: <span>¿cuál POS sirve si NO emites factura electrónica?</span>
+      </h1>
+      <p class="hero-lead">
+        La pregunta que casi nadie te responde directo. Aquí comparamos pricing, funcionalidades, soporte
+        y caso de uso para que decidas en 5 minutos — sin sesgos de vendedor, sin pelos en la lengua.
+      </p>
+      <div class="hero-ctas">
+        <a href="#tabla" class="btn btn-primary">Ver tabla completa →</a>
+        <a href="https://wa.me/573217041698?text=Quiero%20comparar%20ARHinfo%20vs%20Vendty%20para%20mi%20negocio" class="btn btn-secondary" target="_blank" rel="noopener">Hablar con un humano</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TL;DR -->
+  <div class="container">
+    <div class="tldr">
+      <div class="tldr-header">
+        <span class="tldr-tag">TL;DR</span>
+        <h2>Lo esencial en 30 segundos</h2>
+      </div>
+      <div class="tldr-grid">
+        <div class="tldr-col arhinfo">
+          <h3>🟧 Elige ARHinfo si...</h3>
+          <p>
+            Eres microempresario <strong>No Responsable de IVA</strong>, no necesitas factura electrónica,
+            tienes un local (o dos), tu conexión a internet es inestable y prefieres soporte humano por WhatsApp
+            en lugar de tickets. Pricing desde $30.000 COP/mes.
+          </p>
+        </div>
+        <div class="tldr-col vendty">
+          <h3>🟦 Elige Vendty si...</h3>
+          <p>
+            Eres PyME formal con <strong>factura electrónica DIAN obligatoria</strong>, manejas 3+ sucursales,
+            necesitas integraciones avanzadas con e-commerce y aceptas pagar más por una suite completa cloud.
+            Pricing desde $180.000 COP/mes plan PyME.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla comparativa principal -->
+  <section id="tabla">
+    <div class="container">
+      <div class="section-eyebrow">Comparativa funcional</div>
+      <h2 class="section-title">Lado a lado: 14 puntos clave</h2>
+      <p class="section-lead">
+        Todo lo que un microempresario colombiano debería preguntar antes de elegir.
+        Las marcas indican: <span class="check">✓</span> sí, <span class="partial">~</span> parcial, <span class="cross">✗</span> no.
+      </p>
+
+      <div class="compare-table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th class="col-arhinfo">ARHinfo "The Best"</th>
+              <th class="col-vendty">Vendty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Antigüedad en el mercado</td>
+              <td><strong>20 años</strong><span class="cell-note">desde 2005, Mariquita Tolima</span></td>
+              <td>13 años<span class="cell-note">desde 2013, Bogotá</span></td>
+            </tr>
+            <tr>
+              <td>Plan más barato</td>
+              <td><strong>$30.000 COP/mes</strong><span class="cell-note">primer mes gratis</span></td>
+              <td>~$180.000 COP/mes<span class="cell-note">plan PyME</span></td>
+            </tr>
+            <tr>
+              <td>Pago anual con descuento</td>
+              <td><span class="check">✓</span><span class="cell-note">32% descuento</span></td>
+              <td><span class="partial">~</span><span class="cell-note">según plan</span></td>
+            </tr>
+            <tr>
+              <td>Funciona sin internet (desktop)</td>
+              <td><span class="check">✓</span><span class="cell-note">offline nativo</span></td>
+              <td><span class="cross">✗</span><span class="cell-note">cloud-only, requiere conexión</span></td>
+            </tr>
+            <tr>
+              <td>Factura electrónica DIAN nativa</td>
+              <td><span class="cross">✗</span><span class="cell-note">no la necesitas si eres NR-IVA</span></td>
+              <td><span class="check">✓</span><span class="cell-note">incluida en el precio</span></td>
+            </tr>
+            <tr>
+              <td>Diseñado para No Responsables de IVA</td>
+              <td><span class="check">✓</span><span class="cell-note">único en su segmento</span></td>
+              <td><span class="cross">✗</span><span class="cell-note">explícitamente para régimen IVA + FE</span></td>
+            </tr>
+            <tr>
+              <td>Inventario por sucursal</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span><span class="cell-note">multi-sucursal nativo</span></td>
+            </tr>
+            <tr>
+              <td>Fiado / cuentas a crédito</td>
+              <td><span class="check">✓</span><span class="cell-note">saldo por cliente</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>App móvil nativa</td>
+              <td><span class="partial">~</span><span class="cell-note">PWA en roadmap 2026</span></td>
+              <td><span class="check">✓</span><span class="cell-note">Android nativo</span></td>
+            </tr>
+            <tr>
+              <td>Integración e-commerce</td>
+              <td><span class="cross">✗</span><span class="cell-note">no es prioridad del ICP</span></td>
+              <td><span class="check">✓</span><span class="cell-note">Shopify, WooCommerce, etc.</span></td>
+            </tr>
+            <tr>
+              <td>Soporte por WhatsApp directo</td>
+              <td><span class="check">✓</span><span class="cell-note">+57 321 704 1698</span></td>
+              <td><span class="partial">~</span><span class="cell-note">tickets, criticado por lentitud</span></td>
+            </tr>
+            <tr>
+              <td>Equipo local en Colombia</td>
+              <td><span class="check">✓</span><span class="cell-note">Tolima</span></td>
+              <td><span class="check">✓</span><span class="cell-note">Bogotá + 7 países LATAM</span></td>
+            </tr>
+            <tr>
+              <td>Curva de aprendizaje</td>
+              <td><span class="check">✓</span><span class="cell-note">2-3 días para dueño-operador</span></td>
+              <td><span class="partial">~</span><span class="cell-note">1-2 semanas, más opciones</span></td>
+            </tr>
+            <tr>
+              <td>Ideal para</td>
+              <td><strong>Microempresario NR-IVA</strong><span class="cell-note">ferreterías, droguerías, mini-markets, restaurantes sin FE</span></td>
+              <td><strong>PyME formal con FE</strong><span class="cell-note">multi-sucursal, ticket alto, casos enterprise</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ¿Cuál elegir? -->
+  <section style="background: linear-gradient(180deg, hsl(var(--muted)/0.5), white);">
+    <div class="container">
+      <div class="section-eyebrow">Decisión</div>
+      <h2 class="section-title">¿Cuál de los dos es para ti?</h2>
+      <p class="section-lead">Sin rodeos: cada producto está diseñado para un tipo distinto de negocio. Identifícate.</p>
+
+      <div class="decisions-grid">
+        <div class="decision-card arhinfo">
+          <h3>🟧 ARHinfo es para ti si...</h3>
+          <ul>
+            <li>Eres microempresario en régimen <strong>No Responsable de IVA</strong> (ingresos &lt; 3.500 UVT/año)</li>
+            <li>NO emites factura electrónica DIAN ni tienes obligación de hacerlo</li>
+            <li>Tu local tiene conexión a internet inestable o intermitente</li>
+            <li>Prefieres soporte humano por WhatsApp en lugar de tickets</li>
+            <li>Tienes 1-3 sucursales máximo, tú eres el dueño-operador</li>
+            <li>Quieres pagar lo justo: $30-60k COP/mes, no $180k+</li>
+            <li>Valoras un equipo colombiano que conoce tu realidad</li>
+          </ul>
+        </div>
+
+        <div class="decision-card vendty">
+          <h3>🟦 Vendty es para ti si...</h3>
+          <ul>
+            <li>Eres PyME formal con <strong>factura electrónica DIAN obligatoria</strong></li>
+            <li>Operas 3+ sucursales y necesitas reportes consolidados avanzados</li>
+            <li>Vendes online y necesitas sincronización con Shopify/WooCommerce</li>
+            <li>Tu equipo es lo suficientemente grande para curva de aprendizaje larga</li>
+            <li>Aceptas pagar $180k+/mes por una suite completa cloud</li>
+            <li>No te molesta el soporte por tickets ni esperar 24-48h</li>
+            <li>Quieres una marca con más visibilidad en SEO y prensa nacional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing comparativo -->
+  <section class="pricing-compare">
+    <div class="container">
+      <div class="section-eyebrow">Pricing real</div>
+      <h2 class="section-title">¿Cuánto te ahorras al año?</h2>
+      <p class="section-lead">
+        Comparativa de planes equivalentes en funcionalidad básica POS + inventario.
+        Cifras de referencia para mayo 2026 (verifica directamente con cada vendor).
+      </p>
+
+      <div class="pricing-grid">
+        <div class="price-card arhinfo">
+          <div class="price-badge">★ Recomendado NR-IVA</div>
+          <div class="price-header">
+            <div class="price-name">ARHinfo "The Best"</div>
+            <div class="price-tier">Plan Intermedio · 4 usuarios</div>
+            <div class="price-amount">
+              <span class="price-currency">$</span>99.900
+              <span class="price-period">COP/mes · IVA incluido</span>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li>POS + inventario + reportes</li>
+            <li>4 usuarios simultáneos</li>
+            <li>1 sucursal (multi-sucursal en plan superior)</li>
+            <li>Fiado y clientes</li>
+            <li>Soporte WhatsApp directo</li>
+            <li>Primer mes gratis · 32% descuento anual</li>
+            <li>Sin factura electrónica (no la necesitas)</li>
+          </ul>
+          <div class="price-savings">
+            💰 Ahorras ~$960.000 COP/año vs Vendty
+          </div>
+        </div>
+
+        <div class="price-card vendty">
+          <div class="price-header">
+            <div class="price-name">Vendty</div>
+            <div class="price-tier">Plan PyME (referencia)</div>
+            <div class="price-amount">
+              <span class="price-currency">$</span>180.000
+              <span class="price-period">COP/mes aprox.</span>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li>POS + inventario + reportes avanzados</li>
+            <li>Multi-sucursal nativo</li>
+            <li>Factura electrónica DIAN incluida</li>
+            <li>Integraciones Shopify, WooCommerce</li>
+            <li>App Android nativa</li>
+            <li>Soporte por tickets</li>
+            <li>Cloud-only, requiere internet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloque honestidad -->
+  <section class="honesty-block">
+    <div class="container">
+      <div class="section-eyebrow">Honestidad radical</div>
+      <h2 class="section-title">Cuándo Vendty es mejor opción que ARHinfo</h2>
+      <p>
+        No vamos a venderte ARHinfo si no es lo que necesitas. <strong>Vendty es mejor que nosotros</strong> en
+        estos casos específicos:
+      </p>
+      <p>
+        ➜ Si eres <strong>Responsable de IVA con obligación de factura electrónica</strong>, Vendty te ahorra
+        integrar un tercero. Lo trae nativo.
+      </p>
+      <p>
+        ➜ Si operas <strong>4 o más sucursales</strong> con necesidad de consolidación en tiempo real, Vendty
+        tiene multi-sucursal más maduro que el nuestro.
+      </p>
+      <p>
+        ➜ Si tu negocio depende del <strong>canal online</strong> (Shopify, WooCommerce, MercadoLibre), Vendty
+        ya tiene esas integraciones probadas. Nosotros no las priorizamos.
+      </p>
+      <p>
+        ➜ Si tu equipo es <strong>10+ personas con turnos rotativos</strong> y necesitas reportes por empleado
+        granulares, Vendty es más robusto.
+      </p>
+      <p style="margin-top:2rem;font-size:1.1rem">
+        <strong>El resto del tiempo — el 80% de los microempresarios NR-IVA colombianos — ARHinfo es la decisión
+        más sensata.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container-narrow">
+      <div class="section-eyebrow">Preguntas frecuentes</div>
+      <h2 class="section-title">Las 5 dudas más comunes</h2>
+      <p class="section-lead">Si después de esto sigues con dudas, escríbenos por WhatsApp. Sin formularios largos.</p>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <details>
+            <summary>¿Cuál es mejor para mí: ARHinfo o Vendty?</summary>
+            <p>
+              Depende del tamaño y tipo de tu negocio. Si eres microempresario <strong>No Responsable de IVA</strong>,
+              no necesitas factura electrónica y prefieres instalación desktop con soporte local, ARHinfo es para ti.
+              Si eres una PyME formal con factura electrónica obligatoria, multi-sucursal y necesidad de cloud puro,
+              Vendty es la mejor opción.
+            </p>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>¿ARHinfo es más barato que Vendty?</summary>
+            <p>
+              Sí. ARHinfo desde <strong>$30.000 COP/mes</strong> vs Vendty desde ~$180.000 COP/mes en su plan PyME.
+              Para microempresarios el ahorro mensual es significativo (~$150.000 COP/mes), pero la comparación no es 1:1
+              porque Vendty incluye factura electrónica y multi-sucursal nativos.
+            </p>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>¿ARHinfo funciona sin internet como Vendty?</summary>
+            <p>
+              ARHinfo es <strong>desktop nativo</strong>: funciona sin internet permanente, ideal para zonas con
+              conexión inestable. Vendty es 100% cloud y requiere internet estable para operar. Si tu local tiene
+              conexión intermitente, ARHinfo es la elección lógica.
+            </p>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>¿Qué pasa si crezco y necesito factura electrónica?</summary>
+            <p>
+              El día que pases al régimen Responsable de IVA y necesites factura electrónica DIAN, puedes migrar
+              a un proveedor especializado o integrar ARHinfo con un servicio de FE externo. Vendty te cobra desde
+              el día 1 por algo que quizás no necesitas hoy.
+            </p>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>¿Quién tiene mejor soporte: ARHinfo o Vendty?</summary>
+            <p>
+              <strong>ARHinfo</strong>: soporte humano por WhatsApp directo, equipo en Colombia, respuesta en horas.
+              <strong>Vendty</strong>: soporte tradicional con tickets, criticado en reviews por lentitud. Para
+              microempresarios que necesitan respuestas rápidas, ARHinfo es más práctico en el día a día.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>¿Hablamos 15 minutos?</h2>
+      <p>
+        Sin formularios. Sin compromiso. Solo una llamada honesta para ver si ARHinfo encaja con tu negocio.
+        Si Vendty es mejor para ti, también te lo diremos.
+      </p>
+      <a href="https://wa.me/573217041698?text=Quiero%20una%20demo%20de%20ARHinfo%20-%20vengo%20de%20la%20comparativa%20vs%20Vendty" class="btn btn-primary" target="_blank" rel="noopener">
+        Hablar por WhatsApp →
+      </a>
+    </div>
+  </section>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/573217041698?text=Hola%2C%20quiero%20conocer%20ARHinfo%20The%20Best" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a8.06 8.06 0 00-8.052 8.057c0 1.57.365 3.117 1.05 4.561l-1.12 4.092c-.196.715.522 1.333 1.157.997l4.041-1.91a8.03 8.03 0 003.924.997h.004c4.44 0 8.052-3.6 8.052-8.057s-3.612-8.057-8.052-8.057"/>
+    </svg>
+  </a>
+
+</body>
+</html>
