@@ -1,0 +1,119 @@
+{
+  "nexus_version": "6.1",
+  "platform": "auto",
+  "memory": {
+    "enabled": true,
+    "auto_capture_post_pipeline": true,
+    "auto_reinject_on_boot": true,
+    "max_blocks": 50,
+    "max_tokens_per_block": 200,
+    "progressive_disclosure_default": 1,
+    "compress_threshold": 50,
+    "path_claude_code": ".claude/memory/{proyecto}-memory.md",
+    "path_claude_ai": "PROJECT-knowledge.md#memoria",
+    "_note": "Motor de memoria inspirado en claude-mem. Captura→Compresión→Reinyección."
+  },
+  "n8n": {
+    "api_url": "https://TU-INSTANCIA.n8n.cloud",
+    "api_key": "TU_N8N_API_KEY",
+    "webhook_secret": "TU_WEBHOOK_SECRET"
+  },
+  "stitch": {
+    "api_key": "TU_STITCH_API_KEY",
+    "default_framework": "React",
+    "default_styles": "Tailwind",
+    "checkpoint_required": true
+  },
+  "meta": {
+    "mcp_url": "https://mcp.facebook.com/ads",
+    "enabled": "auto",
+    "scope": "read_only",
+    "_note": "MCP oficial de Meta (abril 2026). Se detecta automáticamente si está conectado como integración en Claude."
+  },
+  "watchdog": {
+    "enabled": true,
+    "check_interval_minutes": 30,
+    "auto_deploy_on_workflow_deploy": true,
+    "canal_default": {
+      "tipo": "telegram",
+      "destino": "TU_CHAT_ID"
+    },
+    "autofix": {
+      "enabled": true,
+      "max_retries": 3,
+      "notify_before_fix": false
+    },
+    "alertas": {
+      "error_consecutivos": 3,
+      "latencia_ms": 5000,
+      "tasa_error_pct": 20
+    }
+  },
+  "projects": {
+    "default": {
+      "name": "proyecto-actual",
+      "root": "./",
+      "stack": "NestJS + Prisma + PostgreSQL + Redis + Vanilla JS",
+      "knowledge_base": "PROJECT-knowledge.md",
+      "protected_files": [
+        "prisma/schema.prisma",
+        ".env",
+        "package.json"
+      ]
+    }
+  },
+  "codex": {
+    "preferred_mechanism": "auto",
+    "sandbox": "workspace-write",
+    "skill_injection": true
+  },
+  "parallel": {
+    "mode": "auto",
+    "max_workers": 4,
+    "p3_port": 9000
+  },
+  "security": {
+    "audit_external_skills": true,
+    "block_on_dangerous": true,
+    "confirm_on_review": true
+  },
+  "learning": {
+    "auto_distill_post_pipeline": true,
+    "min_decisions_to_distill": 3
+  },
+  "skill_scanner": {
+    "enabled": true,
+    "auto_scan_on_missing_index": true,
+    "index_max_age_days": 7,
+    "index_path": "skill-index.json",
+    "scan_paths": {
+      "claude-code": [
+        ".claude/skills",
+        ".claude/agents"
+      ],
+      "antigravity": [
+        ".antigravity/rules",
+        ".antigravity/agents"
+      ],
+      "cursor": [
+        ".cursor/rules"
+      ]
+    },
+    "official_skills": [
+      "arch",
+      "webdev",
+      "market-scout",
+      "codex",
+      "autoflow",
+      "stitch",
+      "knowledge",
+      "security",
+      "watchdog",
+      "contract",
+      "mem",
+      "marketos"
+    ],
+    "security_audit_third_party": true,
+    "usage_tracking": true
+  }
+}
