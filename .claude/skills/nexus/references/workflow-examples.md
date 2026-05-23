@@ -1,293 +1,146 @@
-# Workflow Examples — Templates JSON para n8n
+# Workflow Examples — JSON importables para n8n
 
-Carga esta referencia cuando AutoFlow necesite un punto de partida.
-Contiene 3 workflows completos y validados, listos para importar.
-
----
-
-## Cómo usar estos templates
-
-1. Copiar el JSON del template más cercano a tu caso
-2. Importar en n8n: Settings → Import Workflow → Pegar JSON
-3. Configurar credenciales (marcadas con `[CONFIGURAR]`)
-4. Activar el workflow
+Tres workflows listos para importar. Descargar → n8n → Settings → Import Workflow.
 
 ---
 
-## Template 1 — Webhook → Procesar → Email
-
-**Caso de uso**: recibir datos via webhook, procesarlos y enviar email de confirmación.
-Compatible con: onboarding de usuarios, formularios, notificaciones.
+## WF-01 — YouTube a Gmail (resumen de video)
 
 ```json
 {
-  "name": "NEXUS — Webhook → Process → Email",
+  "name": "NEXUS: YouTube → Resumen → Gmail",
   "nodes": [
     {
-      "id": "webhook-trigger",
-      "name": "Webhook Trigger",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [240, 300],
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "nexus-webhook",
-        "responseMode": "responseNode",
-        "options": {}
-      }
+      "name": "Trigger Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [240, 300]
     },
     {
-      "id": "process-data",
-      "name": "Process Data",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3,
+      "name": "YouTube Transcript",
+      "type": "n8n-nodes-base.httpRequest",
       "position": [460, 300],
       "parameters": {
-        "mode": "manual",
-        "fields": {
-          "values": [
-            { "name": "nombre", "type": "string",
-              "value": "={{ $json.nombre }}" },
-            { "name": "email", "type": "string",
-              "value": "={{ $json.email }}" },
-            { "name": "timestamp", "type": "string",
-              "value": "={{ $now }}" }
-          ]
-        }
+        "url": "https://www.googleapis.com/youtube/v3/captions",
+        "method": "GET"
       }
     },
     {
-      "id": "send-email",
-      "name": "Send Email",
+      "name": "Claude Summarize",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [680, 300],
+      "parameters": {
+        "url": "https://api.anthropic.com/v1/messages",
+        "method": "POST",
+        "headers": { "x-api-key": "={{ $env.ANTHROPIC_API_KEY }}" }
+      }
+    },
+    {
+      "name": "Enviar por Gmail",
       "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2,
-      "position": [680, 300],
-      "parameters": {
-        "operation": "send",
-        "sendTo": "={{ $json.email }}",
-        "subject": "Confirmación recibida",
-        "emailType": "html",
-        "message": "<h2>Hola {{ $json.nombre }}</h2><p>Recibimos tu solicitud.</p>",
-        "options": {}
-      },
-      "credentials": { "gmailOAuth2": "[CONFIGURAR]" }
-    },
-    {
-      "id": "respond-webhook",
-      "name": "Respond to Webhook",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1,
-      "position": [900, 300],
-      "parameters": {
-        "respondWith": "json",
-        "responseBody": "={ \"success\": true, \"message\": \"Procesado\" }"
-      }
+      "position": [900, 300]
     }
   ],
   "connections": {
-    "Webhook Trigger": {
-      "main": [[{ "node": "Process Data", "type": "main", "index": 0 }]]
-    },
-    "Process Data": {
-      "main": [[{ "node": "Send Email", "type": "main", "index": 0 }]]
-    },
-    "Send Email": {
-      "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
-    }
-  },
-  "active": false,
-  "settings": { "executionOrder": "v1" }
+    "Trigger Manual": { "main": [[{ "node": "YouTube Transcript" }]] },
+    "YouTube Transcript": { "main": [[{ "node": "Claude Summarize" }]] },
+    "Claude Summarize": { "main": [[{ "node": "Enviar por Gmail" }]] }
+  }
 }
 ```
 
 ---
 
-## Template 2 — Schedule → Google Sheets → Telegram
-
-**Caso de uso**: reporte automático diario desde una hoja de cálculo a Telegram.
-Compatible con: reportes de ventas, dashboards, alertas periódicas.
+## WF-02 — Webhook → Procesar → Notificar
 
 ```json
 {
-  "name": "NEXUS — Daily Report Sheets → Telegram",
+  "name": "NEXUS: Webhook → Procesar → Telegram",
   "nodes": [
     {
-      "id": "schedule-trigger",
-      "name": "Every Day 8am",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1,
-      "position": [240, 300],
-      "parameters": {
-        "rule": {
-          "interval": [{ "field": "hours", "hoursInterval": 24 }]
-        }
-      }
-    },
-    {
-      "id": "read-sheet",
-      "name": "Read Google Sheet",
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4,
-      "position": [460, 300],
-      "parameters": {
-        "operation": "read",
-        "documentId": "[CONFIGURAR: ID de tu Google Sheet]",
-        "sheetName": "Sheet1",
-        "options": { "headerRow": 1 }
-      },
-      "credentials": { "googleSheetsOAuth2Api": "[CONFIGURAR]" }
-    },
-    {
-      "id": "build-message",
-      "name": "Build Message",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [680, 300],
-      "parameters": {
-        "language": "javaScript",
-        "jsCode": "const rows = $input.all();\nconst total = rows.length;\nconst mensaje = `📊 Reporte diario\\nRegistros: ${total}\\nÚltimo: ${rows[total-1]?.json?.nombre || 'N/A'}\\nFecha: ${new Date().toLocaleDateString('es-CO')}`;\nreturn [{ json: { mensaje } }];"
-      }
-    },
-    {
-      "id": "send-telegram",
-      "name": "Send Telegram",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1,
-      "position": [900, 300],
-      "parameters": {
-        "operation": "sendMessage",
-        "chatId": "[CONFIGURAR: tu chat ID]",
-        "text": "={{ $json.mensaje }}",
-        "additionalFields": {}
-      },
-      "credentials": { "telegramApi": "[CONFIGURAR]" }
-    }
-  ],
-  "connections": {
-    "Every Day 8am": {
-      "main": [[{ "node": "Read Google Sheet", "type": "main", "index": 0 }]]
-    },
-    "Read Google Sheet": {
-      "main": [[{ "node": "Build Message", "type": "main", "index": 0 }]]
-    },
-    "Build Message": {
-      "main": [[{ "node": "Send Telegram", "type": "main", "index": 0 }]]
-    }
-  },
-  "active": false,
-  "settings": { "executionOrder": "v1" }
-}
-```
-
----
-
-## Template 3 — Webhook → AI Agent → Backend NestJS
-
-**Caso de uso**: recibir un mensaje, procesarlo con un AI Agent y enviarlo
-al backend NestJS. El caso central del stack ARHinfo + n8n.
-
-```json
-{
-  "name": "NEXUS — Webhook → AI Agent → NestJS Backend",
-  "nodes": [
-    {
-      "id": "webhook-in",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
       "position": [240, 300],
       "parameters": {
-        "httpMethod": "POST",
-        "path": "ai-process",
-        "responseMode": "responseNode",
-        "options": {}
+        "path": "nexus-webhook",
+        "httpMethod": "POST"
       }
     },
     {
-      "id": "ai-agent",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1,
+      "name": "Validar Payload",
+      "type": "n8n-nodes-base.if",
       "position": [460, 300],
       "parameters": {
-        "text": "={{ $json.mensaje }}",
-        "options": {
-          "systemMessage": "Eres un asistente que analiza solicitudes y devuelve JSON estructurado con campos: accion, datos, prioridad."
+        "conditions": {
+          "string": [{ "value1": "={{ $json.secret }}", "value2": "={{ $env.WEBHOOK_SECRET }}" }]
         }
       }
     },
     {
-      "id": "openai-model",
-      "name": "OpenAI Model",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [460, 480],
-      "parameters": {
-        "model": "gpt-4o-mini",
-        "options": {}
-      },
-      "credentials": { "openAiApi": "[CONFIGURAR]" }
-    },
-    {
-      "id": "call-backend",
-      "name": "Call NestJS Backend",
+      "name": "Procesar con Claude",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4,
-      "position": [680, 300],
-      "parameters": {
-        "method": "POST",
-        "url": "[CONFIGURAR: https://tu-backend.com/webhook/n8n/ai-process]",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            { "name": "Content-Type", "value": "application/json" },
-            { "name": "x-n8n-secret",
-              "value": "[CONFIGURAR: tu webhook secret]" }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            { "name": "output", "value": "={{ $json.output }}" },
-            { "name": "originalInput",
-              "value": "={{ $('Webhook').item.json.mensaje }}" }
-          ]
-        },
-        "options": { "timeout": 10000 }
-      }
+      "position": [680, 300]
     },
     {
-      "id": "respond",
-      "name": "Respond",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1,
-      "position": [900, 300],
-      "parameters": {
-        "respondWith": "json",
-        "responseBody": "={{ $json }}"
-      }
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [900, 300]
     }
   ],
   "connections": {
-    "Webhook": {
-      "main": [[{ "node": "AI Agent", "type": "main", "index": 0 }]]
-    },
-    "AI Agent": {
-      "main": [[{ "node": "Call NestJS Backend", "type": "main", "index": 0 }]]
-    },
-    "OpenAI Model": {
-      "ai_languageModel": [[{ "node": "AI Agent",
-        "type": "ai_languageModel", "index": 0 }]]
-    },
-    "Call NestJS Backend": {
-      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
-    }
-  },
-  "active": false,
-  "settings": { "executionOrder": "v1" }
+    "Webhook": { "main": [[{ "node": "Validar Payload" }]] },
+    "Validar Payload": { "main": [[{ "node": "Procesar con Claude" }], []] },
+    "Procesar con Claude": { "main": [[{ "node": "Telegram" }]] }
+  }
 }
 ```
 
-**Nota**: Este template implementa el patrón del Contract Validator.
-El campo `x-n8n-secret` y el path `/webhook/n8n/ai-process` deben
-coincidir exactamente con lo que genera Codex Bridge en el backend NestJS.
+---
+
+## WF-03 — Schedule + API + Google Sheets
+
+```json
+{
+  "name": "NEXUS: Schedule → API → Google Sheets",
+  "nodes": [
+    {
+      "name": "Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [240, 300],
+      "parameters": { "rule": { "interval": [{ "field": "hours", "hoursInterval": 24 }] } }
+    },
+    {
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [460, 300]
+    },
+    {
+      "name": "Transform",
+      "type": "n8n-nodes-base.code",
+      "position": [680, 300],
+      "parameters": { "jsCode": "return items.map(i => ({ json: { ...i.json, processed_at: new Date().toISOString() } }));" }
+    },
+    {
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [900, 300],
+      "parameters": { "operation": "appendOrUpdate" }
+    }
+  ],
+  "connections": {
+    "Schedule": { "main": [[{ "node": "Fetch Data" }]] },
+    "Fetch Data": { "main": [[{ "node": "Transform" }]] },
+    "Transform": { "main": [[{ "node": "Google Sheets" }]] }
+  }
+}
+```
+
+---
+
+## Variables de entorno requeridas
+
+| Variable             | Descripción                        |
+|----------------------|------------------------------------|
+| ANTHROPIC_API_KEY    | API key de Anthropic               |
+| WEBHOOK_SECRET       | Secret para validar webhooks       |
+| N8N_API_KEY          | Key de la instancia n8n            |
+| TELEGRAM_BOT_TOKEN   | Token del bot de Telegram          |

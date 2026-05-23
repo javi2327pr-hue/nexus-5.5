@@ -1,31 +1,35 @@
 {
-  "_version": "2.1",
+  "_version": "3.1",
   "_skill": "marketos",
-
   "platform": "auto",
-
+  "memory": {
+    "enabled": true,
+    "auto_capture_post_analysis": true,
+    "auto_reinject_on_boot": true,
+    "max_blocks_per_client": 50,
+    "max_tokens_per_block": 200,
+    "progressive_disclosure_default": 1,
+    "storage": "client-knowledge-file",
+    "_note": "Memoria inter-sesión v3.0. Cada cliente tiene su propia memoria en {cliente}-client-knowledge.md sección '## Memoria Inter-sesión'"
+  },
   "defaults": {
     "profundidad": "auto",
     "idioma_reporte": "es",
     "max_competidores": 5,
     "intervalo_seguimiento_dias": 30
   },
-
   "stitch": {
     "api_key": "${STITCH_API_KEY}",
     "enabled": "auto",
-    "_note": "Lee STITCH_API_KEY desde env var. NUNCA pegar la key aquí. Cargar antes de usar: `source ~/.claude/secrets/nexus.env`",
-    "_secrets_file": "~/.claude/secrets/nexus.env",
+    "_note": "Lee STITCH_API_KEY desde env var. NUNCA pegar la key aquí.",
     "auto_activate_on": [
       "landing_page_mockup",
       "funnel_visual_preview",
       "ad_creative_draft",
       "brand_messaging_visual",
       "email_template_design"
-    ],
-    "_auto_note": "MarketOS activa Stitch automáticamente cuando el workflow toca uno de estos triggers (ver Fase 4.5 en SKILL.md)"
+    ]
   },
-
   "meta": {
     "access_token": "${META_ACCESS_TOKEN}",
     "ad_account_id": "${META_AD_ACCOUNT_ID}",
@@ -33,11 +37,10 @@
     "business_id": "${META_BUSINESS_ID}",
     "api_version": "v21.0",
     "base_url": "https://graph.facebook.com/v21.0",
+    "mcp_url": "https://mcp.facebook.com/ads",
     "enabled": "auto",
-    "_note": "Lee META_ACCESS_TOKEN desde env var. NUNCA pegar el token aquí. Cargar antes de usar: `source ~/.claude/secrets/nexus.env`",
-    "_secrets_file": "~/.claude/secrets/nexus.env",
+    "_note": "v3.0: Detecta automáticamente si MCP oficial de Meta está conectado. Si sí → usa MCP. Si no → curl directo a /ads_archive.",
     "scope": "read_only_ads_library",
-    "_scope_note": "Por defecto MarketOS SOLO usa endpoints públicos de Ads Library (/ads_archive). Escritura de campañas (crear ads) está bloqueada por política — requiere autorización explícita del usuario y un pipeline de aprobación.",
     "auto_activate_on": [
       "competitor_ad_intelligence",
       "ads_library_search",
@@ -46,7 +49,7 @@
     "endpoints_permitidos": [
       "/ads_archive",
       "/{page_id}/posts (read-only)",
-      "/{ad_account_id}/insights (read-only, propia cuenta)"
+      "/{ad_account_id}/insights (read-only)"
     ],
     "endpoints_bloqueados_por_defecto": [
       "/{ad_account_id}/campaigns (POST/DELETE)",
@@ -55,35 +58,109 @@
       "Cualquier endpoint que mueva dinero"
     ]
   },
-
   "knowledge": {
     "auto_save_client": true,
-    "auto_load_on_boot": true,
-    "_note": "Guarda análisis de cada cliente en references/{cliente}-client-knowledge.md"
+    "auto_load_on_boot": true
   },
-
   "checkpoint": {
     "enabled": true,
     "path_antigravity": ".antigravity/marketos-checkpoint.json",
     "path_claude_code": ".claude/marketos-checkpoint.json"
   },
-
   "clients": {
-    "_note": "MarketOS registra aquí cada cliente analizado automáticamente",
+    "_note": "MarketOS registra cada cliente analizado automáticamente",
     "arhinfo": {
       "razon_social": "ARHInfo S.A.S.",
       "producto": "The Best — POS + control de inventarios SaaS",
-      "mercados": ["CO", "ES"],
+      "mercados": [
+        "CO",
+        "ES"
+      ],
       "modelo": "B2B SaaS PYME",
       "knowledge_file": "references/arhinfo-client-knowledge.md",
       "ultima_sesion": "2026-05-22",
       "fase_completada": 7,
+      "memoria_bloques": 0,
       "entregables": [
         "Auditoría SEO arhinfo.com (2.6/10)",
         "Análisis competitivo 6 competidores (CO+ES)",
         "PRD completo nuevo sitio web (9 secciones)"
       ],
-      "siguiente_checkpoint": "Mes 1 — review de keywords iniciales y testimonios capturados"
+      "siguiente_checkpoint": "Mes 1 — review de keywords + testimonios"
+    }
+  },
+  "scannable": {
+    "enabled": true,
+    "auto_register": true,
+    "_note": "Cuando NEXUS ejecuta /nexus scan, MarketOS se registra en skill-index.json",
+    "domains": [
+      "MARKETING"
+    ],
+    "keywords": [
+      "marketing",
+      "competencia",
+      "funnel",
+      "posicionamiento",
+      "ads",
+      "growth",
+      "buyer persona",
+      "publicidad",
+      "video",
+      "contenido",
+      "viralidad",
+      "hooks",
+      "copies",
+      "go-to-market",
+      "plan de marketing",
+      "estrategia de ventas"
+    ],
+    "sub_capabilities": {
+      "market_researcher": [
+        "competidores",
+        "análisis de mercado",
+        "tendencias"
+      ],
+      "behavioral_analyst": [
+        "patrones de compra",
+        "buyer persona",
+        "psicología"
+      ],
+      "brand_strategist": [
+        "posicionamiento",
+        "UVP",
+        "tono",
+        "hooks"
+      ],
+      "growth_specialist": [
+        "plan 30/60/90",
+        "captación",
+        "canales",
+        "KPIs"
+      ],
+      "revenue_architect": [
+        "funnels",
+        "TOFU",
+        "MOFU",
+        "BOFU",
+        "automatización"
+      ],
+      "visual_designer": [
+        "mockups",
+        "landing",
+        "creative",
+        "email template"
+      ],
+      "meta_ads_officer": [
+        "Meta Ads",
+        "Ads Library",
+        "anuncios competidores"
+      ],
+      "content_video": [
+        "guiones",
+        "copies",
+        "calendario editorial",
+        "video marketing"
+      ]
     }
   }
 }

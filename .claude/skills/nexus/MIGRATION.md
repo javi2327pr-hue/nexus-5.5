@@ -1,115 +1,79 @@
-# MIGRATION.md — Guía de Migración a NEXUS v5.0
+# Guía de Migración
+
+## NEXUS v5.6 → v6.0
+
+### Archivos nuevos (añadir)
+```bash
+cp memory-engine.md   .claude/skills/nexus/references/memory-engine.md
+cp memory-worker.md   .claude/agents/memory-worker.md
+```
+
+### Archivos modificados (reemplazar)
+```bash
+cp SKILL.md           .claude/skills/nexus/SKILL.md
+cp nexus.config.json  .claude/skills/nexus/nexus.config.json
+```
+
+### Cambios clave
+1. **Skill Registry**: añadido MEMORY + MARKETOS
+2. **Fase 0.4**: nueva — carga de memoria inter-sesión
+3. **Routing Table**: nuevos pipelines `memory-resume` y `marketos-full`
+4. **Pipeline Templates**: todos incluyen `memory → CAPTURE` al final
+5. **Fase 5**: ampliada con captura y compresión de memoria
+6. **Comandos**: añadidos /memory, /memory search, /memory flush, /memory export
+7. **Config**: nueva sección `memory` + sección `meta` con MCP URL
+8. **Scoring**: bonus +0.3 para skills referenciados en memoria previa
+
+### No se modifican
+- Todos los references existentes (arch, webdev, codex, etc.)
+- Workers existentes (arch-worker, webdev-worker, etc.)
+- Lógica de parallel execution, security, watchdog
 
 ---
 
-## Desde NEXUS v4.0 → v5.0
+## MarketOS v2.1 → v3.0
 
-### Lo que cambia
-| Elemento | v4.0 | v5.0 |
-|---|---|---|
-| Versión | 4.0 | 5.0 |
-| Contract Validator | Manual (tú lo activas) | **Automático** |
-| Paralelismo | Tabla manual | **Auto-seleccionado** |
-| Estimación de tokens | Bajo/Medio/Alto genérico | **Fórmula real** |
-| Worker files | No existían | **5 workers en agents/** |
-| Workflow templates | No había | **3 JSON en workflow-examples.md** |
-| Alertas Watchdog | Solo diagnóstico | **Proactivas + auto-deploy** |
-| `/nexus status` | No existía | **Dashboard directo** |
-| Rollback | No había | **Por versión de artefacto** |
-
-### Pasos de migración
-
-**1. Reemplaza SKILL.md**
+### Archivos nuevos (añadir)
 ```bash
-# Backup del anterior
-cp .claude/skills/nexus/SKILL.md .claude/skills/nexus/SKILL.md.bak
-
-# Instala el nuevo
-cp nexus-v5/SKILL.md .claude/skills/nexus/SKILL.md
+cp memory-engine.md         references/memory-engine.md
+cp memory-analyst-worker.md agents/memory-analyst-worker.md
 ```
 
-**2. Añade los nuevos archivos de referencias**
+### Archivos modificados (reemplazar)
 ```bash
-cp nexus-v5/references/workflow-examples.md .claude/skills/nexus/references/
+cp SKILL.md                 SKILL.md
+cp marketos.config.json     marketos.config.json
 ```
 
-**3. Crea la carpeta agents/ y copia los workers**
-```bash
-mkdir -p .claude/agents
-cp nexus-v5/agents/*.md .claude/agents/
-# (o .antigravity/agents/ si usas Antigravity)
-```
+### Cambios clave
+1. **Especialistas**: 7 → 8 (añadido Memory Analyst)
+2. **Regla v3.0**: MEMORIA al inicio y al final
+3. **Fase 0.2**: ampliada — carga knowledge + memoria de cliente
+4. **Fase 0.6**: nueva — detección Meta MCP oficial
+5. **Fase 3**: plan incluye línea de memoria
+6. **Fase 6**: reporte incluye "Memoria actualizada"
+7. **Fase 7**: ampliada — memory-analyst-worker CAPTURE + compresión
+8. **Bloques insight**: añadido `[MEMORIA ACTUALIZADA 📂]`
+9. **Config**: nueva sección `memory` + `meta.mcp_url`
 
-**4. Actualiza nexus.config.json** — añadir bloque `workers`:
-```json
-"workers": {
-  "enabled": true,
-  "available": ["market-scout", "arch", "webdev", "autoflow", "codex"]
-}
-```
-
-**5. Sin cambios requeridos** en: arch.md, webdev.md, market-scout.md,
-codex-bridge.md, contract-validator.md, parallel-skills.md.
-
----
-
-## Desde NEXUS v3.0 → v5.0
-
-### Lo que tenías en v3.0 y se conserva en v5.0
-- ✅ Detección de plataforma (bash)
-- ✅ Escaneo de skills instalados
-- ✅ 4 mecanismos de paralelismo P1/P2/P3/P4
-- ✅ Checkpoint en disco
-- ✅ Context chaining, error recovery, dry-run
-- ✅ Conflict resolution, execution log
-
-### Lo nuevo que ganas al migrar a v5.0
-- ✅ AutoFlow (n8n-MCP completo)
-- ✅ Contract Validator automático
-- ✅ Watchdog con alertas proactivas
-- ✅ 5 worker files completos
-- ✅ 3 workflow JSON templates
-- ✅ Auto-selección de paralelismo
-- ✅ Estimación real de tokens
-- ✅ /nexus status dashboard
-- ✅ Rollback por versión
-
-### Pasos de migración desde v3.0
-
-**1. Instalar todos los archivos nuevos**
-```bash
-# Reemplazar SKILL.md
-cp nexus-v5/SKILL.md .claude/skills/nexus/SKILL.md
-
-# Añadir references nuevas (conservar las existentes)
-cp nexus-v5/references/autoflow.md      .claude/skills/nexus/references/
-cp nexus-v5/references/watchdog.md      .claude/skills/nexus/references/
-cp nexus-v5/references/contract-validator.md .claude/skills/nexus/references/
-cp nexus-v5/references/workflow-examples.md  .claude/skills/nexus/references/
-
-# Actualizar references existentes (P3 ahora tiene setup guide)
-cp nexus-v5/references/parallel-execution.md .claude/skills/nexus/references/
-
-# Crear workers
-mkdir -p .claude/agents
-cp nexus-v5/agents/*.md .claude/agents/
-```
-
-**2. Actualizar nexus.config.json** con los bloques `n8n` y `workers`.
-
-**3. Verificar** escribiendo `/nexus status` — si responde con el dashboard,
-la migración fue exitosa.
+### No se modifican
+- Referencias de marketing (market-intelligence, buyer-patterns, etc.)
+- Workers existentes (researcher, pattern-detector, funnel-builder, stitch-designer, meta-ads-intel)
+- ARHInfo client knowledge
+- Scripts (meta-ads-library-query.sh)
 
 ---
 
 ## Verificación post-migración
 
-Escribe cualquiera de estos comandos para confirmar que v5.0 está activo:
+```bash
+# NEXUS
+cat .claude/skills/nexus/SKILL.md | head -3         # debe decir version: "6.0"
+ls .claude/skills/nexus/references/memory-engine.md  # debe existir
+ls .claude/agents/memory-worker.md                   # debe existir
 
-```
-/nexus status          → debe mostrar el dashboard
-"crea un workflow de onboarding en n8n"
-                       → debe detectar AutoFlow + mostrar plan con modo n8n
-"construye el sistema completo de pagos"
-                       → debe activar ARCH + Codex + AutoFlow con contrato automático
+# MarketOS
+cat SKILL.md | head -3                               # debe decir version: "3.0"
+ls references/memory-engine.md                       # debe existir
+ls agents/memory-analyst-worker.md                   # debe existir
 ```

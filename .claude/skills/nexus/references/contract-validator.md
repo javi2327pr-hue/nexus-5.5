@@ -1,98 +1,98 @@
-# Contract Validator — Validador de Contratos AutoFlow ↔ Codex Bridge
+# Contract Validator — Validación de inputs/outputs entre workers
 
-Se activa cuando **AutoFlow** (workflow n8n) y **Codex Bridge** (código
-backend) trabajan juntos en el mismo pipeline. Su función: asegurar que
-el workflow y el backend hablan el mismo idioma antes de hacer deploy.
-
----
-
-## Cuándo activar
-
-```
-AutoFlow produce:  webhook URL, payload enviado, headers esperados
-Codex produce:     endpoint URL, payload aceptado, headers requeridos
-→ Contract Validator compara y detecta inconsistencias
-```
+## Propósito
+Verifica que cada worker recibió los inputs que necesita y produjo los outputs
+que el siguiente skill espera. Se ejecuta automáticamente entre pasos del pipeline.
 
 ---
 
-## Contrato a validar
+## Contratos por skill
 
-### 1. URL del endpoint
-```
-AutoFlow dice que llama a:  https://api.example.com/v1/[path]
-Codex genera endpoint en:   [path en el backend]
-✅ Match | ❌ Mismatch → reportar diferencia
-```
+### STITCH necesita recibir
+- TAREA (obligatorio)
+- PROYECTO_STITCH (obligatorio — "nuevo" si no hay)
+- FRAMEWORK (obligatorio — default React)
+- ESTILOS (obligatorio — default Tailwind)
+- CONTEXTO_DISENO (opcional — de market-scout o webdev)
 
-### 2. Método HTTP
-```
-AutoFlow usa:   POST | GET | PUT | PATCH | DELETE
-Codex acepta:   [método en el controlador]
-✅ Match | ❌ Mismatch
-```
+### STITCH debe producir
+- STATUS (obligatorio)
+- DESIGN_TOKENS (obligatorio si STATUS=DONE)
+- ARCHIVOS_GENERADOS (obligatorio si STATUS=DONE)
+- BLOQUEANTES (obligatorio si STATUS=BLOCKED)
 
-### 3. Payload / body
-```
-AutoFlow envía: { campo1: tipo, campo2: tipo, ... }
-Codex espera:   { campo1: tipo, campo2: tipo, ... }
+### WEBDEV necesita recibir
+- URL o OBJETIVO (obligatorio)
+- design_tokens (opcional — de STITCH)
 
-Verificar:
-- Todos los campos requeridos por el backend están presentes en el envío
-- Tipos compatibles (string vs number vs object)
-- Campos opcionales documentados
-```
+### WEBDEV debe producir
+- blueprint (obligatorio)
+- design_patterns_report (si INTENCION_DISENO=true)
 
-### 4. Headers
-```
-AutoFlow incluye: Content-Type, Authorization, x-custom-header
-Codex valida:     [middleware de validación de headers]
-✅ Todos presentes | ❌ Falta: [lista]
-```
+### ARCH necesita recibir
+- OBJETIVO o MÓDULO (obligatorio)
+- stack (opcional — del PROJECT-knowledge)
 
-### 5. Respuesta esperada
+### ARCH debe producir
+- esquema_db (si hay DB involucrada)
+- contratos_api (si hay endpoints)
+- archivos_protegidos (obligatorio)
+
+### CODEX necesita recibir
+- TAREA (obligatorio)
+- stack (obligatorio)
+- archivos_protegidos (obligatorio)
+
+### CODEX debe producir
+- archivos_generados (obligatorio)
+- STATUS (obligatorio)
+
+### AUTOFLOW necesita recibir
+- OBJETIVO del workflow (obligatorio)
+- endpoints_disponibles (de ARCH — si hay integración con backend)
+
+### AUTOFLOW debe producir
+- workflows_json (obligatorio)
+- webhooks_urls (si el backend los necesita)
+
+### MARKET-SCOUT necesita recibir
+- NICHO (obligatorio)
+- INTENCION_DISENO (obligatorio — true/false)
+
+### MARKET-SCOUT debe producir
+- top_urls (obligatorio)
+- análisis_competitivo (obligatorio)
+- design_patterns_report (si INTENCION_DISENO=true)
+- prompt_stitch (si INTENCION_DISENO=true)
+
+---
+
+## Algoritmo de validación
+
 ```
-Codex retorna:        { success: bool, data: object, error?: string }
-AutoFlow procesa:     [nodo Set o Code que parsea la respuesta]
-✅ Compatible | ❌ AutoFlow espera campo que Codex no retorna
+ANTES de invocar worker:
+  Para cada campo obligatorio del contrato:
+    SI el campo no está en NEXUS_CONTEXT → ERROR: "Falta [campo] para [skill]"
+    Aplicar default si está definido (FRAMEWORK=React, ESTILOS=Tailwind, etc.)
+
+DESPUÉS de que worker reporta:
+  Para cada campo obligatorio del output:
+    SI el campo no está en el output → WARNING: "Worker [skill] no produjo [campo]"
+    SI STATUS=DONE y campo crítico falta → BLOCKED
+
+Acción ante ERROR: pausar pipeline, informar al usuario qué falta
+Acción ante WARNING: continuar pero registrar en nexus-log.md
 ```
 
 ---
 
-## Reporte de validación
+## Logging
 
+Cada validación escribe en nexus-log.md:
 ```
-╔══════════════════════════════════════════╗
-║     CONTRACT VALIDATION REPORT           ║
-╠══════════════════════════════════════════╣
-║ AutoFlow  → workflow.json (Paso N)       ║
-║ Codex     → api.ts (Paso M)              ║
-╠══════════════════════════════════════════╣
-║ URL        : ✅ Match                    ║
-║ Método     : ✅ POST en ambos            ║
-║ Payload    : ⚠️  Campo 'userId' faltante  ║
-║ Headers    : ✅ Authorization presente   ║
-║ Response   : ❌ AutoFlow espera 'result' ║
-║              Codex retorna 'data'        ║
-╠══════════════════════════════════════════╣
-║ ACCIÓN REQUERIDA:                        ║
-║  → Corregir campo en AutoFlow: Paso N    ║
-║  → O renombrar en Codex: Paso M          ║
-╚══════════════════════════════════════════╝
-```
-
-Si hay errores: NEXUS pausa el pipeline y muestra el reporte antes de
-continuar. El usuario decide cuál lado corregir.
-
----
-
-## Output a NEXUS_CONTEXT
-
-```
-{
-  contrato_validado: true | false,
-  errores: [ { campo, esperado, recibido, ubicacion } ],
-  advertencias: [ ... ],
-  accion_sugerida: string
-}
+[TIMESTAMP] CONTRACT [skill] → [PASS | FAIL | WARN]
+  Inputs recibidos: [lista]
+  Inputs faltantes: [lista o "ninguno"]
+  Outputs producidos: [lista]
+  Outputs faltantes: [lista o "ninguno"]
 ```

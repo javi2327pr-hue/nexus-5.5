@@ -1,207 +1,112 @@
----
-project: arhinfo
-version_knowledge: "1.0"
-generado: "[timestamp]"
-fuente: "path | repo_url | archivos_subidos"
----
+# PROJECT-knowledge — [NOMBRE DEL PROYECTO]
 
-# Knowledge Base — ARHinfo
-> Generado por KnowledgeBase de NEXUS v5.2
-> Este archivo es consumido automáticamente por ARCH, Codex Bridge,
-> AutoFlow y WEBDEV cuando trabajan en este proyecto.
+> Generado por NEXUS KnowledgeBase · Actualizar después de cada pipeline importante
 
 ---
 
-## Stack técnico
+## Stack confirmado
 
-| Componente | Tecnología | Versión |
-|---|---|---|
-| Runtime | Node.js | 20.x |
-| Framework | NestJS | 11.x |
-| ORM | Prisma | 7.x |
-| Base de datos | PostgreSQL | 16.x |
-| Cache | Redis | 7.x |
-| Frontend | Vanilla JS | — |
-| Automatización | n8n | self-hosted |
+| Capa       | Tecnología              | Versión | Notas                          |
+|------------|-------------------------|---------|--------------------------------|
+| Backend    | [NestJS / Express / …]  | X.X     |                                |
+| ORM        | [Prisma / TypeORM / …]  | X.X     |                                |
+| DB         | [PostgreSQL / MySQL / …]| X.X     |                                |
+| Cache      | [Redis / Memcached / —] | X.X     |                                |
+| Frontend   | [React / Vue / Vanilla] | X.X     |                                |
+| Deploy     | [Vercel / Railway / VPS]| —       |                                |
 
----
+## Dependencias clave instaladas (no proponer alternativas)
 
-## Estructura de módulos
-
-```
-src/
-  app.module.ts              → módulo raíz
-  main.ts                    → bootstrap, puerto, CORS
-  modules/
-    auth/                    → JWT, refresh tokens, guards
-    pos/                     → punto de venta, transacciones
-    billing/                 → facturación, pagos
-    users/                   → gestión de usuarios
-    reports/                 → generación de reportes
-  common/
-    guards/                  → AuthGuard, RolesGuard
-    filters/                 → GlobalExceptionFilter
-    interceptors/            → LoggingInterceptor
-    dto/                     → DTOs compartidos
-prisma/
-  schema.prisma              → esquema completo de DB
-  migrations/                → historial de migraciones
-```
-
----
-
-## Patrones de código establecidos
-
-### Patrón de respuesta estándar
-```typescript
-// Toda respuesta sigue esta estructura
-return {
-  success: true,
-  data: result,
-  meta: { timestamp: new Date(), version: '1.0' }
-};
-
-// Errores
-throw new HttpException(
-  { success: false, error: 'MENSAJE', code: 'ERROR_CODE' },
-  HttpStatus.BAD_REQUEST
-);
-```
-
-### Autenticación — JWT Guard
-```typescript
-@UseGuards(JwtAuthGuard, RolesGuard)
-@Roles(Role.ADMIN)
-@Get('/endpoint')
-async protectedEndpoint() { ... }
-```
-Todo endpoint protegido usa AMBOS guards. Nunca solo uno.
-
-### Patrón de endpoint webhook para n8n
-```typescript
-@Post('/webhook/n8n/[nombre]')
-@HttpCode(200)
-async handleWebhook(
-  @Body() payload: WebhookDto,
-  @Headers('x-n8n-secret') secret: string,
-): Promise<{ success: boolean; data: unknown }> {
-  if (secret !== process.env.N8N_WEBHOOK_SECRET) {
-    throw new UnauthorizedException();
-  }
-  return { success: true, data: await this.service.process(payload) };
+```json
+{
+  "dependencies": {},
+  "devDependencies": {}
 }
 ```
 
-### Transacciones Prisma
-```typescript
-// Para operaciones multi-tabla SIEMPRE usar transaction
-const result = await this.prisma.$transaction(async (tx) => {
-  const a = await tx.modelA.create({ data: ... });
-  const b = await tx.modelB.update({ where: ..., data: ... });
-  return { a, b };
-});
+## Módulos existentes
+
+```
+src/
+├── modules/
+│   ├── [módulo-1]/    → descripción en 1 línea
+│   ├── [módulo-2]/    → descripción en 1 línea
+│   └── [módulo-3]/    → descripción en 1 línea
+└── common/
+    ├── guards/
+    ├── decorators/
+    └── pipes/
 ```
 
-### Caché Redis — patrón estándar
-```typescript
-const cacheKey = `module:entity:${id}`;
-const cached = await this.redis.get(cacheKey);
-if (cached) return JSON.parse(cached);
-const result = await this.service.find(id);
-await this.redis.set(cacheKey, JSON.stringify(result), 'EX', 3600);
-return result;
+## Esquema de base de datos (resumen)
+
+```prisma
+// Modelos principales — actualizar si cambia schema.prisma
+model [Modelo] {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  // ...
+}
 ```
 
----
+## Endpoints existentes
 
-## Convenciones
+| Método | Path              | Módulo     | Auth |
+|--------|-------------------|------------|------|
+| GET    | /api/[recurso]    | [módulo]   | JWT  |
+| POST   | /api/[recurso]    | [módulo]   | JWT  |
 
-| Tipo | Convención | Ejemplo |
-|---|---|---|
-| Archivos TS | kebab-case | `user-profile.service.ts` |
-| Clases | PascalCase | `UserProfileService` |
-| Variables/métodos | camelCase | `getUserById()` |
-| DB columnas | snake_case | `created_at`, `user_id` |
-| Env vars | SCREAMING_SNAKE | `DATABASE_URL` |
-| Endpoints | kebab-case | `/user-profile/:id` |
-| DTOs | `[Acción][Entidad]Dto` | `CreateUserDto` |
+## Convenciones de naming
 
----
+- Archivos: kebab-case (`user-service.ts`)
+- Clases: PascalCase (`UserService`)
+- Variables: camelCase
+- DB columns: snake_case
+- [añadir más si aplica]
 
-## Variables de entorno
+## Archivos protegidos (Codex no debe modificar)
 
-| Variable | Tipo | Uso |
-|---|---|---|
-| `DATABASE_URL` | string | Conexión PostgreSQL |
-| `REDIS_URL` | string | Conexión Redis |
-| `JWT_SECRET` | string | Firma de tokens |
-| `JWT_EXPIRES_IN` | string | TTL del token (ej: "7d") |
-| `N8N_WEBHOOK_SECRET` | string | Validación webhooks n8n |
-| `PORT` | number | Puerto del servidor (default: 3000) |
+```
+prisma/schema.prisma    ← solo ARCH puede proponer cambios
+.env                    ← nunca tocar
+package.json            ← listar dependencias antes de instalar
+src/main.ts             ← solo para configuración global
+```
 
----
+## Variables de entorno disponibles (sin valores)
 
-## Módulos y responsabilidades
+```
+DATABASE_URL=
+REDIS_URL=
+JWT_SECRET=
+[añadir más]
+```
 
-| Módulo | Responsabilidad | Depende de |
-|---|---|---|
-| `auth` | JWT, refresh, roles | `users` |
-| `pos` | Transacciones de venta | `auth`, `billing` |
-| `billing` | Facturación, pagos | `auth` |
-| `users` | CRUD de usuarios | — |
-| `reports` | Generación de reportes | `pos`, `billing` |
+## Decisiones técnicas tomadas (no reabrir)
 
-⚠️ `billing` tiene dependencia circular con `auth` — usar `forwardRef()`.
+| Decisión              | Elección      | Fecha      | Razón                  |
+|-----------------------|---------------|------------|------------------------|
+| ORM                   | Prisma        | [fecha]    | Type-safe + migrations |
+| Cache                 | Redis         | [fecha]    | Session + queues       |
+| [añadir más]          |               |            |                        |
 
----
-
-## Integraciones externas detectadas
-
-- **n8n** (self-hosted): webhooks en `/webhook/n8n/*`, secret via header
-- **Redis**: caché y sesiones, TTL estándar 3600s
-- **PostgreSQL**: ORM Prisma, migraciones con rollback documentado
-
----
-
-## Trampas conocidas
-
-- `billing` ↔ `auth`: dependencia circular, usar `forwardRef(() => AuthModule)`
-- Migración `0012`: tiene rollback manual en `prisma/migrations/0012_rollback.sql`
-- Redis en dev: si no está corriendo, el módulo de caché falla silenciosamente
-- Los guards deben registrarse en orden: `JwtAuthGuard` primero, `RolesGuard` segundo
-
----
-
-## Deuda técnica detectada
-
-- `src/modules/reports/reports.service.ts:L234` — TODO: paginación pendiente
-- `src/modules/pos/pos.service.ts:L89` — FIXME: race condition en stock update
-- Variables de entorno sin validación con `@nestjs/config` Joi schema
-
----
-
-## Notas para agentes NEXUS
-
-### → ARCH
-Stack fijo: NestJS 11 + Prisma 7 + PostgreSQL + Redis. No proponer
-cambio de ORM ni de framework. Nuevos módulos deben seguir la estructura
-`modules/[nombre]/[nombre].{controller,service,module}.ts`.
-Dependencia circular billing↔auth resuelta con forwardRef — no duplicar.
-
-### → Codex Bridge
-Habilidades inyectadas automáticamente. Restricciones absolutas:
-- NO modificar `prisma/migrations/` directamente — usar `prisma migrate dev`
-- NO omitir guards en endpoints protegidos
-- TODO endpoint webhook DEBE validar `x-n8n-secret`
-- SIEMPRE usar `$transaction` para operaciones multi-tabla
+## Notas para skills
 
 ### → AutoFlow
-Webhook base: `POST /webhook/n8n/[nombre]`
-Secret env var: `N8N_WEBHOOK_SECRET`
-Formato respuesta del backend: `{ success: boolean, data: unknown }`
-Credencial Redis disponible para workflows que necesiten caché directa.
+Endpoints disponibles para webhooks n8n:
+- POST /api/webhooks/n8n → handler principal
+- Validar header: x-n8n-secret = $WEBHOOK_SECRET
+
+### → ARCH
+Stack definitivo confirmado. No proponer migraciones de framework.
 
 ### → WEBDEV
-Frontend actual: Vanilla JS (sin framework).
-Nuevas features: usar Lovable para blueprints, integrar via API REST.
-Endpoints disponibles documentados en `src/modules/*/[nombre].controller.ts`.
+Framework frontend: [React/Vanilla]. Lovable compatible ✅
+
+### → STITCH
+Framework de salida preferido: [React / Next.js]
+Estilos: [Tailwind / CSS Modules]
+
+### → Codex
+Siempre usar Prisma para DB. No raw SQL.
+Tests con [Jest / Vitest].
