@@ -1,38 +1,38 @@
 {
   "_version": "1.1",
   "_generator": "nexus-v6.1-skill-scanner-v2",
-  "last_scan": "2026-05-24T07:12:11.072465+00:00",
+  "last_scan": "2026-05-24T07:19:18.662803+00:00",
   "scan_paths": [
     "/root/.claude/skills",
     "/mnt/skills"
   ],
-  "total_skills_raw": 1540,
-  "total_skills_unique": 1524,
+  "total_skills_raw": 1566,
+  "total_skills_unique": 1550,
   "duplicates_dedup": 16,
   "errors": 0,
   "stats_by_domain": {
-    "FRONTEND": 332,
+    "FRONTEND": 333,
     "CODIGO": 205,
-    "OTRO": 187,
-    "ARQUITECTURA": 174,
-    "MARKETING": 101,
+    "OTRO": 188,
+    "ARQUITECTURA": 175,
+    "MARKETING": 118,
     "SEGURIDAD": 78,
-    "AUTOMATIZACION": 68,
-    "INVESTIGACION": 62,
+    "AUTOMATIZACION": 69,
+    "INVESTIGACION": 64,
     "DATA": 56,
     "INTEGRACION": 41,
     "ML_AI": 32,
-    "MONITORING": 28,
+    "MONITORING": 29,
     "DEVOPS": 28,
     "AZURE": 23,
     "ORCHESTRATION": 23,
-    "MEMORIA": 15,
+    "MEMORIA": 16,
     "DOCUMENTACION": 14,
     "GAME": 11,
     "PRODUCTIVIDAD": 8,
     "MOBILE": 7,
     "WRITING": 6,
-    "DISEÑO": 5,
+    "DISEÑO": 6,
     "AWS": 5,
     "LEGAL": 5,
     "TESTING": 4,
@@ -41,7 +41,7 @@
     "GCP": 1
   },
   "stats_by_source": {
-    "third-party": 1285,
+    "third-party": 1311,
     "azure-official": 116,
     "threejs-official": 11,
     "makepad": 13,
@@ -684,6 +684,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "ab-testing",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. ",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "active-directory-attacks",
       "version": "?",
       "domain": "CODIGO",
@@ -700,10 +714,24 @@
     {
       "name": "ad-creative",
       "version": "?",
-      "domain": "CODIGO",
+      "domain": "MARKETING",
       "source": "third-party",
       "score": 75,
-      "description": "\"Create, iterate, and scale paid ad creative for Google Ads, Meta, LinkedIn, TikTok, and similar platforms. Use when gen",
+      "description": "\"When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad vari",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "ads",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X,",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -745,7 +773,7 @@
       "domain": "MARKETING",
       "source": "third-party",
       "score": 75,
-      "description": "\"Optimize content for AI search and LLM citations across AI Overviews, ChatGPT, Perplexity, Claude, Gemini, and similar ",
+      "description": "\"When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Al",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -763,6 +791,20 @@
       "has_refs": true,
       "has_agents": false,
       "has_scripts": true,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "analytics",
+      "version": "?",
+      "domain": "CODIGO",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions \"se",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
       "times_used": 0,
       "last_used": null,
       "path_root": ".claude"
@@ -802,6 +844,20 @@
       "source": "apify",
       "score": 75,
       "description": "\"Actorization converts existing software into reusable serverless applications compatible with the Apify platform. Actor",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "aso",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audi",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -871,7 +927,7 @@
       "domain": "CODIGO",
       "source": "third-party",
       "score": 75,
-      "description": "\"Reduce voluntary and involuntary churn with cancel flows, save offers, dunning, win-back tactics, and retention strateg",
+      "description": "\"When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implemen",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -910,10 +966,10 @@
     {
       "name": "cold-email",
       "version": "?",
-      "domain": "OTRO",
+      "domain": "MARKETING",
       "source": "third-party",
       "score": 75,
-      "description": "\"Write B2B cold emails and follow-up sequences that earn replies. Use when creating outbound prospecting emails, SDR out",
+      "description": "Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, p",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -928,6 +984,34 @@
       "source": "third-party",
       "score": 75,
       "description": "REST API gateway for ComfyUI servers. Workflow management, job queuing, webhooks, caching, auth, rate limiting, and imag",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "competitor-profiling",
+      "version": "?",
+      "domain": "INVESTIGACION",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'comp",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "competitors",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when th",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -955,7 +1039,7 @@
       "domain": "MARKETING",
       "source": "third-party",
       "score": 75,
-      "description": "\"Plan a content strategy, topic clusters, editorial roadmap, and content mix for traffic, authority, and lead generation",
+      "description": "When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also ",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -992,12 +1076,68 @@
       "path_root": ".claude"
     },
     {
+      "name": "copy-editing",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "copywriting",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, prici",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "cpp-pro",
       "version": "?",
       "domain": "CODIGO",
       "source": "third-party",
       "score": 75,
       "description": "Write idiomatic C++ code with modern features, RAII, smart pointers, and STL algorithms. Handles templates, move semanti",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "cro",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, l",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "customer-research",
+      "version": "?",
+      "domain": "INVESTIGACION",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions \"customer research,",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -1104,6 +1244,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "directory-submissions",
+      "version": "?",
+      "domain": "CODIGO",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlin",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "domain-driven-design",
       "version": "?",
       "domain": "ARQUITECTURA",
@@ -1146,12 +1300,40 @@
       "path_root": ".claude"
     },
     {
+      "name": "emails",
+      "version": "?",
+      "domain": "AUTOMATIZACION",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email pro",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "energy-procurement",
       "version": "?",
       "domain": "OTRO",
       "source": "third-party",
       "score": 75,
       "description": "Codified expertise for electricity and gas procurement, tariff optimisation, demand charge management, renewable PPA eva",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "free-tools",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or bran",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -1468,6 +1650,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "image",
+      "version": "?",
+      "domain": "DISEÑO",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "instagram",
       "version": "?",
       "domain": "DATA",
@@ -1613,7 +1809,7 @@
       "domain": "MARKETING",
       "source": "third-party",
       "score": 75,
-      "description": "\"Plan and optimize lead magnets for email capture and lead generation. Use when designing gated content, checklists, tem",
+      "description": "When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the u",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -1762,6 +1958,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "marketing-ideas",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the u",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "matematico-tao",
       "version": "?",
       "domain": "FRONTEND",
@@ -1874,6 +2084,48 @@
       "path_root": ".claude"
     },
     {
+      "name": "onboarding",
+      "version": "?",
+      "domain": "MEMORIA",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also us",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "paywalls",
+      "version": "?",
+      "domain": "OTRO",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use wh",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "pricing",
+      "version": "?",
+      "domain": "MONITORING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions '",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "product-manager-toolkit",
       "version": "?",
       "domain": "OTRO",
@@ -1908,6 +2160,20 @@
       "source": "third-party",
       "score": 75,
       "description": "Use when a user asks to \"proofread\", \"review and correct\", \"fix grammar\", \"improve readability while keeping my voice\", ",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "programmatic-seo",
+      "version": "?",
+      "domain": "FRONTEND",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions \"progr",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -1958,6 +2224,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "referrals",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. A",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "returns-reverse-logistics",
       "version": "?",
       "domain": "SEGURIDAD",
@@ -1974,10 +2254,10 @@
     {
       "name": "revops",
       "version": "?",
-      "domain": "AUTOMATIZACION",
+      "domain": "MARKETING",
       "source": "third-party",
       "score": 75,
-      "description": "\"Design and improve revenue operations, lead lifecycle rules, scoring, routing, handoffs, and CRM process automation. Us",
+      "description": "\"When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. A",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -1988,10 +2268,24 @@
     {
       "name": "sales-enablement",
       "version": "?",
-      "domain": "CODIGO",
+      "domain": "MARKETING",
       "source": "third-party",
       "score": 75,
-      "description": "\"Create sales collateral such as decks, one-pagers, objection docs, demo scripts, playbooks, and proposal templates. Use",
+      "description": "\"When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "schema",
+      "version": "?",
+      "domain": "ARQUITECTURA",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user men",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -2056,6 +2350,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "seo-audit",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions \"SEO audit,\"",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "shadcn",
       "version": "?",
       "domain": "FRONTEND",
@@ -2089,7 +2397,7 @@
       "domain": "ARQUITECTURA",
       "source": "third-party",
       "score": 75,
-      "description": "\"Plan or restructure website hierarchy, navigation, URL patterns, breadcrumbs, and internal linking. Use when mapping pa",
+      "description": "When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal ",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -2132,6 +2440,34 @@
       "source": "third-party",
       "score": 75,
       "description": "Create and improve agent skills following the Agent Skills specification. Use when asked to create, write, or update ski",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "sms",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "When the user wants to plan, build, or optimize SMS or MMS marketing — including welcome flows, abandoned cart texts, po",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "social",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, T",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -2244,6 +2580,20 @@
       "source": "third-party",
       "score": 75,
       "description": "\"Use when performing code review, writing or refactoring code, or discussing architecture; complements clean-code and do",
+      "has_refs": true,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "video",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 75,
+      "description": "\"When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use w",
       "has_refs": true,
       "has_agents": false,
       "has_scripts": false,
@@ -7138,6 +7488,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "co-marketing",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 65,
+      "description": "\"When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use w",
+      "has_refs": false,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "coda-automation",
       "version": "?",
       "domain": "ARQUITECTURA",
@@ -7396,6 +7760,20 @@
       "source": "third-party",
       "score": 65,
       "description": "ALWAYS use this skill when committing code changes — never commit directly without it. Creates commits following Sentry ",
+      "has_refs": false,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "community-marketing",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 65,
+      "description": "\"Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a co",
       "has_refs": false,
       "has_agents": false,
       "has_scripts": false,
@@ -7830,34 +8208,6 @@
       "source": "third-party",
       "score": 65,
       "description": "\"Build applications that programmatically interact with GitHub Copilot. The SDK wraps the Copilot CLI via JSON-RPC, prov",
-      "has_refs": false,
-      "has_agents": false,
-      "has_scripts": false,
-      "times_used": 0,
-      "last_used": null,
-      "path_root": ".claude"
-    },
-    {
-      "name": "copy-editing",
-      "version": "?",
-      "domain": "MARKETING",
-      "source": "third-party",
-      "score": 65,
-      "description": "\"You are an expert copy editor specializing in marketing and conversion copy. Your goal is to systematically improve exi",
-      "has_refs": false,
-      "has_agents": false,
-      "has_scripts": false,
-      "times_used": 0,
-      "last_used": null,
-      "path_root": ".claude"
-    },
-    {
-      "name": "copywriting",
-      "version": "?",
-      "domain": "MARKETING",
-      "source": "third-party",
-      "score": 65,
-      "description": "Write rigorous, conversion-focused marketing copy for landing pages and emails. Enforces brief confirmation and strict n",
       "has_refs": false,
       "has_agents": false,
       "has_scripts": false,
@@ -11982,6 +12332,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "launch",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 65,
+      "description": "\"When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mention",
+      "has_refs": false,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "launch-strategy",
       "version": "?",
       "domain": "FRONTEND",
@@ -12542,26 +12906,12 @@
       "path_root": ".claude"
     },
     {
-      "name": "marketing-ideas",
-      "version": "?",
-      "domain": "MARKETING",
-      "source": "third-party",
-      "score": 65,
-      "description": "\"Provide proven marketing strategies and growth ideas for SaaS and software products, prioritized using a marketing feas",
-      "has_refs": false,
-      "has_agents": false,
-      "has_scripts": false,
-      "times_used": 0,
-      "last_used": null,
-      "path_root": ".claude"
-    },
-    {
       "name": "marketing-psychology",
       "version": "?",
       "domain": "MARKETING",
       "source": "third-party",
       "score": 65,
-      "description": "\"Apply behavioral science and mental models to marketing decisions, prioritized using a psychological leverage and feasi",
+      "description": "\"When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when",
       "has_refs": false,
       "has_agents": false,
       "has_scripts": false,
@@ -14726,6 +15076,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "popups",
+      "version": "?",
+      "domain": "AUTOMATIZACION",
+      "source": "third-party",
+      "score": 65,
+      "description": "When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also ",
+      "has_refs": false,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "posix-shell-pro",
       "version": "?",
       "domain": "CODIGO",
@@ -14992,6 +15356,20 @@
       "path_root": ".claude"
     },
     {
+      "name": "product-marketing",
+      "version": "?",
+      "domain": "MARKETING",
+      "source": "third-party",
+      "score": 65,
+      "description": "\"When the user wants to create or update their product marketing context document. Also use when the user mentions 'prod",
+      "has_refs": false,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
       "name": "product-marketing-context",
       "version": "?",
       "domain": "MARKETING",
@@ -15040,20 +15418,6 @@
       "source": "third-party",
       "score": 65,
       "description": "\"Autonomously deep-scan entire codebase line-by-line, understand architecture and patterns, then systematically transfor",
-      "has_refs": false,
-      "has_agents": false,
-      "has_scripts": false,
-      "times_used": 0,
-      "last_used": null,
-      "path_root": ".claude"
-    },
-    {
-      "name": "programmatic-seo",
-      "version": "?",
-      "domain": "MARKETING",
-      "source": "third-party",
-      "score": 65,
-      "description": "Design and evaluate programmatic SEO strategies for creating SEO-driven pages at scale using templates and structured da",
       "has_refs": false,
       "has_agents": false,
       "has_scripts": false,
@@ -16560,20 +16924,6 @@
       "path_root": ".claude"
     },
     {
-      "name": "seo-audit",
-      "version": "?",
-      "domain": "MARKETING",
-      "source": "third-party",
-      "score": 65,
-      "description": "Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance.",
-      "has_refs": false,
-      "has_agents": false,
-      "has_scripts": false,
-      "times_used": 0,
-      "last_used": null,
-      "path_root": ".claude"
-    },
-    {
       "name": "seo-authority-builder",
       "version": "?",
       "domain": "MARKETING",
@@ -17042,6 +17392,20 @@
       "source": "third-party",
       "score": 65,
       "description": "\"Automate Shopify tasks via Rube MCP (Composio): products, orders, customers, inventory, collections. Always search tool",
+      "has_refs": false,
+      "has_agents": false,
+      "has_scripts": false,
+      "times_used": 0,
+      "last_used": null,
+      "path_root": ".claude"
+    },
+    {
+      "name": "signup",
+      "version": "?",
+      "domain": "OTRO",
+      "source": "third-party",
+      "score": 65,
+      "description": "When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the use",
       "has_refs": false,
       "has_agents": false,
       "has_scripts": false,
@@ -21475,13 +21839,13 @@
         "source": "third-party"
       },
       {
-        "name": "cold-email",
+        "name": "context-guardian",
         "score": 75,
         "version": "?",
         "source": "third-party"
       },
       {
-        "name": "context-guardian",
+        "name": "elon-musk",
         "score": 75,
         "version": "?",
         "source": "third-party"
@@ -21539,13 +21903,13 @@
         "source": "third-party"
       },
       {
-        "name": "ai-seo",
+        "name": "ab-testing",
         "score": 75,
         "version": "?",
         "source": "third-party"
       },
       {
-        "name": "content-creator",
+        "name": "ad-creative",
         "score": 75,
         "version": "?",
         "source": "third-party"
@@ -21609,7 +21973,7 @@
         "source": "third-party"
       },
       {
-        "name": "revops",
+        "name": "emails",
         "score": 75,
         "version": "?",
         "source": "third-party"
@@ -21629,22 +21993,22 @@
         "source": "third-party"
       },
       {
+        "name": "competitor-profiling",
+        "score": 75,
+        "version": "?",
+        "source": "third-party"
+      },
+      {
+        "name": "customer-research",
+        "score": 75,
+        "version": "?",
+        "source": "third-party"
+      },
+      {
         "name": "hugging-face-paper-publisher",
         "score": 75,
         "version": "?",
         "source": "hf-official"
-      },
-      {
-        "name": "loki-mode",
-        "score": 75,
-        "version": "?",
-        "source": "third-party"
-      },
-      {
-        "name": "market-sizing-analysis",
-        "score": 75,
-        "version": "?",
-        "source": "third-party"
       }
     ],
     "DATA": [
@@ -21757,6 +22121,12 @@
         "source": "third-party"
       },
       {
+        "name": "pricing",
+        "score": 75,
+        "version": "?",
+        "source": "third-party"
+      },
+      {
         "name": "web-scraper",
         "score": 75,
         "version": "?",
@@ -21764,12 +22134,6 @@
       },
       {
         "name": "azure-mgmt-applicationinsights-dotnet",
-        "score": 65,
-        "version": "?",
-        "source": "azure-official"
-      },
-      {
-        "name": "azure-mgmt-arizeaiobservabilityeval-dotnet",
         "score": 65,
         "version": "?",
         "source": "azure-official"
@@ -21885,6 +22249,12 @@
         "source": "third-party"
       },
       {
+        "name": "onboarding",
+        "score": 75,
+        "version": "?",
+        "source": "third-party"
+      },
+      {
         "name": "\"AgentDB Memory Patterns\"",
         "score": 65,
         "version": "?",
@@ -21892,12 +22262,6 @@
       },
       {
         "name": "agent-memory-systems",
-        "score": 65,
-        "version": "?",
-        "source": "third-party"
-      },
-      {
-        "name": "bdistill-knowledge-extraction",
         "score": 65,
         "version": "?",
         "source": "third-party"
@@ -22065,6 +22429,12 @@
     ],
     "DISEÑO": [
       {
+        "name": "image",
+        "score": 75,
+        "version": "?",
+        "source": "third-party"
+      },
+      {
         "name": "apify-brand-reputation-monitoring",
         "score": 65,
         "version": "?",
@@ -22084,12 +22454,6 @@
       },
       {
         "name": "popup-cro",
-        "score": 65,
-        "version": "?",
-        "source": "third-party"
-      },
-      {
-        "name": "remotion",
         "score": 65,
         "version": "?",
         "source": "third-party"

@@ -1,26 +1,18 @@
 ---
 name: revops
-description: "Design and improve revenue operations, lead lifecycle rules, scoring, routing, handoffs, and CRM process automation. Use when marketing, sales, and customer success workflows need clearer operational structure."
-risk: unknown
-source: "https://github.com/coreyhaines31/marketingskills"
-date_added: "2026-03-21"
+description: "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use when the user mentions 'RevOps,' 'revenue operations,' 'lead scoring,' 'lead routing,' 'MQL,' 'SQL,' 'pipeline stages,' 'deal desk,' 'CRM automation,' 'marketing-to-sales handoff,' 'data hygiene,' 'leads aren't getting to sales,' 'pipeline management,' 'lead qualification,' or 'when should marketing hand off to sales.' Use this for anything involving the systems and processes that connect marketing to revenue. For cold outreach emails, see cold-email. For email drip campaigns, see emails. For pricing decisions, see pricing."
 metadata:
-  version: 1.1.0
+  version: 2.0.0
 ---
 
 # RevOps
 
 You are an expert in revenue operations. Your goal is to help design and optimize the systems that connect marketing, sales, and customer success into a unified revenue engine.
 
-## When to Use
-- Use when the user needs lead scoring, routing, handoffs, or lifecycle definitions.
-- Use when CRM process design and revenue-team coordination are the core problem.
-- Use when marketing, sales, and customer success systems need operational alignment.
-
 ## Before Starting
 
 **Check for product marketing context first:**
-If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
 Gather this context (ask if not provided):
 
@@ -326,31 +318,28 @@ Format each as a standalone document the user can implement directly. Include pl
 
 ## Tool Integrations
 
-For implementation, use the CRM, scheduling, enrichment, and automation tools available in the current environment. Key RevOps tools:
+For implementation, see the [tools registry](../../tools/REGISTRY.md). Key RevOps tools:
 
 | Tool | What It Does | Guide |
 |------|-------------|-------|
-| **HubSpot** | CRM, marketing automation, lead scoring, workflows | Use available HubSpot integrations |
-| **Salesforce** | Enterprise CRM, pipeline management, reporting | Use available Salesforce integrations |
-| **Calendly** | Meeting scheduling, round-robin routing | Use available scheduling integrations |
-| **SavvyCal** | Scheduling with priority-based availability | Use available scheduling integrations |
-| **Clearbit** | Real-time lead enrichment and scoring | Use available enrichment integrations |
-| **Apollo** | Contact data, enrichment, and outbound sequences | Use available outbound data integrations |
-| **ActiveCampaign** | Marketing automation for SMBs, lead scoring | Use available marketing automation integrations |
-| **Zapier** | Cross-tool automation and workflow glue | Use available workflow automation integrations |
+| **HubSpot** | CRM, marketing automation, lead scoring, workflows | [hubspot.md](../../tools/integrations/hubspot.md) |
+| **Salesforce** | Enterprise CRM, pipeline management, reporting | [salesforce.md](../../tools/integrations/salesforce.md) |
+| **Calendly** | Meeting scheduling, round-robin routing | [calendly.md](../../tools/integrations/calendly.md) |
+| **SavvyCal** | Scheduling with priority-based availability | [savvycal.md](../../tools/integrations/savvycal.md) |
+| **Clearbit** | Real-time lead enrichment and scoring | [clearbit.md](../../tools/integrations/clearbit.md) |
+| **Apollo** | Contact data, enrichment, and outbound sequences | [apollo.md](../../tools/integrations/apollo.md) |
+| **ActiveCampaign** | Marketing automation for SMBs, lead scoring | [activecampaign.md](../../tools/integrations/activecampaign.md) |
+| **Zapier** | Cross-tool automation and workflow glue | [zapier.md](../../tools/integrations/zapier.md) |
+| **Introw** | Partner-sourced pipeline, commissions, deal registration, QBRs | [introw.md](../../tools/integrations/introw.md) |
+| **Crossbeam** | Partner account overlaps and co-sell identification | [crossbeam.md](../../tools/integrations/crossbeam.md) |
 
 ---
 
 ## Related Skills
 
 - **cold-email**: For outbound prospecting emails
-- **email-sequence**: For lifecycle and nurture email flows
-- **pricing-strategy**: For pricing decisions and packaging
-- **analytics-tracking**: For tracking pipeline metrics and attribution
-- **launch-strategy**: For go-to-market launch planning
+- **emails**: For lifecycle and nurture email flows
+- **pricing**: For pricing decisions and packaging
+- **analytics**: For tracking pipeline metrics and attribution
+- **launch**: For go-to-market launch planning
 - **sales-enablement**: For sales collateral, decks, and objection handling
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
