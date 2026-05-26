@@ -1,34 +1,62 @@
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Layout } from './components/layout/Layout'
+
+const Home = lazy(() => import('./pages/Home'))
+const Pricing = lazy(() => import('./pages/Pricing'))
+const Features = lazy(() => import('./pages/Features'))
+const DemoFree = lazy(() => import('./pages/DemoFree'))
+const About = lazy(() => import('./pages/About'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Blog = lazy(() => import('./pages/Blog'))
+const Ferreteria = lazy(() => import('./pages/industry/Ferreteria'))
+const Tienda = lazy(() => import('./pages/industry/Tienda'))
+const Restaurante = lazy(() => import('./pages/industry/Restaurante'))
+const Farmacia = lazy(() => import('./pages/industry/Farmacia'))
+const Colombia = lazy(() => import('./pages/geo/Colombia'))
+const Espana = lazy(() => import('./pages/geo/Espana'))
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
+function LoadingFallback() {
+  return (
+    <div className="flex items-center justify-center min-h-[60vh]">
+      <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+    </div>
+  )
+}
+
 function App() {
   return (
-    <div className="min-h-screen bg-hero">
-      <header className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold text-gradient-primary font-display">
-          Global Inve
-        </h1>
-        <nav className="hidden md:flex gap-6 text-sm text-muted-foreground font-medium">
-          <a href="#features" className="hover:text-foreground transition-colors">Funcionalidades</a>
-          <a href="#pricing" className="hover:text-foreground transition-colors">Precios</a>
-          <a href="#contact" className="hover:text-foreground transition-colors">Contacto</a>
-        </nav>
-      </header>
-      <main className="flex flex-col items-center justify-center px-6 py-24 text-center max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold font-display text-foreground leading-tight">
-          Software POS en la nube
-        </h2>
-        <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-          Gestiona tu negocio desde cualquier lugar con Global Inve.
-          Facturaci&oacute;n electr&oacute;nica, inventario y punto de venta en una sola plataforma.
-        </p>
-        <div className="mt-10 flex gap-4">
-          <button className="bg-gradient-primary text-white px-8 py-3 rounded-base font-semibold shadow-elegant hover:opacity-90 transition-opacity">
-            Empezar gratis
-          </button>
-          <button className="border border-border px-8 py-3 rounded-base font-semibold text-foreground hover:bg-accent-soft transition-colors">
-            Ver demo
-          </button>
-        </div>
-      </main>
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Suspense fallback={<LoadingFallback />}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/planes-precios" element={<Pricing />} />
+            <Route path="/funcionalidades" element={<Features />} />
+            <Route path="/demo-gratis" element={<DemoFree />} />
+            <Route path="/quienes-somos" element={<About />} />
+            <Route path="/contacto" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/software-pos-ferreteria" element={<Ferreteria />} />
+            <Route path="/software-pos-tienda" element={<Tienda />} />
+            <Route path="/software-pos-restaurante" element={<Restaurante />} />
+            <Route path="/software-pos-farmacia" element={<Farmacia />} />
+            <Route path="/software-punto-venta-colombia" element={<Colombia />} />
+            <Route path="/software-tpv-espana" element={<Espana />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   )
 }
 
