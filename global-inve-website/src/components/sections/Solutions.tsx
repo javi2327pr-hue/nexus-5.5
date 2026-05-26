@@ -16,7 +16,7 @@ interface SolutionsProps {
 }
 
 function getIcon(name: string): LucideIcon {
-  return (LucideIcons as Record<string, LucideIcon>)[name] || LucideIcons.CheckCircle
+  return (LucideIcons as unknown as Record<string, LucideIcon>)[name] || LucideIcons.CheckCircle
 }
 
 export function Solutions({ title = 'Así lo resuelve Global Inve', items }: SolutionsProps) {

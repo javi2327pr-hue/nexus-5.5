@@ -16,7 +16,7 @@ interface PainPointsProps {
 }
 
 function getIcon(name: string): LucideIcon {
-  return (LucideIcons as Record<string, LucideIcon>)[name] || LucideIcons.AlertTriangle
+  return (LucideIcons as unknown as Record<string, LucideIcon>)[name] || LucideIcons.AlertTriangle
 }
 
 export function PainPoints({ title = '¿Te suena familiar?', items }: PainPointsProps) {

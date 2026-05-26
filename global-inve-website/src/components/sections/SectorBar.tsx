@@ -16,7 +16,7 @@ interface SectorBarProps {
 }
 
 function getIcon(name: string): LucideIcon {
-  return (LucideIcons as Record<string, LucideIcon>)[name] || LucideIcons.Store
+  return (LucideIcons as unknown as Record<string, LucideIcon>)[name] || LucideIcons.Store
 }
 
 export function SectorBar({ title, sectors }: SectorBarProps) {

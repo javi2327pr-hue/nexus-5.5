@@ -10,7 +10,7 @@ import type { LucideIcon } from 'lucide-react'
 import { Check } from 'lucide-react'
 
 function getIcon(name: string): LucideIcon {
-  return (LucideIcons as Record<string, LucideIcon>)[name] || LucideIcons.Star
+  return (LucideIcons as unknown as Record<string, LucideIcon>)[name] || LucideIcons.Star
 }
 
 export default function Features() {

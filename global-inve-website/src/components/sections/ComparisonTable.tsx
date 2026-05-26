@@ -1,4 +1,3 @@
-import { Check, X, Minus } from 'lucide-react'
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 import { cn } from '../../lib/utils'
 
