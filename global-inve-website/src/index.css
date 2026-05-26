@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: 222 78% 22%;
+  --primary-glow: 222 70% 38%;
+  --accent: 28 96% 54%;
+  --accent-soft: 36 100% 96%;
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --muted-foreground: 215 16% 42%;
+  --border: 215 25% 90%;
+  --radius: 14px;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+@layer utilities {
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(222 78% 22%), hsl(222 70% 38%));
+  }
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, hsl(28 96% 54%), hsl(16 87% 49%));
+  }
+  .bg-hero {
+    background:
+      radial-gradient(ellipse 80% 50% at 70% 20%, hsla(28, 96%, 54%, 0.06), transparent),
+      radial-gradient(ellipse 60% 40% at 20% 80%, hsla(222, 78%, 22%, 0.04), transparent),
+      hsl(0 0% 100%);
+  }
+  .text-gradient-primary {
+    background: linear-gradient(135deg, hsl(222 78% 22%), hsl(222 70% 38%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
