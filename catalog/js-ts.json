@@ -1,0 +1,230 @@
+{
+  "module_id": "js-ts",
+  "module_name": "JavaScript / TypeScript",
+  "total_entries": 20,
+  "total_skills": 18,
+  "total_agents": 2,
+  "entries": [
+    {
+      "name": "typescript-pro",
+      "type": "skill",
+      "keywords": [
+        "typescript",
+        "TS",
+        "tipos"
+      ],
+      "capability": "TypeScript avanzado",
+      "path": "~/.claude/skills/typescript-pro/SKILL.md"
+    },
+    {
+      "name": "typescript-advanced-types",
+      "type": "skill",
+      "keywords": [
+        "generics",
+        "conditional types",
+        "mapped"
+      ],
+      "capability": "Tipos avanzados TS",
+      "path": "~/.claude/skills/typescript-advanced-types/SKILL.md"
+    },
+    {
+      "name": "javascript-pro",
+      "type": "skill",
+      "keywords": [
+        "javascript",
+        "JS",
+        "ES2024"
+      ],
+      "capability": "JavaScript moderno",
+      "path": "~/.claude/skills/javascript-pro/SKILL.md"
+    },
+    {
+      "name": "nodejs-backend-patterns",
+      "type": "skill",
+      "keywords": [
+        "node",
+        "backend",
+        "servidor"
+      ],
+      "capability": "Patrones backend Node.js",
+      "path": "~/.claude/skills/nodejs-backend-patterns/SKILL.md"
+    },
+    {
+      "name": "react-best-practices",
+      "type": "skill",
+      "keywords": [
+        "react",
+        "hooks",
+        "componentes"
+      ],
+      "capability": "Best practices React",
+      "path": "~/.claude/skills/react-best-practices/SKILL.md"
+    },
+    {
+      "name": "react-patterns",
+      "type": "skill",
+      "keywords": [
+        "react patrones",
+        "HOC",
+        "render props"
+      ],
+      "capability": "Patrones avanzados React",
+      "path": "~/.claude/skills/react-patterns/SKILL.md"
+    },
+    {
+      "name": "nextjs-app-router-patterns",
+      "type": "skill",
+      "keywords": [
+        "next.js",
+        "app router",
+        "RSC"
+      ],
+      "capability": "Next.js App Router",
+      "path": "~/.claude/skills/nextjs-app-router-patterns/SKILL.md"
+    },
+    {
+      "name": "nestjs-expert",
+      "type": "skill",
+      "keywords": [
+        "nestjs",
+        "decorators",
+        "modules",
+        "guards"
+      ],
+      "capability": "NestJS: módulos, guards, pipes",
+      "path": "~/.claude/skills/nestjs-expert/SKILL.md"
+    },
+    {
+      "name": "prisma-expert",
+      "type": "skill",
+      "keywords": [
+        "prisma",
+        "ORM",
+        "migrations",
+        "schema"
+      ],
+      "capability": "Prisma ORM completo",
+      "path": "~/.claude/skills/prisma-expert/SKILL.md"
+    },
+    {
+      "name": "drizzle-orm-expert",
+      "type": "skill",
+      "keywords": [
+        "drizzle",
+        "ORM",
+        "type-safe SQL"
+      ],
+      "capability": "Drizzle ORM type-safe",
+      "path": "~/.claude/skills/drizzle-orm-expert/SKILL.md"
+    },
+    {
+      "name": "tanstack-query-expert",
+      "type": "skill",
+      "keywords": [
+        "tanstack",
+        "react query",
+        "cache"
+      ],
+      "capability": "TanStack Query",
+      "path": "~/.claude/skills/tanstack-query-expert/SKILL.md"
+    },
+    {
+      "name": "zod-validation-expert",
+      "type": "skill",
+      "keywords": [
+        "zod",
+        "validación",
+        "schema"
+      ],
+      "capability": "Validación con Zod",
+      "path": "~/.claude/skills/zod-validation-expert/SKILL.md"
+    },
+    {
+      "name": "trpc-fullstack",
+      "type": "skill",
+      "keywords": [
+        "tRPC",
+        "end-to-end types"
+      ],
+      "capability": "tRPC fullstack",
+      "path": "~/.claude/skills/trpc-fullstack/SKILL.md"
+    },
+    {
+      "name": "sveltekit",
+      "type": "skill",
+      "keywords": [
+        "svelte",
+        "sveltekit",
+        "runes"
+      ],
+      "capability": "SvelteKit full-stack",
+      "path": "~/.claude/skills/sveltekit/SKILL.md"
+    },
+    {
+      "name": "astro",
+      "type": "skill",
+      "keywords": [
+        "astro",
+        "islands",
+        "content"
+      ],
+      "capability": "Astro content-driven",
+      "path": "~/.claude/skills/astro/SKILL.md"
+    },
+    {
+      "name": "angular-best-practices",
+      "type": "skill",
+      "keywords": [
+        "angular",
+        "signals",
+        "standalone"
+      ],
+      "capability": "Angular moderno",
+      "path": "~/.claude/skills/angular-best-practices/SKILL.md"
+    },
+    {
+      "name": "hono",
+      "type": "skill",
+      "keywords": [
+        "hono",
+        "edge",
+        "cloudflare"
+      ],
+      "capability": "Hono ultraligero",
+      "path": "~/.claude/skills/hono/SKILL.md"
+    },
+    {
+      "name": "bun-development",
+      "type": "skill",
+      "keywords": [
+        "bun",
+        "runtime",
+        "bundler"
+      ],
+      "capability": "Bun runtime",
+      "path": "~/.claude/skills/bun-development/SKILL.md"
+    },
+    {
+      "name": "react-flow-architect",
+      "type": "agent",
+      "keywords": [
+        "react flow",
+        "node editor",
+        "diagrama"
+      ],
+      "capability": "Agente de diagramas React Flow",
+      "path": "~/.claude/skills/react-flow-architect/SKILL.md"
+    },
+    {
+      "name": "react-modernization",
+      "type": "agent",
+      "keywords": [
+        "modernizar",
+        "migrar react",
+        "upgrade"
+      ],
+      "capability": "Agente de modernización React",
+      "path": "~/.claude/skills/react-modernization/SKILL.md"
+    }
+  ]
+}

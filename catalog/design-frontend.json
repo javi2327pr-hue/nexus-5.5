@@ -1,0 +1,83 @@
+{
+  "module_id": "design-frontend",
+  "module_name": "Diseño / Frontend / UI",
+  "total_entries": 7,
+  "total_skills": 6,
+  "total_agents": 1,
+  "entries": [
+    {
+      "name": "ui-ux-designer",
+      "type": "skill",
+      "keywords": [
+        "UI",
+        "UX",
+        "diseño"
+      ],
+      "capability": "Diseño UI/UX",
+      "path": "~/.claude/skills/ui-ux-designer/SKILL.md"
+    },
+    {
+      "name": "tailwind-design-system",
+      "type": "skill",
+      "keywords": [
+        "tailwind",
+        "design system"
+      ],
+      "capability": "Design system Tailwind",
+      "path": "~/.claude/skills/tailwind-design-system/SKILL.md"
+    },
+    {
+      "name": "shadcn",
+      "type": "skill",
+      "keywords": [
+        "shadcn",
+        "radix",
+        "componentes"
+      ],
+      "capability": "shadcn/ui",
+      "path": "~/.claude/skills/shadcn/SKILL.md"
+    },
+    {
+      "name": "frontend-design",
+      "type": "skill",
+      "keywords": [
+        "frontend",
+        "CSS",
+        "diseño web"
+      ],
+      "capability": "Frontend design",
+      "path": "~/.claude/skills/frontend-design/SKILL.md"
+    },
+    {
+      "name": "threejs-expert",
+      "type": "skill",
+      "keywords": [
+        "three.js",
+        "3D",
+        "WebGL"
+      ],
+      "capability": "Three.js 3D",
+      "path": "~/.claude/skills/threejs-expert/SKILL.md"
+    },
+    {
+      "name": "mobile-design",
+      "type": "skill",
+      "keywords": [
+        "mobile",
+        "responsive"
+      ],
+      "capability": "Mobile design",
+      "path": "~/.claude/skills/mobile-design/SKILL.md"
+    },
+    {
+      "name": "algorithmic-art",
+      "type": "agent",
+      "keywords": [
+        "arte generativo",
+        "p5.js"
+      ],
+      "capability": "Agente de arte algorítmico",
+      "path": "~/.claude/skills/algorithmic-art/SKILL.md"
+    }
+  ]
+}

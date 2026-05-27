@@ -1,0 +1,49 @@
+{
+  "module_id": "verticals",
+  "module_name": "Vertical / Industria",
+  "total_entries": 4,
+  "total_skills": 1,
+  "total_agents": 3,
+  "entries": [
+    {
+      "name": "fda-food-safety-auditor",
+      "type": "agent",
+      "keywords": [
+        "FDA",
+        "food safety"
+      ],
+      "capability": "Agente auditor FDA",
+      "path": "~/.claude/skills/fda-food-safety-auditor/SKILL.md"
+    },
+    {
+      "name": "itil-expert",
+      "type": "skill",
+      "keywords": [
+        "ITIL",
+        "ITSM"
+      ],
+      "capability": "ITIL",
+      "path": "~/.claude/skills/itil-expert/SKILL.md"
+    },
+    {
+      "name": "logistics-exception-management",
+      "type": "agent",
+      "keywords": [
+        "logística",
+        "excepciones"
+      ],
+      "capability": "Agente de logística",
+      "path": "~/.claude/skills/logistics-exception-management/SKILL.md"
+    },
+    {
+      "name": "health-trend-analyzer",
+      "type": "agent",
+      "keywords": [
+        "salud",
+        "tendencias"
+      ],
+      "capability": "Agente de salud",
+      "path": "~/.claude/skills/health-trend-analyzer/SKILL.md"
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "module_id": "ai-agents",
+  "module_name": "IA / Agentes / LLMOps",
+  "total_entries": 34,
+  "total_skills": 21,
+  "total_agents": 13,
+  "entries": [
+    {
+      "name": "ai-agent-development",
+      "type": "skill",
+      "keywords": [
+        "agente",
+        "agent",
+        "desarrollo"
+      ],
+      "capability": "Desarrollo de agentes IA autónomos",
+      "path": "~/.claude/skills/ai-agent-development/SKILL.md"
+    },
+    {
+      "name": "ai-agents-architect",
+      "type": "agent",
+      "keywords": [
+        "arquitectura agente",
+        "multi-agent",
+        "orquestación"
+      ],
+      "capability": "Arquitectura de sistemas multi-agente",
+      "path": "~/.claude/skills/ai-agents-architect/SKILL.md"
+    },
+    {
+      "name": "ai-engineer",
+      "type": "skill",
+      "keywords": [
+        "IA",
+        "ingeniería IA",
+        "modelo"
+      ],
+      "capability": "Ingeniería de aplicaciones IA",
+      "path": "~/.claude/skills/ai-engineer/SKILL.md"
+    },
+    {
+      "name": "agent-orchestrator",
+      "type": "agent",
+      "keywords": [
+        "orquestador",
+        "coordinación agentes"
+      ],
+      "capability": "Orquestación de pipelines de agentes",
+      "path": "~/.claude/skills/agent-orchestrator/SKILL.md"
+    },
+    {
+      "name": "agent-memory-mcp",
+      "type": "agent",
+      "keywords": [
+        "memoria agente",
+        "MCP",
+        "persistencia"
+      ],
+      "capability": "Memoria persistente para agentes vía MCP",
+      "path": "~/.claude/skills/agent-memory-mcp/SKILL.md"
+    },
+    {
+      "name": "agent-memory-systems",
+      "type": "skill",
+      "keywords": [
+        "memoria",
+        "RAG",
+        "vector store"
+      ],
+      "capability": "Sistemas de memoria para agentes IA",
+      "path": "~/.claude/skills/agent-memory-systems/SKILL.md"
+    },
+    {
+      "name": "agent-tool-builder",
+      "type": "skill",
+      "keywords": [
+        "herramienta",
+        "tool",
+        "function calling"
+      ],
+      "capability": "Constructor de herramientas para agentes",
+      "path": "~/.claude/skills/agent-tool-builder/SKILL.md"
+    },
+    {
+      "name": "agentflow",
+      "type": "agent",
+      "keywords": [
+        "flujo agente",
+        "workflow agent"
+      ],
+      "capability": "Workflows de agentes paso a paso",
+      "path": "~/.claude/skills/agentflow/SKILL.md"
+    },
+    {
+      "name": "agentfolio",
+      "type": "agent",
+      "keywords": [
+        "portfolio agente",
+        "showcase"
+      ],
+      "capability": "Portfolio y showcase de agentes",
+      "path": "~/.claude/skills/agentfolio/SKILL.md"
+    },
+    {
+      "name": "agentmail",
+      "type": "agent",
+      "keywords": [
+        "email agente",
+        "correo autónomo"
+      ],
+      "capability": "Agente autónomo de email",
+      "path": "~/.claude/skills/agentmail/SKILL.md"
+    },
+    {
+      "name": "agentphone",
+      "type": "agent",
+      "keywords": [
+        "teléfono agente",
+        "llamadas"
+      ],
+      "capability": "Agente de llamadas telefónicas",
+      "path": "~/.claude/skills/agentphone/SKILL.md"
+    },
+    {
+      "name": "multi-agent-architect",
+      "type": "agent",
+      "keywords": [
+        "multi-agente",
+        "arquitectura distribuida"
+      ],
+      "capability": "Arquitectura multi-agente distribuida",
+      "path": "~/.claude/skills/multi-agent-architect/SKILL.md"
+    },
+    {
+      "name": "multi-agent-patterns",
+      "type": "skill",
+      "keywords": [
+        "patrones multi-agente",
+        "coordinación"
+      ],
+      "capability": "Patrones de diseño para multi-agentes",
+      "path": "~/.claude/skills/multi-agent-patterns/SKILL.md"
+    },
+    {
+      "name": "autonomous-agent-patterns",
+      "type": "skill",
+      "keywords": [
+        "autónomo",
+        "reflexión",
+        "auto-mejora"
+      ],
+      "capability": "Patrones para agentes autónomos",
+      "path": "~/.claude/skills/autonomous-agent-patterns/SKILL.md"
+    },
+    {
+      "name": "langchain-architecture",
+      "type": "skill",
+      "keywords": [
+        "langchain",
+        "chains",
+        "LCEL"
+      ],
+      "capability": "Arquitectura de aplicaciones con LangChain",
+      "path": "~/.claude/skills/langchain-architecture/SKILL.md"
+    },
+    {
+      "name": "langgraph",
+      "type": "agent",
+      "keywords": [
+        "langgraph",
+        "grafo",
+        "state machine"
+      ],
+      "capability": "Workflows de agentes con LangGraph",
+      "path": "~/.claude/skills/langgraph/SKILL.md"
+    },
+    {
+      "name": "langfuse",
+      "type": "skill",
+      "keywords": [
+        "langfuse",
+        "observabilidad",
+        "traces"
+      ],
+      "capability": "Observabilidad y tracing de LLMs",
+      "path": "~/.claude/skills/langfuse/SKILL.md"
+    },
+    {
+      "name": "llm-app-patterns",
+      "type": "skill",
+      "keywords": [
+        "LLM",
+        "aplicación",
+        "patrones"
+      ],
+      "capability": "Patrones de arquitectura para apps LLM",
+      "path": "~/.claude/skills/llm-app-patterns/SKILL.md"
+    },
+    {
+      "name": "llm-evaluation",
+      "type": "skill",
+      "keywords": [
+        "evaluación",
+        "benchmark",
+        "métricas LLM"
+      ],
+      "capability": "Evaluación y benchmarking de LLMs",
+      "path": "~/.claude/skills/llm-evaluation/SKILL.md"
+    },
+    {
+      "name": "llm-ops",
+      "type": "skill",
+      "keywords": [
+        "LLMOps",
+        "deployment",
+        "serving"
+      ],
+      "capability": "Operaciones de LLMs en producción",
+      "path": "~/.claude/skills/llm-ops/SKILL.md"
+    },
+    {
+      "name": "llm-prompt-optimizer",
+      "type": "agent",
+      "keywords": [
+        "prompt",
+        "optimización",
+        "engineering"
+      ],
+      "capability": "Optimización automática de prompts",
+      "path": "~/.claude/skills/llm-prompt-optimizer/SKILL.md"
+    },
+    {
+      "name": "llm-structured-output",
+      "type": "skill",
+      "keywords": [
+        "structured output",
+        "JSON",
+        "schema"
+      ],
+      "capability": "Outputs estructurados de LLMs",
+      "path": "~/.claude/skills/llm-structured-output/SKILL.md"
+    },
+    {
+      "name": "rag-engineer",
+      "type": "skill",
+      "keywords": [
+        "RAG",
+        "retrieval",
+        "augmented generation"
+      ],
+      "capability": "Ingeniería de sistemas RAG",
+      "path": "~/.claude/skills/rag-engineer/SKILL.md"
+    },
+    {
+      "name": "rag-implementation",
+      "type": "skill",
+      "keywords": [
+        "RAG implementación",
+        "chunking",
+        "indexing"
+      ],
+      "capability": "Implementación práctica de RAG",
+      "path": "~/.claude/skills/rag-implementation/SKILL.md"
+    },
+    {
+      "name": "crewai",
+      "type": "agent",
+      "keywords": [
+        "crewai",
+        "crew",
+        "agentes colaborativos"
+      ],
+      "capability": "Orquestación de agentes con CrewAI",
+      "path": "~/.claude/skills/crewai/SKILL.md"
+    },
+    {
+      "name": "pydantic-ai",
+      "type": "skill",
+      "keywords": [
+        "pydantic",
+        "validación",
+        "typed agents"
+      ],
+      "capability": "Agentes tipados con Pydantic AI",
+      "path": "~/.claude/skills/pydantic-ai/SKILL.md"
+    },
+    {
+      "name": "mcp-builder",
+      "type": "skill",
+      "keywords": [
+        "MCP",
+        "model context protocol",
+        "servidor"
+      ],
+      "capability": "Construcción de servidores MCP",
+      "path": "~/.claude/skills/mcp-builder/SKILL.md"
+    },
+    {
+      "name": "mcp-tool-developer",
+      "type": "skill",
+      "keywords": [
+        "MCP tool",
+        "herramienta MCP"
+      ],
+      "capability": "Desarrollo de herramientas MCP",
+      "path": "~/.claude/skills/mcp-tool-developer/SKILL.md"
+    },
+    {
+      "name": "prompt-engineer",
+      "type": "skill",
+      "keywords": [
+        "prompt engineering",
+        "few-shot",
+        "CoT"
+      ],
+      "capability": "Ingeniería de prompts avanzada",
+      "path": "~/.claude/skills/prompt-engineer/SKILL.md"
+    },
+    {
+      "name": "prompt-caching",
+      "type": "skill",
+      "keywords": [
+        "cache",
+        "prompt cache",
+        "optimización"
+      ],
+      "capability": "Caching de prompts para reducir costos",
+      "path": "~/.claude/skills/prompt-caching/SKILL.md"
+    },
+    {
+      "name": "claude-api",
+      "type": "skill",
+      "keywords": [
+        "claude",
+        "anthropic",
+        "API"
+      ],
+      "capability": "Desarrollo con Claude API",
+      "path": "~/.claude/skills/claude-api/SKILL.md"
+    },
+    {
+      "name": "claude-code-expert",
+      "type": "skill",
+      "keywords": [
+        "claude code",
+        "CLI",
+        "terminal"
+      ],
+      "capability": "Uso experto de Claude Code CLI",
+      "path": "~/.claude/skills/claude-code-expert/SKILL.md"
+    },
+    {
+      "name": "voice-agents",
+      "type": "agent",
+      "keywords": [
+        "voz",
+        "voice",
+        "TTS",
+        "STT"
+      ],
+      "capability": "Agentes de voz con TTS/STT",
+      "path": "~/.claude/skills/voice-agents/SKILL.md"
+    },
+    {
+      "name": "hosted-agents",
+      "type": "agent",
+      "keywords": [
+        "hosted",
+        "cloud agent",
+        "deployment"
+      ],
+      "capability": "Agentes hosted en la nube",
+      "path": "~/.claude/skills/hosted-agents/SKILL.md"
+    }
+  ]
+}

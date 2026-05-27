@@ -1,0 +1,61 @@
+{
+  "module_id": "python",
+  "module_name": "Python",
+  "total_entries": 5,
+  "total_skills": 4,
+  "total_agents": 1,
+  "entries": [
+    {
+      "name": "python-pro",
+      "type": "skill",
+      "keywords": [
+        "python",
+        "pythonic"
+      ],
+      "capability": "Python avanzado",
+      "path": "~/.claude/skills/python-pro/SKILL.md"
+    },
+    {
+      "name": "fastapi-pro",
+      "type": "skill",
+      "keywords": [
+        "fastapi",
+        "API REST",
+        "async"
+      ],
+      "capability": "FastAPI",
+      "path": "~/.claude/skills/fastapi-pro/SKILL.md"
+    },
+    {
+      "name": "django-pro",
+      "type": "skill",
+      "keywords": [
+        "django",
+        "ORM",
+        "DRF"
+      ],
+      "capability": "Django",
+      "path": "~/.claude/skills/django-pro/SKILL.md"
+    },
+    {
+      "name": "python-testing-patterns",
+      "type": "skill",
+      "keywords": [
+        "pytest",
+        "mock"
+      ],
+      "capability": "Testing Python",
+      "path": "~/.claude/skills/python-testing-patterns/SKILL.md"
+    },
+    {
+      "name": "python-performance-optimization",
+      "type": "agent",
+      "keywords": [
+        "profiling",
+        "cython"
+      ],
+      "capability": "Agente optimizador Python",
+      "path": "~/.claude/skills/python-performance-optimization/SKILL.md"
+    }
+  ]
+}

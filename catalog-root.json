@@ -1,0 +1,317 @@
+{
+  "nexus_version": "9.2",
+  "catalog_version": "3.0",
+  "last_scan": null,
+  "total_entries": 1700,
+  "total_skills": 1446,
+  "total_agents": 254,
+  "total_modules": 16,
+  "_architecture": "Bodega física: 1700+ skills en ~/.claude/warehouse/ por módulo. Solo nexus/ en ~/.claude/skills/. NEXUS crea symlinks temporales durante pipelines y los remueve al terminar. Boot = ~400 tokens.",
+  "_entry_types": {
+    "skill": "Instrucciones especializadas que NEXUS ejecuta como paso de un pipeline. No tiene autonomía — recibe inputs y produce outputs.",
+    "agent": "Worker autónomo con capacidad de decisión. Puede ejecutar múltiples pasos internos, hacer sub-llamadas, y gestionar su propio estado. Se identifica por tener un *-worker.md o ser un sistema multi-step."
+  },
+  "auto_ingest": {
+    "enabled": true,
+    "watch_paths": [
+      ".claude/skills/",
+      ".claude/agents/",
+      ".claude/plugins/"
+    ],
+    "on_new_file": "analyze_and_catalog",
+    "on_delete_file": "remove_from_catalog",
+    "_protocol": "Ver SKILL.md Fase 0.2 — Auto-ingesta"
+  },
+  "modules": [
+    {
+      "id": "ai-agents",
+      "name": "IA / Agentes / LLMOps",
+      "skills": 56,
+      "agents": 34,
+      "top_keywords": [
+        "agente",
+        "LLM",
+        "RAG",
+        "prompt",
+        "MCP",
+        "langchain",
+        "crewai",
+        "multi-agent"
+      ]
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "skills": 18,
+      "agents": 2,
+      "top_keywords": [
+        "python",
+        "fastapi",
+        "django",
+        "pip",
+        "uv",
+        "async",
+        "packaging"
+      ]
+    },
+    {
+      "id": "js-ts",
+      "name": "JavaScript / TypeScript",
+      "skills": 35,
+      "agents": 5,
+      "top_keywords": [
+        "react",
+        "next.js",
+        "typescript",
+        "node",
+        "nestjs",
+        "prisma",
+        "svelte",
+        "bun"
+      ]
+    },
+    {
+      "id": "languages",
+      "name": "Otros Lenguajes",
+      "skills": 28,
+      "agents": 2,
+      "top_keywords": [
+        "golang",
+        "rust",
+        "java",
+        "kotlin",
+        "swift",
+        "c#",
+        "ruby",
+        "flutter"
+      ]
+    },
+    {
+      "id": "cloud-devops",
+      "name": "Cloud / DevOps / Infra",
+      "skills": 160,
+      "agents": 20,
+      "top_keywords": [
+        "AWS",
+        "Azure",
+        "GCP",
+        "terraform",
+        "kubernetes",
+        "docker",
+        "CI/CD",
+        "serverless"
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Seguridad / Pentest",
+      "skills": 35,
+      "agents": 15,
+      "top_keywords": [
+        "pentest",
+        "audit",
+        "vulnerability",
+        "red team",
+        "OWASP",
+        "compliance",
+        "exploit"
+      ]
+    },
+    {
+      "id": "data-ml",
+      "name": "Datos / BI / ML",
+      "skills": 32,
+      "agents": 8,
+      "top_keywords": [
+        "data",
+        "ML",
+        "pipeline",
+        "analytics",
+        "embeddings",
+        "dbt",
+        "spark",
+        "vector"
+      ]
+    },
+    {
+      "id": "databases",
+      "name": "Bases de Datos",
+      "skills": 22,
+      "agents": 3,
+      "top_keywords": [
+        "PostgreSQL",
+        "SQL",
+        "NoSQL",
+        "migration",
+        "optimizer",
+        "snowflake"
+      ]
+    },
+    {
+      "id": "seo-marketing",
+      "name": "SEO / Marketing / Growth",
+      "skills": 42,
+      "agents": 8,
+      "top_keywords": [
+        "SEO",
+        "copywriting",
+        "ads",
+        "growth",
+        "email",
+        "landing",
+        "content"
+      ]
+    },
+    {
+      "id": "design-frontend",
+      "name": "Diseño / Frontend / UI",
+      "skills": 40,
+      "agents": 10,
+      "top_keywords": [
+        "UI",
+        "UX",
+        "tailwind",
+        "shadcn",
+        "animation",
+        "3D",
+        "three.js"
+      ]
+    },
+    {
+      "id": "automation-saas",
+      "name": "Automatización SaaS / MCP",
+      "skills": 50,
+      "agents": 30,
+      "top_keywords": [
+        "slack",
+        "notion",
+        "gmail",
+        "shopify",
+        "stripe",
+        "n8n",
+        "make",
+        "zapier"
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Negocio / Producto / Estrategia",
+      "skills": 25,
+      "agents": 5,
+      "top_keywords": [
+        "product",
+        "startup",
+        "pricing",
+        "analytics",
+        "sales",
+        "churn",
+        "metrics"
+      ]
+    },
+    {
+      "id": "verticals",
+      "name": "Vertical / Industria",
+      "skills": 35,
+      "agents": 5,
+      "top_keywords": [
+        "health",
+        "legal",
+        "logistics",
+        "finance",
+        "FDA",
+        "ITIL",
+        "compliance"
+      ]
+    },
+    {
+      "id": "testing-qa",
+      "name": "Testing / QA / Workflows",
+      "skills": 20,
+      "agents": 5,
+      "top_keywords": [
+        "TDD",
+        "test",
+        "playwright",
+        "e2e",
+        "code review",
+        "k6",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "custom",
+      "name": "Skills Propias / NEXUS Core",
+      "skills": 10,
+      "agents": 12,
+      "top_keywords": [
+        "nexus",
+        "marketos",
+        "andruia",
+        "rayden",
+        "mem",
+        "arch",
+        "codex"
+      ]
+    },
+    {
+      "id": "plugins",
+      "name": "Plugins Namespaced",
+      "skills": 200,
+      "agents": 50,
+      "top_keywords": [
+        "cockroachdb",
+        "bigdata",
+        "daloopa",
+        "lseg",
+        "nimble",
+        "sanity",
+        "zoom"
+      ]
+    }
+  ],
+  "nexus_core": {
+    "_note": "Entries propias de NEXUS siempre disponibles sin pasar por catálogo modular",
+    "always_loaded": [
+      "mem"
+    ],
+    "core_skills": [
+      "arch",
+      "webdev",
+      "market-scout",
+      "codex",
+      "stitch",
+      "knowledge",
+      "security",
+      "contract"
+    ],
+    "core_agents": [
+      "autoflow",
+      "watchdog",
+      "marketos",
+      "memory-worker",
+      "marketos-worker"
+    ],
+    "core_index": "catalog/custom.json"
+  },
+  "catalog_location": "~/.claude/catalog/",
+  "scan_paths": {
+    "global_skills": "~/.claude/skills/",
+    "global_agents": "~/.claude/agents/",
+    "global_plugins": "~/.claude/plugins/",
+    "local_skills": "./.claude/skills/",
+    "local_agents": "./.claude/agents/"
+  },
+  "warehouse": {
+    "enabled": true,
+    "location": "~/.claude/warehouse/",
+    "backup_location": "~/.claude/skills-backup-{date}/",
+    "symlink_mode": true,
+    "_note": "Skills viven en warehouse/{module}/. Symlinks temporales en skills/ durante pipelines.",
+    "always_in_skills": [
+      "nexus"
+    ],
+    "never_warehouse": [
+      "nexus"
+    ]
+  }
+}

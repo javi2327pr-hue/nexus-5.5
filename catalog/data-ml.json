@@ -1,0 +1,62 @@
+{
+  "module_id": "data-ml",
+  "module_name": "Datos / BI / ML",
+  "total_entries": 5,
+  "total_skills": 4,
+  "total_agents": 1,
+  "entries": [
+    {
+      "name": "data-engineer",
+      "type": "skill",
+      "keywords": [
+        "data",
+        "pipeline",
+        "ETL"
+      ],
+      "capability": "Data engineering",
+      "path": "~/.claude/skills/data-engineer/SKILL.md"
+    },
+    {
+      "name": "ml-engineer",
+      "type": "agent",
+      "keywords": [
+        "ML",
+        "modelo",
+        "training"
+      ],
+      "capability": "Agente ML engineer",
+      "path": "~/.claude/skills/ml-engineer/SKILL.md"
+    },
+    {
+      "name": "dbt-transformation-patterns",
+      "type": "skill",
+      "keywords": [
+        "dbt",
+        "transformación"
+      ],
+      "capability": "dbt patterns",
+      "path": "~/.claude/skills/dbt-transformation-patterns/SKILL.md"
+    },
+    {
+      "name": "vector-database-engineer",
+      "type": "skill",
+      "keywords": [
+        "vector DB",
+        "pinecone"
+      ],
+      "capability": "Vector databases",
+      "path": "~/.claude/skills/vector-database-engineer/SKILL.md"
+    },
+    {
+      "name": "computer-vision-expert",
+      "type": "skill",
+      "keywords": [
+        "CV",
+        "imagen",
+        "detección"
+      ],
+      "capability": "Computer vision",
+      "path": "~/.claude/skills/computer-vision-expert/SKILL.md"
+    }
+  ]
+}

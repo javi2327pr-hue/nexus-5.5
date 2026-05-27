@@ -1,0 +1,49 @@
+{
+  "module_id": "testing-qa",
+  "module_name": "Testing / QA / Workflows",
+  "total_entries": 4,
+  "total_skills": 2,
+  "total_agents": 2,
+  "entries": [
+    {
+      "name": "tdd-orchestrator",
+      "type": "agent",
+      "keywords": [
+        "TDD",
+        "test driven"
+      ],
+      "capability": "Agente orquestador TDD",
+      "path": "~/.claude/skills/tdd-orchestrator/SKILL.md"
+    },
+    {
+      "name": "playwright-skill",
+      "type": "skill",
+      "keywords": [
+        "playwright",
+        "e2e"
+      ],
+      "capability": "Playwright E2E",
+      "path": "~/.claude/skills/playwright-skill/SKILL.md"
+    },
+    {
+      "name": "code-review-excellence",
+      "type": "agent",
+      "keywords": [
+        "code review",
+        "PR"
+      ],
+      "capability": "Agente de code review",
+      "path": "~/.claude/skills/code-review-excellence/SKILL.md"
+    },
+    {
+      "name": "k6-load-testing",
+      "type": "skill",
+      "keywords": [
+        "k6",
+        "load test"
+      ],
+      "capability": "Load testing k6",
+      "path": "~/.claude/skills/k6-load-testing/SKILL.md"
+    }
+  ]
+}

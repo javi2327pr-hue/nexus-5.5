@@ -1,0 +1,223 @@
+{
+  "module_id": "seo-marketing",
+  "module_name": "SEO / Marketing / Growth",
+  "total_entries": 20,
+  "total_skills": 12,
+  "total_agents": 8,
+  "entries": [
+    {
+      "name": "seo-audit",
+      "type": "agent",
+      "keywords": [
+        "SEO audit",
+        "auditoría",
+        "crawl"
+      ],
+      "capability": "Agente de auditoría SEO completa",
+      "path": "~/.claude/skills/seo-audit/SKILL.md"
+    },
+    {
+      "name": "seo-technical",
+      "type": "skill",
+      "keywords": [
+        "SEO técnico",
+        "core web vitals",
+        "schema"
+      ],
+      "capability": "SEO técnico",
+      "path": "~/.claude/skills/seo-technical/SKILL.md"
+    },
+    {
+      "name": "seo-content-writer",
+      "type": "agent",
+      "keywords": [
+        "SEO content",
+        "artículo",
+        "keywords"
+      ],
+      "capability": "Agente escritor de contenido SEO",
+      "path": "~/.claude/skills/seo-content-writer/SKILL.md"
+    },
+    {
+      "name": "seo-keyword-strategist",
+      "type": "agent",
+      "keywords": [
+        "keywords",
+        "keyword research"
+      ],
+      "capability": "Agente estratega de keywords",
+      "path": "~/.claude/skills/seo-keyword-strategist/SKILL.md"
+    },
+    {
+      "name": "seo-content-planner",
+      "type": "agent",
+      "keywords": [
+        "plan contenido",
+        "editorial SEO"
+      ],
+      "capability": "Agente planificador de contenido SEO",
+      "path": "~/.claude/skills/seo-content-planner/SKILL.md"
+    },
+    {
+      "name": "seo-meta-optimizer",
+      "type": "skill",
+      "keywords": [
+        "meta tags",
+        "title",
+        "description"
+      ],
+      "capability": "Optimización meta tags",
+      "path": "~/.claude/skills/seo-meta-optimizer/SKILL.md"
+    },
+    {
+      "name": "seo-cannibalization-detector",
+      "type": "agent",
+      "keywords": [
+        "cannibalización",
+        "duplicados",
+        "overlap"
+      ],
+      "capability": "Agente detector de canibalización SEO",
+      "path": "~/.claude/skills/seo-cannibalization-detector/SKILL.md"
+    },
+    {
+      "name": "growth-engine",
+      "type": "skill",
+      "keywords": [
+        "growth",
+        "crecimiento",
+        "loops"
+      ],
+      "capability": "Growth loops",
+      "path": "~/.claude/skills/growth-engine/SKILL.md"
+    },
+    {
+      "name": "launch-strategy",
+      "type": "skill",
+      "keywords": [
+        "lanzamiento",
+        "go-to-market"
+      ],
+      "capability": "Estrategia de lanzamiento",
+      "path": "~/.claude/skills/launch-strategy/SKILL.md"
+    },
+    {
+      "name": "paid-ads",
+      "type": "skill",
+      "keywords": [
+        "paid ads",
+        "PPC",
+        "Meta Ads"
+      ],
+      "capability": "Campañas paid ads",
+      "path": "~/.claude/skills/paid-ads/SKILL.md"
+    },
+    {
+      "name": "ad-creative",
+      "type": "skill",
+      "keywords": [
+        "creative",
+        "banner",
+        "visual ad"
+      ],
+      "capability": "Creativos publicitarios",
+      "path": "~/.claude/skills/ad-creative/SKILL.md"
+    },
+    {
+      "name": "cold-email",
+      "type": "agent",
+      "keywords": [
+        "cold email",
+        "outreach",
+        "prospección"
+      ],
+      "capability": "Agente de cold email outreach",
+      "path": "~/.claude/skills/cold-email/SKILL.md"
+    },
+    {
+      "name": "email-sequence",
+      "type": "skill",
+      "keywords": [
+        "email sequence",
+        "nurturing",
+        "drip"
+      ],
+      "capability": "Secuencias email",
+      "path": "~/.claude/skills/email-sequence/SKILL.md"
+    },
+    {
+      "name": "copywriting",
+      "type": "skill",
+      "keywords": [
+        "copywriting",
+        "persuasión"
+      ],
+      "capability": "Copywriting persuasivo",
+      "path": "~/.claude/skills/copywriting/SKILL.md"
+    },
+    {
+      "name": "copywriting-psychologist",
+      "type": "agent",
+      "keywords": [
+        "psicología copy",
+        "sesgos",
+        "triggers"
+      ],
+      "capability": "Agente de copywriting psicológico",
+      "path": "~/.claude/skills/copywriting-psychologist/SKILL.md"
+    },
+    {
+      "name": "content-marketer",
+      "type": "skill",
+      "keywords": [
+        "content marketing",
+        "blog",
+        "pillar"
+      ],
+      "capability": "Content marketing",
+      "path": "~/.claude/skills/content-marketer/SKILL.md"
+    },
+    {
+      "name": "content-strategy",
+      "type": "skill",
+      "keywords": [
+        "estrategia contenido",
+        "calendario"
+      ],
+      "capability": "Estrategia de contenido",
+      "path": "~/.claude/skills/content-strategy/SKILL.md"
+    },
+    {
+      "name": "landing-page-generator",
+      "type": "agent",
+      "keywords": [
+        "landing page",
+        "conversión",
+        "CTA"
+      ],
+      "capability": "Agente generador de landing pages",
+      "path": "~/.claude/skills/landing-page-generator/SKILL.md"
+    },
+    {
+      "name": "lead-magnets",
+      "type": "skill",
+      "keywords": [
+        "lead magnet",
+        "ebook",
+        "freebie"
+      ],
+      "capability": "Diseño de lead magnets",
+      "path": "~/.claude/skills/lead-magnets/SKILL.md"
+    },
+    {
+      "name": "programmatic-seo",
+      "type": "skill",
+      "keywords": [
+        "programmatic SEO",
+        "páginas auto"
+      ],
+      "capability": "SEO programático",
+      "path": "~/.claude/skills/programmatic-seo/SKILL.md"
+    }
+  ]
+}

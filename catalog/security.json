@@ -1,0 +1,69 @@
+{
+  "module_id": "security",
+  "module_name": "Seguridad / Pentest",
+  "total_entries": 6,
+  "total_skills": 4,
+  "total_agents": 2,
+  "entries": [
+    {
+      "name": "security-auditor",
+      "type": "agent",
+      "keywords": [
+        "auditoría",
+        "OWASP"
+      ],
+      "capability": "Agente auditor de seguridad",
+      "path": "~/.claude/skills/security-auditor/SKILL.md"
+    },
+    {
+      "name": "pentest-checklist",
+      "type": "skill",
+      "keywords": [
+        "pentest",
+        "checklist"
+      ],
+      "capability": "Checklist pentest",
+      "path": "~/.claude/skills/pentest-checklist/SKILL.md"
+    },
+    {
+      "name": "ethical-hacking-methodology",
+      "type": "skill",
+      "keywords": [
+        "hacking ético"
+      ],
+      "capability": "Metodología hacking ético",
+      "path": "~/.claude/skills/ethical-hacking-methodology/SKILL.md"
+    },
+    {
+      "name": "red-team-tactics",
+      "type": "agent",
+      "keywords": [
+        "red team",
+        "evasión"
+      ],
+      "capability": "Agente red team",
+      "path": "~/.claude/skills/red-team-tactics/SKILL.md"
+    },
+    {
+      "name": "threat-modeling-expert",
+      "type": "skill",
+      "keywords": [
+        "STRIDE",
+        "threat model"
+      ],
+      "capability": "Threat modeling",
+      "path": "~/.claude/skills/threat-modeling-expert/SKILL.md"
+    },
+    {
+      "name": "web-security-testing",
+      "type": "skill",
+      "keywords": [
+        "XSS",
+        "CSRF",
+        "injection"
+      ],
+      "capability": "Web security testing",
+      "path": "~/.claude/skills/web-security-testing/SKILL.md"
+    }
+  ]
+}

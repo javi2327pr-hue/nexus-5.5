@@ -1,0 +1,141 @@
+{
+  "module_id": "custom",
+  "module_name": "Skills Propias / NEXUS Core",
+  "total_entries": 12,
+  "total_skills": 7,
+  "total_agents": 5,
+  "entries": [
+    {
+      "name": "nexus",
+      "type": "agent",
+      "keywords": [
+        "nexus",
+        "orquestador",
+        "pipeline"
+      ],
+      "capability": "Orquestador maestro de skills y agentes",
+      "path": "~/.claude/skills/nexus/SKILL.md"
+    },
+    {
+      "name": "marketos",
+      "type": "agent",
+      "keywords": [
+        "marketing",
+        "competencia",
+        "funnel",
+        "ads"
+      ],
+      "capability": "Agencia de marketing con 8 especialistas",
+      "path": "~/.claude/skills/marketos/SKILL.md"
+    },
+    {
+      "name": "arch",
+      "type": "skill",
+      "keywords": [
+        "arquitectura",
+        "backend",
+        "API",
+        "stack"
+      ],
+      "capability": "Arquitectura técnica",
+      "path": "~/.claude/skills/arch/SKILL.md"
+    },
+    {
+      "name": "webdev",
+      "type": "skill",
+      "keywords": [
+        "frontend",
+        "URL",
+        "blueprint"
+      ],
+      "capability": "Análisis URLs y blueprint",
+      "path": "~/.claude/skills/webdev/SKILL.md"
+    },
+    {
+      "name": "market-scout",
+      "type": "skill",
+      "keywords": [
+        "investigación",
+        "nicho",
+        "competidores"
+      ],
+      "capability": "Investigación de mercado",
+      "path": "~/.claude/skills/market-scout/SKILL.md"
+    },
+    {
+      "name": "codex",
+      "type": "skill",
+      "keywords": [
+        "código",
+        "implementar",
+        "test"
+      ],
+      "capability": "Implementación de código",
+      "path": "~/.claude/skills/codex/SKILL.md"
+    },
+    {
+      "name": "autoflow",
+      "type": "agent",
+      "keywords": [
+        "n8n",
+        "automatización",
+        "workflow"
+      ],
+      "capability": "Agente de workflows n8n",
+      "path": "~/.claude/skills/autoflow/SKILL.md"
+    },
+    {
+      "name": "stitch",
+      "type": "skill",
+      "keywords": [
+        "diseño",
+        "UI",
+        "mockup",
+        "Stitch"
+      ],
+      "capability": "Diseño UI con Stitch",
+      "path": "~/.claude/skills/stitch/SKILL.md"
+    },
+    {
+      "name": "mem",
+      "type": "agent",
+      "keywords": [
+        "memoria",
+        "recuerda",
+        "sesión anterior"
+      ],
+      "capability": "Agente de memoria persistente",
+      "path": "~/.claude/skills/mem/SKILL.md"
+    },
+    {
+      "name": "knowledge",
+      "type": "skill",
+      "keywords": [
+        "knowledge base",
+        "documenta"
+      ],
+      "capability": "Knowledge base",
+      "path": "~/.claude/skills/knowledge/SKILL.md"
+    },
+    {
+      "name": "security",
+      "type": "skill",
+      "keywords": [
+        "audita",
+        "verificar skill"
+      ],
+      "capability": "Auditoría de seguridad",
+      "path": "~/.claude/skills/security/SKILL.md"
+    },
+    {
+      "name": "watchdog",
+      "type": "agent",
+      "keywords": [
+        "monitoreo",
+        "alertas"
+      ],
+      "capability": "Agente de monitoreo",
+      "path": "~/.claude/skills/watchdog/SKILL.md"
+    }
+  ]
+}

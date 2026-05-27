@@ -1,0 +1,193 @@
+{
+  "module_id": "cloud-devops",
+  "module_name": "Cloud / DevOps / Infra",
+  "total_entries": 17,
+  "total_skills": 12,
+  "total_agents": 5,
+  "entries": [
+    {
+      "name": "aws-serverless",
+      "type": "skill",
+      "keywords": [
+        "AWS",
+        "lambda",
+        "serverless"
+      ],
+      "capability": "AWS serverless",
+      "path": "~/.claude/skills/aws-serverless/SKILL.md"
+    },
+    {
+      "name": "aws-cost-optimizer",
+      "type": "agent",
+      "keywords": [
+        "AWS costos",
+        "optimización",
+        "savings"
+      ],
+      "capability": "Agente optimizador de costos AWS",
+      "path": "~/.claude/skills/aws-cost-optimizer/SKILL.md"
+    },
+    {
+      "name": "aws-cost-cleanup",
+      "type": "agent",
+      "keywords": [
+        "cleanup",
+        "recursos huérfanos",
+        "ahorro"
+      ],
+      "capability": "Agente de limpieza de recursos AWS",
+      "path": "~/.claude/skills/aws-cost-cleanup/SKILL.md"
+    },
+    {
+      "name": "terraform-infrastructure",
+      "type": "skill",
+      "keywords": [
+        "terraform",
+        "IaC",
+        "módulos"
+      ],
+      "capability": "Terraform IaC",
+      "path": "~/.claude/skills/terraform-infrastructure/SKILL.md"
+    },
+    {
+      "name": "kubernetes-architect",
+      "type": "skill",
+      "keywords": [
+        "kubernetes",
+        "k8s",
+        "cluster"
+      ],
+      "capability": "Arquitectura K8s",
+      "path": "~/.claude/skills/kubernetes-architect/SKILL.md"
+    },
+    {
+      "name": "kubernetes-deployment",
+      "type": "skill",
+      "keywords": [
+        "k8s deploy",
+        "rollout",
+        "helm"
+      ],
+      "capability": "Deployments K8s",
+      "path": "~/.claude/skills/kubernetes-deployment/SKILL.md"
+    },
+    {
+      "name": "docker-expert",
+      "type": "skill",
+      "keywords": [
+        "docker",
+        "container",
+        "compose"
+      ],
+      "capability": "Docker avanzado",
+      "path": "~/.claude/skills/docker-expert/SKILL.md"
+    },
+    {
+      "name": "github-actions-templates",
+      "type": "skill",
+      "keywords": [
+        "GitHub Actions",
+        "CI/CD"
+      ],
+      "capability": "Templates GitHub Actions",
+      "path": "~/.claude/skills/github-actions-templates/SKILL.md"
+    },
+    {
+      "name": "gha-security-review",
+      "type": "agent",
+      "keywords": [
+        "GHA security",
+        "audit CI/CD"
+      ],
+      "capability": "Agente auditor de seguridad CI/CD",
+      "path": "~/.claude/skills/gha-security-review/SKILL.md"
+    },
+    {
+      "name": "gitops-workflow",
+      "type": "skill",
+      "keywords": [
+        "GitOps",
+        "ArgoCD",
+        "flux"
+      ],
+      "capability": "GitOps workflows",
+      "path": "~/.claude/skills/gitops-workflow/SKILL.md"
+    },
+    {
+      "name": "vercel-deployment",
+      "type": "skill",
+      "keywords": [
+        "vercel",
+        "deploy",
+        "edge"
+      ],
+      "capability": "Deploy en Vercel",
+      "path": "~/.claude/skills/vercel-deployment/SKILL.md"
+    },
+    {
+      "name": "cloudflare-workers-expert",
+      "type": "skill",
+      "keywords": [
+        "cloudflare",
+        "workers"
+      ],
+      "capability": "Cloudflare Workers",
+      "path": "~/.claude/skills/cloudflare-workers-expert/SKILL.md"
+    },
+    {
+      "name": "firebase",
+      "type": "skill",
+      "keywords": [
+        "firebase",
+        "firestore",
+        "auth"
+      ],
+      "capability": "Firebase full-stack",
+      "path": "~/.claude/skills/firebase/SKILL.md"
+    },
+    {
+      "name": "supabase-automation",
+      "type": "agent",
+      "keywords": [
+        "supabase",
+        "postgres",
+        "realtime"
+      ],
+      "capability": "Agente de automatización Supabase",
+      "path": "~/.claude/skills/supabase-automation/SKILL.md"
+    },
+    {
+      "name": "cloud-architect",
+      "type": "skill",
+      "keywords": [
+        "cloud",
+        "multi-cloud",
+        "arquitectura"
+      ],
+      "capability": "Arquitectura cloud enterprise",
+      "path": "~/.claude/skills/cloud-architect/SKILL.md"
+    },
+    {
+      "name": "helm-chart-scaffolding",
+      "type": "skill",
+      "keywords": [
+        "helm",
+        "chart",
+        "templates"
+      ],
+      "capability": "Scaffolding Helm charts",
+      "path": "~/.claude/skills/helm-chart-scaffolding/SKILL.md"
+    },
+    {
+      "name": "render-automation",
+      "type": "agent",
+      "keywords": [
+        "render",
+        "deploy",
+        "hosting"
+      ],
+      "capability": "Agente de deploy en Render",
+      "path": "~/.claude/skills/render-automation/SKILL.md"
+    }
+  ]
+}

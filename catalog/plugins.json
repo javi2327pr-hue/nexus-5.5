@@ -1,0 +1,50 @@
+{
+  "module_id": "plugins",
+  "module_name": "Plugins Namespaced",
+  "total_entries": 4,
+  "total_skills": 3,
+  "total_agents": 1,
+  "entries": [
+    {
+      "name": "cockroachdb:*",
+      "type": "skill",
+      "keywords": [
+        "cockroachdb",
+        "distributed SQL"
+      ],
+      "capability": "CockroachDB",
+      "path": "~/.claude/plugins/marketplaces/*/cockroachdb/SKILL.md"
+    },
+    {
+      "name": "bigdata-com:*",
+      "type": "skill",
+      "keywords": [
+        "big data",
+        "analytics"
+      ],
+      "capability": "Big data",
+      "path": "~/.claude/plugins/marketplaces/*/bigdata-com/SKILL.md"
+    },
+    {
+      "name": "sanity:*",
+      "type": "skill",
+      "keywords": [
+        "sanity",
+        "CMS",
+        "GROQ"
+      ],
+      "capability": "Sanity CMS",
+      "path": "~/.claude/plugins/marketplaces/*/sanity/SKILL.md"
+    },
+    {
+      "name": "zoom-plugin:*",
+      "type": "agent",
+      "keywords": [
+        "zoom",
+        "meetings"
+      ],
+      "capability": "Agente Zoom",
+      "path": "~/.claude/plugins/marketplaces/*/zoom-plugin/SKILL.md"
+    }
+  ]
+}

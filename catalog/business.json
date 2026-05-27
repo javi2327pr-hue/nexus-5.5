@@ -1,0 +1,70 @@
+{
+  "module_id": "business",
+  "module_name": "Negocio / Producto / Estrategia",
+  "total_entries": 6,
+  "total_skills": 4,
+  "total_agents": 2,
+  "entries": [
+    {
+      "name": "product-manager",
+      "type": "skill",
+      "keywords": [
+        "product",
+        "PRD",
+        "roadmap"
+      ],
+      "capability": "Product management",
+      "path": "~/.claude/skills/product-manager/SKILL.md"
+    },
+    {
+      "name": "startup-analyst",
+      "type": "agent",
+      "keywords": [
+        "startup",
+        "análisis mercado"
+      ],
+      "capability": "Agente analista de startups",
+      "path": "~/.claude/skills/startup-analyst/SKILL.md"
+    },
+    {
+      "name": "pricing-strategy",
+      "type": "skill",
+      "keywords": [
+        "pricing",
+        "monetización"
+      ],
+      "capability": "Estrategia de precios",
+      "path": "~/.claude/skills/pricing-strategy/SKILL.md"
+    },
+    {
+      "name": "competitive-landscape",
+      "type": "skill",
+      "keywords": [
+        "competencia",
+        "landscape"
+      ],
+      "capability": "Análisis competitivo",
+      "path": "~/.claude/skills/competitive-landscape/SKILL.md"
+    },
+    {
+      "name": "sales-enablement",
+      "type": "skill",
+      "keywords": [
+        "sales",
+        "ventas"
+      ],
+      "capability": "Sales enablement",
+      "path": "~/.claude/skills/sales-enablement/SKILL.md"
+    },
+    {
+      "name": "churn-prevention",
+      "type": "agent",
+      "keywords": [
+        "churn",
+        "retención"
+      ],
+      "capability": "Agente de prevención de churn",
+      "path": "~/.claude/skills/churn-prevention/SKILL.md"
+    }
+  ]
+}

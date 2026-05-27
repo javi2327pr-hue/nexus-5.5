@@ -1,0 +1,61 @@
+{
+  "module_id": "databases",
+  "module_name": "Bases de Datos",
+  "total_entries": 5,
+  "total_skills": 4,
+  "total_agents": 1,
+  "entries": [
+    {
+      "name": "database-architect",
+      "type": "skill",
+      "keywords": [
+        "DB",
+        "modelado",
+        "normalización"
+      ],
+      "capability": "Arquitectura DB",
+      "path": "~/.claude/skills/database-architect/SKILL.md"
+    },
+    {
+      "name": "postgresql-optimization",
+      "type": "skill",
+      "keywords": [
+        "PostgreSQL",
+        "EXPLAIN"
+      ],
+      "capability": "Optimización PostgreSQL",
+      "path": "~/.claude/skills/postgresql-optimization/SKILL.md"
+    },
+    {
+      "name": "sql-optimization-patterns",
+      "type": "skill",
+      "keywords": [
+        "SQL",
+        "queries"
+      ],
+      "capability": "Optimización SQL",
+      "path": "~/.claude/skills/sql-optimization-patterns/SKILL.md"
+    },
+    {
+      "name": "database-migration",
+      "type": "agent",
+      "keywords": [
+        "migración",
+        "zero downtime"
+      ],
+      "capability": "Agente de migraciones DB",
+      "path": "~/.claude/skills/database-migration/SKILL.md"
+    },
+    {
+      "name": "nosql-expert",
+      "type": "skill",
+      "keywords": [
+        "NoSQL",
+        "MongoDB",
+        "Redis"
+      ],
+      "capability": "NoSQL",
+      "path": "~/.claude/skills/nosql-expert/SKILL.md"
+    }
+  ]
+}

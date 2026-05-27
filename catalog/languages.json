@@ -1,0 +1,62 @@
+{
+  "module_id": "languages",
+  "module_name": "Otros Lenguajes",
+  "total_entries": 5,
+  "total_skills": 5,
+  "total_agents": 0,
+  "entries": [
+    {
+      "name": "golang-pro",
+      "type": "skill",
+      "keywords": [
+        "go",
+        "golang",
+        "goroutines"
+      ],
+      "capability": "Go avanzado",
+      "path": "~/.claude/skills/golang-pro/SKILL.md"
+    },
+    {
+      "name": "rust-pro",
+      "type": "skill",
+      "keywords": [
+        "rust",
+        "ownership"
+      ],
+      "capability": "Rust avanzado",
+      "path": "~/.claude/skills/rust-pro/SKILL.md"
+    },
+    {
+      "name": "java-pro",
+      "type": "skill",
+      "keywords": [
+        "java",
+        "spring",
+        "JVM"
+      ],
+      "capability": "Java + Spring",
+      "path": "~/.claude/skills/java-pro/SKILL.md"
+    },
+    {
+      "name": "flutter-expert",
+      "type": "skill",
+      "keywords": [
+        "flutter",
+        "dart",
+        "widgets"
+      ],
+      "capability": "Flutter",
+      "path": "~/.claude/skills/flutter-expert/SKILL.md"
+    },
+    {
+      "name": "swift-concurrency-expert",
+      "type": "skill",
+      "keywords": [
+        "swift",
+        "async/await"
+      ],
+      "capability": "Swift concurrencia",
+      "path": "~/.claude/skills/swift-concurrency-expert/SKILL.md"
+    }
+  ]
+}

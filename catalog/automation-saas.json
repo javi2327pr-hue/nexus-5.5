@@ -1,0 +1,181 @@
+{
+  "module_id": "automation-saas",
+  "module_name": "Automatización SaaS / MCP",
+  "total_entries": 16,
+  "total_skills": 1,
+  "total_agents": 15,
+  "entries": [
+    {
+      "name": "slack-automation",
+      "type": "agent",
+      "keywords": [
+        "slack",
+        "bot",
+        "webhook"
+      ],
+      "capability": "Agente de automatización Slack",
+      "path": "~/.claude/skills/slack-automation/SKILL.md"
+    },
+    {
+      "name": "slack-bot-builder",
+      "type": "agent",
+      "keywords": [
+        "slack bot",
+        "slash commands"
+      ],
+      "capability": "Agente constructor de bots Slack",
+      "path": "~/.claude/skills/slack-bot-builder/SKILL.md"
+    },
+    {
+      "name": "notion-automation",
+      "type": "agent",
+      "keywords": [
+        "notion",
+        "databases",
+        "API"
+      ],
+      "capability": "Agente de automatización Notion",
+      "path": "~/.claude/skills/notion-automation/SKILL.md"
+    },
+    {
+      "name": "gmail-automation",
+      "type": "agent",
+      "keywords": [
+        "gmail",
+        "email",
+        "Google API"
+      ],
+      "capability": "Agente de automatización Gmail",
+      "path": "~/.claude/skills/gmail-automation/SKILL.md"
+    },
+    {
+      "name": "google-sheets-automation",
+      "type": "agent",
+      "keywords": [
+        "sheets",
+        "spreadsheet"
+      ],
+      "capability": "Agente de Google Sheets",
+      "path": "~/.claude/skills/google-sheets-automation/SKILL.md"
+    },
+    {
+      "name": "shopify-automation",
+      "type": "agent",
+      "keywords": [
+        "shopify",
+        "e-commerce",
+        "productos"
+      ],
+      "capability": "Agente de Shopify",
+      "path": "~/.claude/skills/shopify-automation/SKILL.md"
+    },
+    {
+      "name": "stripe-automation",
+      "type": "agent",
+      "keywords": [
+        "stripe",
+        "pagos",
+        "suscripciones"
+      ],
+      "capability": "Agente de Stripe",
+      "path": "~/.claude/skills/stripe-automation/SKILL.md"
+    },
+    {
+      "name": "hubspot-automation",
+      "type": "agent",
+      "keywords": [
+        "hubspot",
+        "CRM",
+        "contacts"
+      ],
+      "capability": "Agente de HubSpot",
+      "path": "~/.claude/skills/hubspot-automation/SKILL.md"
+    },
+    {
+      "name": "n8n-workflow-expert",
+      "type": "agent",
+      "keywords": [
+        "n8n",
+        "workflow",
+        "nodes"
+      ],
+      "capability": "Agente experto en n8n workflows",
+      "path": "~/.claude/skills/n8n-workflow-expert/SKILL.md"
+    },
+    {
+      "name": "make-automation",
+      "type": "agent",
+      "keywords": [
+        "make",
+        "integromat",
+        "scenarios"
+      ],
+      "capability": "Agente de Make/Integromat",
+      "path": "~/.claude/skills/make-automation/SKILL.md"
+    },
+    {
+      "name": "telegram-bot-builder",
+      "type": "agent",
+      "keywords": [
+        "telegram",
+        "bot",
+        "BotFather"
+      ],
+      "capability": "Agente constructor bots Telegram",
+      "path": "~/.claude/skills/telegram-bot-builder/SKILL.md"
+    },
+    {
+      "name": "whatsapp-cloud-api",
+      "type": "skill",
+      "keywords": [
+        "whatsapp",
+        "cloud API"
+      ],
+      "capability": "WhatsApp Cloud API",
+      "path": "~/.claude/skills/whatsapp-cloud-api/SKILL.md"
+    },
+    {
+      "name": "discord-bot-architect",
+      "type": "agent",
+      "keywords": [
+        "discord",
+        "bot",
+        "slash"
+      ],
+      "capability": "Agente arquitecto bots Discord",
+      "path": "~/.claude/skills/discord-bot-architect/SKILL.md"
+    },
+    {
+      "name": "jira-automation",
+      "type": "agent",
+      "keywords": [
+        "jira",
+        "issues",
+        "workflows"
+      ],
+      "capability": "Agente de Jira",
+      "path": "~/.claude/skills/jira-automation/SKILL.md"
+    },
+    {
+      "name": "figma-automation",
+      "type": "agent",
+      "keywords": [
+        "figma",
+        "design tokens"
+      ],
+      "capability": "Agente de Figma",
+      "path": "~/.claude/skills/figma-automation/SKILL.md"
+    },
+    {
+      "name": "posthog-automation",
+      "type": "agent",
+      "keywords": [
+        "posthog",
+        "analytics",
+        "feature flags"
+      ],
+      "capability": "Agente de PostHog",
+      "path": "~/.claude/skills/posthog-automation/SKILL.md"
+    }
+  ]
+}
